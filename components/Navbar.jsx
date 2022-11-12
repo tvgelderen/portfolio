@@ -7,6 +7,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false)
     const [color, setColor] = useState('transparent')
     const [textColor, setTextColor] = useState('white')
+    const [shadow, setShadow] = useState('')
     const [logo, setLogo] = useState('/logos/logo_white.png')
 
     const handleOpen = () => {
@@ -18,10 +19,12 @@ const Navbar = () => {
             if (window.scrollY >= 90) {
                 setColor('white')
                 setTextColor('black')
+                setShadow('shadow-2xl')
                 setLogo('/logos/logo_purple.png' )
             } else {
                 setColor('transparent')
                 setTextColor('white')
+                setShadow('')
                 setLogo('/logos/logo_white.png')
             }
         }
@@ -31,7 +34,7 @@ const Navbar = () => {
 
     return (
         <div 
-          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${textColor !== 'white' ? "shadow-2xl" : ""}`}
+          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${shadow}`}
           style={{ backgroundColor: `${color}` }}  
         >
             <div className="max-w-[1240px] m-auto h-full flex justify-between px-2 items-center text-white">
