@@ -34,9 +34,9 @@ const Navbar = () => {
     useEffect(() => {
         const changeColor = () => {
             if (window.scrollY >= 90) {
-                setColor('bg-white dark:bg-slate-900')
+                setColor('bg-white dark:bg-secondary')
                 setTextColor('black')
-                setShadow('shadow-md dark:shadow-none')
+                setShadow('shadow-md dark:shadow-dark-900')
                 setLogo('/logos/logo_purple.png' )
             } else {
                 setColor('bg-transparent')
@@ -51,7 +51,7 @@ const Navbar = () => {
 
     return (
         <div 
-          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${shadow} ${color} shadow-gray-400`}
+          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${shadow} ${color} shadow-dark-900/60`}
         >
             <div className="max-w-[1240px] m-auto h-full flex justify-between px-2 items-center text-white">
                 <Link href='/' className="py-1">
@@ -60,17 +60,17 @@ const Navbar = () => {
                       alt="logo"
                       width='240'  
                       height='50'
-                      className="w-[140px] md:w-[180px] lg:w-[210px] object-cover"
+                      className="w-[140px] md:w-[180px] lg:w-[220px] object-cover"
                     />
                 </Link>
-                <ul className="hidden md:flex h-full lg:pt-6 md:pt-6" style={{ color: `${textColor}` }}>
+                <ul className="hidden md:flex h-full uppercase lg:pt-7" style={{ color: `${textColor}` }}>
                     {navItems.map(item => {
                         return (
-                        <li className="md:px-[8px] lg:px-4 lg:pt-2 lg:pb-6 md:pb-5 border-b-4 border-transparent hover:border-gray-700" key={item.id}>
-                            <Link href={language + item.path}>{item.name}</Link>
+                        <li key={item.id}>
+                            <Link href={language + item.path}  className="lg:px-4 lg:pt-8 lg:pb-[29px] md:px-[8px] md:pt-7 md:pb-[23px] border-b-4 border-transparent hover:border-gray-300 dark:hover:border-dark-600 hover:text-dark-100" >{item.name}</Link>
                         </li>
                     )})}
-                    <li className="lg:mb-6 md:mt-[-4px] lg:mt-1 md:mx-1 lg:mx-5">
+                    <li className="lg:mb-6 md:mt-[-4px] md:mx-1 lg:mx-5">
                         <LanguageSelector />
                     </li>
                 </ul>
@@ -80,9 +80,9 @@ const Navbar = () => {
                 </div>
 
                 {open && (
-                    <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/60">
-                        <div className="relative md:hidden left-0 top-0 w-[70%] sm:w-[55%] h-screen bg-white dark:bg-slate-900 px-4 py-2 ease-in duration-500">
-                            <div className="flex w-full items-center justify-between pb-3 border-b-2 dark:border-slate-700">
+                    <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/50">
+                        <div className="relative md:hidden left-0 top-0 w-[70%] sm:w-[55%] h-screen bg-white dark:bg-secondary px-4 py-2 ease-in duration-500">
+                            <div className="flex w-full items-center justify-between pb-3 border-b-2 dark:border-dark-600">
                                 <Image 
                                   src='/logos/logo_purple.png'
                                   alt='logo'
@@ -90,19 +90,20 @@ const Navbar = () => {
                                   height='50'
                                 />
                                 <div 
-                                  className="mb-4 p-2 rounded-full shadow-md shadow-gray-500 dark:shadow-none dark:bg-slate-800 cursor-pointer"
+                                  className="mb-4 p-2 rounded-full shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary cursor-pointer"
                                   onClick={handleOpen}
                                 >
-                                    <AiOutlineClose size={20} className="text-black dark:text-white" />
+                                    <AiOutlineClose size={20} className="text-black dark:text-dark-100" />
                                 </div>
                             </div>
                             <div>
-                                <ul className="text-slate-900">
+                                <ul className="text-slate-900 uppercase pt-4">
                                     {navItems.map(item => {
                                         return (
-                                        <li className="py-4 text-2xl hover:text-gray-500" key={item.id}>
+                                        <li className="py-4" key={item.id}>
                                             <Link 
-                                              href={item.path} 
+                                              className="py-4 text-xl hover:text-dark-100"
+                                              href={language + item.path} 
                                               onClick={() => {setOpen(false)}}
                                             >
                                                 {item.name}
@@ -113,29 +114,29 @@ const Navbar = () => {
                             </div>
                             <div className="w-[70%] sm:w-[55%] text-slate-900 fixed bottom-0 left-0 px-4">
                                 <p className="uppercase pl-4">Get in touch</p>
-                                <div className="flex items-center justify-between w-full mb-4 border-b-2 dark:border-slate-700">
+                                <div className="flex items-center justify-between w-full mb-2">
                                     <a 
                                       target="_blank"  
                                       href="https://www.linkedin.com/in/timen-van-gelderen/"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-gray-500 dark:shadow-none dark:bg-slate-800">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
                                         <BsLinkedin size={20} />
                                     </a>
                                     <a  
                                       target="_blank" 
                                       href="https://github.com/TvGelderen"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-gray-500 dark:shadow-none dark:bg-slate-800">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
                                         <BsGithub size={20} />
                                     </a>
                                     <a  
                                       target="_blank" 
                                       href="#"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-gray-500 dark:shadow-none dark:bg-slate-800">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
                                         <AiOutlineMail size={20} />
                                     </a>
                                     <a  
                                       target="_blank" 
                                       href="#"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-gray-500 dark:shadow-none dark:bg-slate-800">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
                                         <RiContactsLine size={20} />
                                     </a>
                                 </div>
