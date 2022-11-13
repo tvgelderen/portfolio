@@ -1,9 +1,13 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useEffect, useState } from "react"
 
 const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-    const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState();
+
+    useEffect(() => {
+      setLanguage(localStorage.getItem("language"))
+    }, [])
 
     return (
         <AppContext.Provider

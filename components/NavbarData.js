@@ -1,6 +1,9 @@
 import { navbar } from "../languages/ui"
 
 export const NavbarData = language => {
+    if (navbar[language] === undefined)
+        language = 'en'
+
     return ([
     {
         id: "home",

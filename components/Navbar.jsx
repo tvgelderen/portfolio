@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes'
 import { NavbarData } from "./NavbarData"
 import { useAppContext } from "../context/AppContext"
 import LanguageSelector from "./LanguageSelector"
+import { useRouter } from "next/router"
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
@@ -17,7 +18,12 @@ const Navbar = () => {
     const [logo, setLogo] = useState('/logos/logo_white.png')
 
     const { systemTheme, theme, setTheme } = useTheme()
-    const { language } = useAppContext()
+    const { language, setLanguage } = useAppContext()
+
+    const router = useRouter();
+    const { lang } = router.query
+    
+    setLanguage(lang)
 
     const navItems = NavbarData(language)
 
@@ -55,7 +61,7 @@ const Navbar = () => {
             if (window.scrollY >= 90) {
                 setColor('bg-white dark:bg-slate-900')
                 setTextColor('black')
-                setShadow('shadow-2xl')
+                setShadow('shadow-md dark:shadow-none')
                 setLogo('/logos/logo_purple.png' )
             } else {
                 setColor('bg-transparent')
@@ -70,12 +76,13 @@ const Navbar = () => {
 
     return (
         <div 
-          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${shadow} ${color}`}
+          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${shadow} ${color} shadow-gray-400`}
         >
             <div className="max-w-[1240px] m-auto h-full flex justify-between px-2 items-center text-white">
                 <Link href='/' className="py-1">
                     <Image 
                       src={logo}
+                      alt="logo"
                       width='240'  
                       height='50'
                       className="w-[140px] md:w-[180px] lg:w-[210px] object-cover"
@@ -84,19 +91,19 @@ const Navbar = () => {
                 <ul className="hidden md:flex h-full lg:pt-6 md:pt-6" style={{ color: `${textColor}` }}>
                     {navItems.map(item => {
                         return (
-                        <li className="px-4 lg:pt-2 lg:pb-6 md:pb-5 border-b-4 border-transparent hover:border-gray-700">
-                            <Link href={item.path}>{item.name}</Link>
+                        <li className="md:px-[8px] lg:px-4 lg:pt-2 lg:pb-6 md:pb-5 border-b-4 border-transparent hover:border-gray-700">
+                            <Link href={lang + item.path}>{item.name}</Link>
                         </li>
                     )})}
-                    <li className="ml-[4px] md:mt-[2px] lg:mt-[10px]">
+                    <li className="md:mx-2 lg:mr-2 lg:ml-3 md:mt-[2px] lg:mt-[10px]">
                         {themeChanger()}
                     </li>
-                    <li className="lg:mb-6 md:mt-[-4px] lg:mt-1 mx-5">
+                    <li className="lg:mb-6 md:mt-[-4px] lg:mt-1 md:mx-3 lg:mx-5">
                         <LanguageSelector />
                     </li>
                 </ul>
 
-                <div className="flex justify-between md:hidden z-10 cursor-pointer" onClick={handleOpen}>
+                <div className="flex justify-between md:hidden mr-2 z-10 cursor-pointer" onClick={handleOpen}>
                     {!open && <AiOutlineMenu size={20} style={{ color: `${textColor}`}} />}
                 </div>
 
