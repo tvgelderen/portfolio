@@ -68,8 +68,8 @@ const Navbar = () => {
                         return (
                         <li key={item.id}>
                             <Link 
-                              href={language + item.path}  
-                              className={`lg:px-4 lg:pt-8 lg:pb-[29px] md:px-[8px] md:pt-7 md:pb-[23px] border-b-4 border-transparent hover:border-gray-300 dark:hover:border-dark-600 hover:text-dark-100 ${textColor === 'white' ? 'hover:border-transparent dark:hover:border-transparent' : ''}`} >{item.name}</Link>
+                              href={language + item.path}
+                              className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:pt-7 md:pb-[23px] border-b-4 border-transparent ${textColor === 'white' ? 'lg:pb-[14px] hover:bg-black/10' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px]'}`} >{item.name}</Link>
                         </li>
                     )})}
                     <li className="lg:mb-6 md:mt-[-4px] md:mx-1 lg:mx-5">
