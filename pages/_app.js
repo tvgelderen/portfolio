@@ -1,12 +1,16 @@
 import '../styles/globals.css'
 import Navbar from '../components/Navbar'
+import { ThemeProvider } from 'next-themes'
+import { AppContextProvider } from '../context/AppContext'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Navbar />
-      <Component {...pageProps} />
-    </>
+    <ThemeProvider enableSystem={true} attribute="class">
+      <AppContextProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </AppContextProvider>
+    </ThemeProvider>
   )
 }
 
