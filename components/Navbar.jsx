@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
-import { BsFillMoonFill, BsFillSunFill, BsGithub, BsLinkedin } from 'react-icons/bs'
+import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { RiContactsLine } from 'react-icons/ri'
-import { useTheme } from 'next-themes'
 import { NavbarData } from "./NavbarData"
 import { useAppContext } from "../context/AppContext"
 import LanguageSelector from "./LanguageSelector"
@@ -17,13 +16,10 @@ const Navbar = () => {
     const [shadow, setShadow] = useState('')
     const [logo, setLogo] = useState('/logos/logo_white.png')
 
-    const { systemTheme, theme, setTheme } = useTheme()
     const { language, setLanguage } = useAppContext()
 
     const router = useRouter();
     const { lang } = router.query
-    
-    setLanguage(lang)
 
     const navItems = NavbarData(language)
 
@@ -31,30 +27,9 @@ const Navbar = () => {
         setOpen(!open)
     }
 
-    const themeChanger = () => {
-        const currentTheme = theme === 'system' ? systemTheme : theme
-
-        if (currentTheme === 'dark')
-        {
-            return (
-                <BsFillSunFill 
-                    size={18} 
-                    className="cursor-pointer"
-                    onClick={() => setTheme('light')}
-                />
-            )
-        }
-        else
-        {
-            return (
-                <BsFillMoonFill 
-                    size={18} 
-                    className="cursor-pointer" 
-                    onClick={() => setTheme('dark')}
-                />
-            )
-        }
-    }
+    useEffect(() => {
+        setLanguage(lang === undefined ? 'en' : lang)
+    }, [])
 
     useEffect(() => {
         const changeColor = () => {
@@ -91,14 +66,11 @@ const Navbar = () => {
                 <ul className="hidden md:flex h-full lg:pt-6 md:pt-6" style={{ color: `${textColor}` }}>
                     {navItems.map(item => {
                         return (
-                        <li className="md:px-[8px] lg:px-4 lg:pt-2 lg:pb-6 md:pb-5 border-b-4 border-transparent hover:border-gray-700">
-                            <Link href={lang + item.path}>{item.name}</Link>
+                        <li className="md:px-[8px] lg:px-4 lg:pt-2 lg:pb-6 md:pb-5 border-b-4 border-transparent hover:border-gray-700" key={item.id}>
+                            <Link href={language + item.path}>{item.name}</Link>
                         </li>
                     )})}
-                    <li className="md:mx-2 lg:mr-2 lg:ml-3 md:mt-[2px] lg:mt-[10px]">
-                        {themeChanger()}
-                    </li>
-                    <li className="lg:mb-6 md:mt-[-4px] lg:mt-1 md:mx-3 lg:mx-5">
+                    <li className="lg:mb-6 md:mt-[-4px] lg:mt-1 md:mx-1 lg:mx-5">
                         <LanguageSelector />
                     </li>
                 </ul>
@@ -128,7 +100,7 @@ const Navbar = () => {
                                 <ul className="text-slate-900">
                                     {navItems.map(item => {
                                         return (
-                                        <li className="py-4 text-2xl hover:text-gray-500">
+                                        <li className="py-4 text-2xl hover:text-gray-500" key={item.id}>
                                             <Link 
                                               href={item.path} 
                                               onClick={() => {setOpen(false)}}
@@ -166,9 +138,6 @@ const Navbar = () => {
                                       className="rounded-full p-3 m-4 shadow-md shadow-gray-500 dark:shadow-none dark:bg-slate-800">
                                         <RiContactsLine size={20} />
                                     </a>
-                                </div>
-                                <div className="mb-5 mt-6">
-                                    {themeChanger()}
                                 </div>
                             </div>
                         </div>
