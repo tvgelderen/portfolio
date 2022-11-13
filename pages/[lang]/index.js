@@ -19,8 +19,8 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
-      <Projects />
-      <Contact />
+      {/* <Projects />
+      <Contact /> */}
 
       <ThemeChanger />
     </div>

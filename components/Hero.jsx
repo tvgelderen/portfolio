@@ -22,25 +22,25 @@ const Hero = () => {
                     <a 
                         target="_blank"  
                         href="https://www.linkedin.com/in/timen-van-gelderen/"
-                        className="rounded-full p-3 m-4 hover:bg-black/10">
+                        className="rounded-full p-3 m-4 hover:bg-black/10 hover:scale-110">
                         <BsLinkedin size={20} />
                     </a>
                     <a  
                         target="_blank" 
                         href="https://github.com/TvGelderen"
-                        className="rounded-full p-3 m-4 hover:bg-black/10">
+                        className="rounded-full p-3 m-4 hover:bg-black/10 hover:scale-110">
                         <BsGithub size={20} />
                     </a>
                     <a  
                         target="_blank" 
                         href="#"
-                        className="rounded-full p-3 m-4 hover:bg-black/10">
+                        className="rounded-full p-3 m-4 hover:bg-black/10 hover:scale-110">
                         <AiOutlineMail size={20} />
                     </a>
                     <a  
                         target="_blank" 
                         href="#"
-                        className="rounded-full p-3 m-4 hover:bg-black/10">
+                        className="rounded-full p-3 m-4 hover:bg-black/10 hover:scale-110">
                         <RiContactsLine size={20} />
                     </a>
                 </div>

@@ -67,7 +67,9 @@ const Navbar = () => {
                     {navItems.map(item => {
                         return (
                         <li key={item.id}>
-                            <Link href={language + item.path}  className="lg:px-4 lg:pt-8 lg:pb-[29px] md:px-[8px] md:pt-7 md:pb-[23px] border-b-4 border-transparent hover:border-gray-300 dark:hover:border-dark-600 hover:text-dark-100" >{item.name}</Link>
+                            <Link 
+                              href={language + item.path}  
+                              className={`lg:px-4 lg:pt-8 lg:pb-[29px] md:px-[8px] md:pt-7 md:pb-[23px] border-b-4 border-transparent hover:border-gray-300 dark:hover:border-dark-600 hover:text-dark-100 ${textColor === 'white' ? 'hover:border-transparent dark:hover:border-transparent' : ''}`} >{item.name}</Link>
                         </li>
                     )})}
                     <li className="lg:mb-6 md:mt-[-4px] md:mx-1 lg:mx-5">
@@ -118,25 +120,25 @@ const Navbar = () => {
                                     <a 
                                       target="_blank"  
                                       href="https://www.linkedin.com/in/timen-van-gelderen/"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary hover:scale-110">
                                         <BsLinkedin size={20} />
                                     </a>
                                     <a  
                                       target="_blank" 
                                       href="https://github.com/TvGelderen"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary hover:scale-110">
                                         <BsGithub size={20} />
                                     </a>
                                     <a  
                                       target="_blank" 
                                       href="#"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary hover:scale-110">
                                         <AiOutlineMail size={20} />
                                     </a>
                                     <a  
                                       target="_blank" 
                                       href="#"
-                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary">
+                                      className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-tertiary hover:scale-110">
                                         <RiContactsLine size={20} />
                                     </a>
                                 </div>
