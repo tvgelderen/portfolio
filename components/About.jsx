@@ -12,40 +12,35 @@ const About = () => {
     return (
         <div id='about' className={sectionStyle}>
             <p className={sectionHead}>{content.head}</p>
-            <div className='grid lg:grid-cols-5 md:grid-cols-7 grid-cols-1'>
-                <div className='lg:col-span-3 md:col-span-5 col-span-1'>
                     <h3 className={sectionTitle}>{content.title}</h3>
 
-                    {content.paragraphs.map(paragraph => (
-                        <p className={sectionContent}>{paragraph}</p>
-                    ))}
-                </div>
-                <div className='md:col-span-2 col-span-1'>
                     <motion.img 
-                        src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" 
+                        src="https://images.unsplash.com/photo-1508921108053-9f757ead871c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" 
                         alt="" 
-                        className='md:w-[90%] sm:w-[70%] w-[80%] m-auto rounded-2xl shadow-lg shadow-dark-900'
+                        className='float-right lg:w-[40%] md:w-[50%] w-[60%] ml-4 mb-4 mt-[-32px] m-auto rounded-2xl shadow-lg shadow-dark-900'
                         initial="offscreen"
                         whileInView="onscreen"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileHover={{ scale: 1.1, rotate: 4 }}
                         viewport={{ once: false }}
                         variants={{
                             offscreen: {
-                                x: 300
+                                x: 250
                             },
                             onscreen: {
                                 x: 0,
-                                y: 12,
+                                y: 0,
                                 transition: {
                                 type: "spring",
-                                bounce: 0.4,
+                                bounce: 0.3,
                                 duration: 1.5
                                 }
                             }
                         }}
                     />
-                </div>
-            </div>
+
+                    {content.paragraphs.map(paragraph => (
+                        <p className={sectionContent}>{paragraph}</p>
+                    ))}
         </div>
     )
 }
