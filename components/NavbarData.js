@@ -6,7 +6,7 @@ export const NavbarData = language => {
 
     return ([
     {
-        id: "home",
+        id: "hero",
         name: navbar[language].home,
         path: "/",
 

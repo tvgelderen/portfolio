@@ -3,7 +3,7 @@ import { sectionStyle } from './SectionStyles'
 
 const Skills = () => {
     return (
-        <div id='skills' className={sectionStyle} style={{marginBottom: '2000px'}}>
+        <div className={sectionStyle}>
             <h3>Skills</h3>
         </div>
     )

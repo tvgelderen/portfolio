@@ -32,11 +32,13 @@ const Navbar = () => {
     }, [])
 
     useEffect(() => {
-        const changeColor = () => {
-            if (window.scrollY >= 90) {
+        const body = document.getElementById('body')
+
+        const changeColor = () => {            
+            if (body.scrollTop >= 90) {
                 setColor('bg-white dark:bg-secondary')
                 setTextColor('black')
-                setShadow('shadow-lg')
+                setShadow('shadow-md')
                 setLogo('/logos/logo_purple.png' )
             } else {
                 setColor('bg-transparent')
@@ -46,12 +48,12 @@ const Navbar = () => {
             }
         }
 
-        window.addEventListener('scroll', changeColor);
+        document.getElementById('body').addEventListener('scroll', changeColor);
     }, []);
 
     return (
         <div 
-          className={`fixed left-0 top-0 w-full z-10 ease-in duration-300 ${shadow} ${color} shadow-dark-900`}
+          className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 ${shadow} ${color} shadow-dark-900`}
         >
             <div className="max-w-[1280px] m-auto h-full flex justify-between px-2 items-center text-white">
                 <Link href='/' className="py-1">
@@ -67,12 +69,6 @@ const Navbar = () => {
                     {navItems.map(item => {
                         return (
                         <li key={item.id}>
-                            {/* <Link 
-                              href={language + item.path}
-                              className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent ${textColor === 'white' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-black/10' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
-                            >
-                                {item.name}
-                            </Link> */}
                             <a
                               className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${textColor === 'white' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-black/10' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
                               onClick={() => {document.getElementById(item.id).scrollIntoView()}}
@@ -112,13 +108,15 @@ const Navbar = () => {
                                     {navItems.map(item => {
                                         return (
                                         <li className="py-4" key={item.id}>
-                                            <Link 
-                                              className="py-4 text-xl hover:text-dark-100"
-                                              href={language + item.path} 
-                                              onClick={() => {setOpen(false)}}
+                                            <a
+                                              className="py-4 text-xl cursor-pointer hover:text-dark-100"
+                                              onClick={() => {
+                                                document.getElementById(item.id).scrollIntoView()
+                                                setOpen(false)
+                                              }}
                                             >
                                                 {item.name}
-                                            </Link>
+                                            </a>
                                         </li>
                                     )})}
                                 </ul>

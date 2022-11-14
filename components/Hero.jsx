@@ -18,7 +18,6 @@ const Hero = () => {
 
     return (
         <div
-          id="home"
           className='flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-gradient-to-b from-[#e66465] to-[#9198e5]'
         >
             {/* <motion.div

@@ -1,8 +1,9 @@
 import React from 'react'
+import { sectionStyle } from './SectionStyles'
 
 const Contact = () => {
     return (
-        <div id='contact' className='pb-[2000px]'>
+        <div className={sectionStyle}>
             <h3>Contact</h3>
         </div>
     )
