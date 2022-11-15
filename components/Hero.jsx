@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useAppContext } from "../context/AppContext";
 import { hero } from "../languages/hero";
 import { AiOutlineMail } from 'react-icons/ai'
@@ -6,39 +6,28 @@ import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { RiContactsLine } from 'react-icons/ri'
 
 import { motion } from 'framer-motion'
-import { useFollowPointer } from "./useFollowPointer";
 import Typewriter from 'typewriter-effect'
+import HeroBackground from "./HeroBackground";
 
 const Hero = () => {
-    const ref = useRef(null)
-    const { x, y } = useFollowPointer(ref)
-
     const { language } = useAppContext();
 
-    const content = hero[language] !== undefined ? hero[language] : hero['en']        
+    const content = hero[language] !== undefined ? hero[language] : hero['en'] 
 
     return (
         <div
-          className='flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-gradient-to-b from-[#e66465] to-[#9198e5]'
-        >
-            {/* <motion.div
-              ref={ref}
-              className="p-10 z-[1] rounded-full bg-black/20"
-              animate={{ x, y }}
-              transition={{
-                type: "spring",
-                damping: 10,
-                stiffness: 70,
-                restDelta: 0.0005
-              }}
-            /> */}
+          className='flex flex-col items-center justify-center h-screen mb-12 bg-center bg-cover bg-gradient-to-b from-[#e66465] to-[#9198e5]'
+          style={{ backgroundImage: "url('/bg-wide.png')" }}>
+            <div className="absolute top-0 bottom-0 flex justify-center align-center z-[2]">
+                <HeroBackground />
+            </div>
 
-            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/30 dark:bg-black/60 z-[2]' />
-            <div className='p-5 text-white z-[2] mt-[-10rem]'>
-                <div className="max-w-[660px] m-auto flex-row justify-center text-center overflow-visible">
+            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/30 dark:bg-black/50' />
+            <div className='relative text-white z-[2] mt-[-15rem]'>
+                <div className="w-[440px] md:w-[660px] m-auto flex-row justify-center text-center overflow-visible">
                     <motion.h2 
                       initial={{
-                        y: -200,
+                        y: -250,
                         opacity: 0,
                         scale: 0
                       }}
@@ -52,7 +41,7 @@ const Hero = () => {
                       }}
                       className='font-courier text-5xl md:text-6xl font-bold'
                     >
-                        {content.hello} <span className="text-[#1c1c1c] dark:text-dark-900">Timen</span>.
+                        {content.hello} <span className="text-themeLight dark:text-themeDark">Timen</span>.
                     </motion.h2>
                     <div className="mt-4">
                         <span className="font-courier text-3xl md:text-4xl">
@@ -70,7 +59,7 @@ const Hero = () => {
                 <div className="w-[360px] m-auto flex justify-center">
                     <motion.div 
                       initial={{
-                        y: 900,
+                        y: 250,
                         opacity: 0,
                         scale: 0
                       }}

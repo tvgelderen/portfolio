@@ -39,7 +39,7 @@ const Navbar = () => {
                 setColor('bg-white dark:bg-secondary')
                 setTextColor('black')
                 setShadow('shadow-md')
-                setLogo('/logos/logo_purple.png' )
+                setLogo('/logos/logo_purple.png')
             } else {
                 setColor('bg-transparent')
                 setTextColor('white')
