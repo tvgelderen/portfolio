@@ -82,7 +82,7 @@ const Navbar = () => {
                     </li>
                 </ul>
 
-                <div className="flex justify-between md:hidden mr-2 z-10 cursor-pointer" onClick={handleOpen}>
+                <div className="flex justify-between md:hidden mr-6 z-10 cursor-pointer" onClick={handleOpen}>
                     {!open && <AiOutlineMenu size={20} style={{ color: `${textColor}`}} />}
                 </div>
 

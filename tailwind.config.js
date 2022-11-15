@@ -23,6 +23,9 @@ module.exports = {
           800: "#222222",
           900: "#121212",
         }
+      },
+      fontFamily: {
+        'courier': ['Courier Prime', 'Montserrat', 'sans-serif']
       }
     },
   },

@@ -9,7 +9,7 @@ import ThemeChanger from "../../components/ThemeChanger"
 
 export default function Home() {
   return (
-    <div className=''>
+    <div>
       <Head>
         <title>Portfolio</title>
         <link rel="icon" href="/icons/favicon.ico" />

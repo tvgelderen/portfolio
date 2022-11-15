@@ -11,7 +11,7 @@ const ThemeChanger = () => {
     const currentTheme = theme === 'system' ? systemTheme : theme
 
     return (
-        <div className='fixed z-[11] right-2 bottom-2 p-3 rounded-full hover:bg-black/20'>
+        <div className='fixed z-[11] right-4 bottom-4 p-3 rounded-full hover:bg-black/20'>
             {currentTheme === 'dark' && loaded
               ? <BsFillSunFill 
                   size={20} 
