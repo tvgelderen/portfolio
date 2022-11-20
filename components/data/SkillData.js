@@ -33,10 +33,14 @@ export const SkillData = [
     },
     {
         name: "NextJS",
-        image: "/skills/nextjs.png"
+        image: "/skills/nextjs2.png"
     },
     {
-        name: "Tailwind",
+        name: "Bootstrap",
+        image: "/skills/bootstrap.png"
+    },
+    {
+        name: "Tailwind CSS",
         image: "/skills/tailwind.png"
     },
     {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { about } from '../../languages/about'
-import { sectionContent, sectionTitle, sectionHead, sectionStyle } from '../SectionStyles'
 import { motion } from 'framer-motion'
 
 const About = () => {
@@ -10,9 +9,9 @@ const About = () => {
     const content = about[language] === undefined ? about['en'] : about[language]
 
     return (
-        <div className={sectionStyle}>
-            <p className={sectionHead}>{content.head}</p>
-            <h3 className={sectionTitle}>{content.title}</h3>
+        <div className="sectionStyle">
+            <p className="sectionHead">{content.head}</p>
+            <h3 className="sectionTitle">{content.title}</h3>
 
             <motion.img 
                 src="https://images.unsplash.com/photo-1508921108053-9f757ead871c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" 
@@ -39,7 +38,7 @@ const About = () => {
             />
 
             {content.paragraphs.map((paragraph, index) => (
-                <p key={index} className={sectionContent}>{paragraph}</p>
+                <p key={index} className="sectionContent">{paragraph}</p>
             ))}
         </div>
     )

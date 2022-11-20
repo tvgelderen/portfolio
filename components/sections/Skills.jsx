@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { sectionStyle, sectionHead, sectionTitle } from '../SectionStyles'
 import { SkillData } from '../data/SkillData'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { useAppContext } from '../../context/AppContext'
+import { skills } from '../../languages/skills'
 
 const Skills = () => {
     const [selectedId, setSelectedId] = useState(null)
+
+    const { language } = useAppContext()
+    const content = skills[language] === undefined ? skills['en'] : skills[language]
 
     const GetRow = (rowLen, i) => {
             let step = (SkillData.length - i - 1)
@@ -41,7 +45,8 @@ const Skills = () => {
                 >
                     {SkillData.slice(i, i + step).map((skill, index) => (
                         <div 
-                          className='bg-dark-700 rounded-full m-4 p-4 shadow-lg hover:scale-125 duration-300 hover:shadow-2xl shadow-dark-900'
+                          key={skill.name}
+                          className='bg-primary rounded-full m-4 p-4 hover:scale-125 duration-300 shadow-md shadow-black'
                           onClick={() => setSelectedId(i + index)}  
                         >
                             <img 
@@ -61,18 +66,20 @@ const Skills = () => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 sm:w-1/2 w-3/4 m-auto mt-[-60px]'>
-                {steps.map(step => {
-                    return GetRow(rowLen, step)
-                })}
+            <div className='grid grid-cols-1 sm:w-[55%] w-3/4 m-auto mt-[-60px] mb-[60px]'>
+                {steps.map(step => (
+                    <span key={step}>
+                        {GetRow(rowLen, step)}
+                    </span>
+                ))}
             </div>
         )
     }
 
     return (
-        <div className={sectionStyle}>
-            <p className={sectionHead}>Skills</p>
-            <h3 className={sectionTitle}>My skills</h3>
+        <div className="sectionStyle">
+            <p className="sectionHead">{content.head}</p>
+            <h3 className="sectionTitle">{content.title}</h3>
 
             {ShowRows(3)}
 

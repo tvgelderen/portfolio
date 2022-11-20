@@ -1,10 +1,10 @@
 import React from 'react'
-import { sectionStyle } from '../SectionStyles'
 
 const Contact = () => {
     return (
-        <div className={sectionStyle}>
-            <h3>Contact</h3>
+        <div className="sectionStyle">
+            <p className="sectionHead">Contact</p>
+            <h3 className="sectionTitle">Get in touch!</h3>
         </div>
     )
 }

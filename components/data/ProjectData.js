@@ -5,7 +5,13 @@ export const ProjectData = [
             '/projects/netflix.png'
         ],
         description: "",
-        url: "https://netflix-clone-tvgelderen.vercel.app/"
+        url: "https://netflix-clone-tvgelderen.vercel.app/",
+        skills: [
+            "TypeScript",
+            "NextJS",
+            "Tailwind CSS",
+            "Firebase"
+        ]
     },
     {
         name: "USA National Parks",
@@ -16,7 +22,12 @@ export const ProjectData = [
             '/projects/us-national-parks_map-modal.png'
         ],
         description: "",
-        url: "https://us-national-parks-tvgelderen.vercel.app/"
+        url: "https://us-national-parks-tvgelderen.vercel.app/",
+        skills: [
+            "JavaScript",
+            "NextJS",
+            "Tailwind CSS"
+        ]
     },
     {
         name: "Crypto Watch",
@@ -27,6 +38,11 @@ export const ProjectData = [
             '/projects/cryptowatch_btc.png' 
         ],
         description: "",
-        url: ""
+        url: "",
+        skills: [
+            "JavaScript",
+            "ReactJS",
+            "Bootstrap"
+        ]
     }
 ]

@@ -36,7 +36,7 @@ const Navbar = () => {
 
         const changeColor = () => {            
             if (body.scrollTop >= 90) {
-                setColor('bg-white dark:bg-secondary')
+                setColor('bg-white dark:bg-primary')
                 setTextColor('black')
                 setShadow('shadow-md')
                 setLogo('/logos/logo_purple.png')
@@ -53,7 +53,7 @@ const Navbar = () => {
 
     return (
         <div 
-          className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 ${shadow} ${color} shadow-dark-900`}
+          className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 ${shadow} ${color} shadow-dark-600 dark:shadow-black`}
         >
             <div className="max-w-[1280px] m-auto h-full flex justify-between px-2 items-center text-white">
                 <Link href='/' className="py-1">
@@ -63,6 +63,7 @@ const Navbar = () => {
                       width='240'  
                       height='50'
                       className="w-[140px] md:w-[180px] lg:w-[220px] object-cover"
+                      priority
                     />
                 </Link>
                 <ul className="hidden md:flex h-full uppercase lg:pt-7" style={{ color: `${textColor}` }}>

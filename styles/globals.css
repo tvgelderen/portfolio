@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .sectionStyle {
+    @apply w-full max-w-[1100px] min-h-screen m-auto lg:pt-28 md:pt-24 pt-20 px-4;
+  }
+
+  .sectionHead {
+    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-themeLight dark:text-themeDark pb-3 border-b-2 dark:border-dark-600;
+  }
+
+  .sectionTitle {
+    @apply uppercase text-center font-semibold pt-3 tracking-[6px];
+  }
+
+  .sectionContent {
+    @apply pt-4 pr-4 lg:text-lg text-justify;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   font-family: 'Montserrat', sans-serif;
