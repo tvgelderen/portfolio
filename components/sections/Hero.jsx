@@ -1,13 +1,13 @@
 import React from "react";
-import { useAppContext } from "../context/AppContext";
-import { hero } from "../languages/hero";
+import { useAppContext } from "../../context/AppContext";
+import { hero } from "../../languages/hero";
 import { AiOutlineMail } from 'react-icons/ai'
 import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { RiContactsLine } from 'react-icons/ri'
 
 import { motion } from 'framer-motion'
 import Typewriter from 'typewriter-effect'
-import HeroBackground from "./HeroBackground";
+import HeroBackground from "../HeroBackground";
 
 const Hero = () => {
     const { language } = useAppContext();

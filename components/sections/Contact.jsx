@@ -1,5 +1,5 @@
 import React from 'react'
-import { sectionStyle } from './SectionStyles'
+import { sectionStyle } from '../SectionStyles'
 
 const Contact = () => {
     return (

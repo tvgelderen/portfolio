@@ -1,7 +1,7 @@
 import React from 'react'
-import { useAppContext } from '../context/AppContext'
-import { about } from '../languages/about'
-import { sectionContent, sectionTitle, sectionHead, sectionStyle } from './SectionStyles'
+import { useAppContext } from '../../context/AppContext'
+import { about } from '../../languages/about'
+import { sectionContent, sectionTitle, sectionHead, sectionStyle } from '../SectionStyles'
 import { motion } from 'framer-motion'
 
 const About = () => {
@@ -21,7 +21,7 @@ const About = () => {
                 initial="offscreen"
                 whileInView="onscreen"
                 whileHover={{ scale: 1.1, rotate: -4 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 variants={{
                     offscreen: {
                         x: -200,
@@ -38,8 +38,8 @@ const About = () => {
                 }}
             />
 
-            {content.paragraphs.map(paragraph => (
-                <p className={sectionContent}>{paragraph}</p>
+            {content.paragraphs.map((paragraph, index) => (
+                <p key={index} className={sectionContent}>{paragraph}</p>
             ))}
         </div>
     )

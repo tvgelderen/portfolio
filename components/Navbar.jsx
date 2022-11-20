@@ -4,7 +4,7 @@ import Image from "next/image"
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
 import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { RiContactsLine } from 'react-icons/ri'
-import { NavbarData } from "./NavbarData"
+import { NavbarData } from "./data/NavbarData"
 import { useAppContext } from "../context/AppContext"
 import LanguageSelector from "./LanguageSelector"
 import { useRouter } from "next/router"
@@ -122,7 +122,7 @@ const Navbar = () => {
                                 </ul>
                             </div>
                             <div className="w-[70%] sm:w-[55%] text-slate-900 fixed bottom-0 left-0 px-4">
-                                <p className="uppercase pl-4">Get in touch</p>
+                                <p className="uppercase pl-4 text-themeLight dark:text-themeDark">Get in touch</p>
                                 <div className="flex items-center justify-between w-full mb-2">
                                     <a 
                                       target="_blank"  
