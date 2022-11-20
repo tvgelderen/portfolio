@@ -36,7 +36,7 @@ const Skills = () => {
                   className='flex justify-center items-center'
                   initial="offscreen"
                   whileInView="onscreen"
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   variants={variants}
                 >
                     {SkillData.slice(i, i + step).map((skill, index) => (
@@ -61,7 +61,7 @@ const Skills = () => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 sm:w-1/2 w-3/4 m-auto mt-12'>
+            <div className='grid grid-cols-1 sm:w-1/2 w-3/4 m-auto mt-[-60px]'>
                 {steps.map(step => {
                     return GetRow(rowLen, step)
                 })}
