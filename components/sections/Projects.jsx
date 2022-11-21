@@ -8,11 +8,11 @@ import { ProjectData } from '../data/ProjectData'
 import useWindowDimensions from '../hooks/useWindowWidth'
 
 const variants = {
-    offscreen: {
-        y: 200,
+    hidden: {
+        y: -200,
         opacity: 0,
     },
-    onscreen: {
+    visible: {
         y: 0,
         opacity: 1,
         transition: {
@@ -51,71 +51,20 @@ const Projects = () => {
     
     useEffect(() => {        
         setVariantsLeft({
-            hidden: {
-                x: (width / 2),
-                scale: 0,
-                opacity: 0.25,
-                rotateZ: 25
-            },
-            visible: {
-                x: 0,
-                scale: 1,
-                opacity: 1,
-                rotateZ: 0,
-                transition: {
-                    duration: 1.6
-                }
-            }
+            hidden: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25 },
+            visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
         })
         setVariantsOldLeft({
-            hidden: {
-                x: 0,
-                scale: 1,
-                opacity: 1
-            },
-            visible: {
-                x: -(width / 2),
-                scale: 0,
-                opacity: 0.25,
-                rotateZ: -25,
-                transition: {
-                    duration: 1.6
-                }
-            }
+            hidden: { x: 0, scale: 1, opacity: 1 },
+            visible: { x: -(width / 2), scale: 0, opacity: 0.25, rotateZ: -25, transition: { duration: 1.6 } }
         })
         setVariantsRight({
-            hidden: {
-                x: -(width / 2),
-                scale: 0,
-                opacity: 0.25,
-                rotateZ: -25
-            },
-            visible: {
-                x: 0,
-                scale: 1,
-                opacity: 1,
-                rotateZ: 0,
-                transition: {
-                    duration: 1.6
-                }
-            }
+            hidden: { x: -(width / 2), scale: 0, opacity: 0.25, rotateZ: -25 },
+            visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
         })
         setVariantsOldRight({
-            hidden: {
-                x: 0,
-                scale: 1,
-                opacity: 1,
-                rotateZ: 0
-            },
-            visible: {
-                x: (width / 2),
-                scale: 0,
-                opacity: 0.25,
-                rotateZ: 25,
-                transition: {
-                    duration: 1.6
-                }
-            }
+            hidden: { x: 0, scale: 1, opacity: 1, rotateZ: 0 },
+            visible: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25, transition: { duration: 1.6 } }
         })
     }, [width])
 
@@ -123,51 +72,47 @@ const Projects = () => {
         <div className="sectionStyle">
             <p className="sectionHead">{content.head}</p>
             <h3 className="sectionTitle">{content.title}</h3>
-            <div className='w-full flex justify-center items-center group mt-4 lg:mt-12'>
-                    {ProjectData.map((project, index) => {
-                        if (index == current) 
-                        {
-                            if (current == previous)
-                                return (
+            <div className='w-full flex justify-center items-center group mt-4 md:mt-8 lg:mt-12'>
+                {ProjectData.map((project, index) => {
+                    if (index == current) 
+                    {
+                        if (current == previous)
+                            return (
+                                <div>
+                                    <ProjectCard project={project} />
+                                </div>
+                            )
+                        else
+                            return (
+                                <>
                                     <motion.div 
-                                      key={index}
-                                      initial="hidden"
-                                      animate="visible"
-                                      variants={variantsLeft} 
+                                        key={index + 1}
+                                        initial="hidden"
+                                        animate="visible"
+                                        variants={moveLeft ? variantsLeft : variantsRight}  
+                                        className="absolute"
                                     >
                                         <ProjectCard project={project} />
                                     </motion.div>
-                                )
-                            else
-                                return (
-                                    <>
-                                        <motion.div 
-                                          key={index + 1}
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={moveLeft ? variantsLeft : variantsRight}  
-                                          className="absolute"
-                                        >
-                                            <ProjectCard project={project} />
-                                        </motion.div>
-                                        <motion.div 
-                                          key={index + 2}
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={moveLeft ? variantsOldLeft : variantsOldRight}  
-                                        >
-                                            <ProjectCard project={ProjectData[previous]} />
-                                        </motion.div>
-                                    </>
-                                )
-                        }
-                    })}
+                                    <motion.div 
+                                        key={index + 2}
+                                        initial="hidden"
+                                        animate="visible"
+                                        variants={moveLeft ? variantsOldLeft : variantsOldRight}  
+                                    >
+                                        <ProjectCard project={ProjectData[previous]} />
+                                    </motion.div>
+                                </>
+                            )
+                    }
+                })}
+
                 <div className='absolute left-0 opacity-30 group-hover:opacity-100 cursor-pointer' onClick={handlePrevious}>
                     <motion.svg 
                       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" 
                       className="w-12 h-12 lg:w-20 lg:h-20"
-                      initial="offscreen"
-                      whileInView="onscreen"
+                      initial="hidden"
+                      whileInView="visible"
                       variants={variants}
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -177,8 +122,8 @@ const Projects = () => {
                     <motion.svg 
                       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" 
                       className="w-12 h-12 lg:w-20 lg:h-20"
-                      initial="offscreen"
-                      whileInView="onscreen"
+                      initial="hidden"
+                      whileInView="visible"
                       variants={variants}
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

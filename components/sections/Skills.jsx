@@ -16,21 +16,16 @@ const Skills = () => {
             let step = (SkillData.length - i - 1)
             step = step < rowLen ? step : rowLen;
 
-            const time = 1 * (i / 6 + 1 / i)
-
             const variants = {
-                offscreen: {
-                    y: 400,
+                hidden: {
+                    y: -120 * (i / 3),
                     opacity: 0,
-                    scale: 0,
                 },
-                onscreen: {
-                    x: 0,
+                visible: {
                     y: 0,
                     opacity: 1,
-                    scale: 1,
                     transition: {
-                        duration: time
+                        delay: (i / 3) * 0.2
                     }
                 }
             }
@@ -38,8 +33,8 @@ const Skills = () => {
             return (
                 <motion.div
                   className='flex justify-center items-center'
-                  initial="offscreen"
-                  whileInView="onscreen"
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
                   variants={variants}
                 >
@@ -66,7 +61,7 @@ const Skills = () => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 sm:w-[55%] w-3/4 m-auto mt-[-60px] mb-[60px]'>
+            <div className='grid grid-cols-1 sm:w-[55%] w-3/4 m-auto mt-4 md:mt-12'>
                 {steps.map(step => (
                     <span key={step}>
                         {GetRow(rowLen, step)}

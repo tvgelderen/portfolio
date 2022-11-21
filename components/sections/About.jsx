@@ -19,7 +19,6 @@ const About = () => {
                 className='float-left lg:w-[40%] md:w-[45%] w-[60%] mr-4 mb-4 mt-[20px] m-auto rounded-2xl shadow-lg shadow-dark-900'
                 initial="offscreen"
                 whileInView="onscreen"
-                whileHover={{ scale: 1.1, rotate: -4 }}
                 viewport={{ once: true }}
                 variants={{
                     offscreen: {

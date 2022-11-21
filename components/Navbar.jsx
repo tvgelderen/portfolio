@@ -124,7 +124,7 @@ const Navbar = () => {
                                                   onClick={() => {
                                                     document.getElementById(item.id).scrollIntoView()
                                                     setOpen(false)
-                                                  s}}
+                                                  }}
                                                 >
                                                     {item.name}
                                                 </a>

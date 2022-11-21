@@ -23,7 +23,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/60 backdrop-blur-[2px]' />
+            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/50 dark:bg-black/75 backdrop-blur-[3px]' />
             <div className='relative text-white z-[2] mt-[-15rem]'>
                 <div className="w-[440px] md:w-[660px] m-auto flex-row justify-center text-center overflow-visible">
                     <motion.h2 
