@@ -95,6 +95,7 @@ const Skills = () => {
                             <div className='flex justify-between items-center'>
                                 <Image
                                   src={SkillData[selectedId].image}
+                                  alt={SkillData[selectedId].name}
                                   width='120'
                                   height='120'
                                   className='pr-6'

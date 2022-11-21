@@ -19,7 +19,6 @@ module.exports = {
           secondary: "#2f2f2f",
           tertiary: "#323232",
           theme: "#a842c9",
-          000: "#a2a2a2",
           100: "#929292",
           200: "#828282",
           300: "#727272",

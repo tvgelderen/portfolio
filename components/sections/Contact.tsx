@@ -3,12 +3,12 @@ import { useAppContext } from '../../context/AppContext'
 import { contact } from '../../languages/contact'
 
 const Contact = () => {
-    const [name, setName] = useState()
-    const [companyName, setCompanyName] = useState()
-    const [email, setEmail] = useState()
-    const [phone, setPhone] = useState()
-    const [subject, setSubject] = useState()
-    const [message, setMessage] = useState()
+    const [name, setName] = useState<string>()
+    const [companyName, setCompanyName] = useState<string>()
+    const [email, setEmail] = useState<string>()
+    const [phone, setPhone] = useState<string>()
+    const [subject, setSubject] = useState<string>()
+    const [message, setMessage] = useState<string>()
 
     const { language } = useAppContext()
 

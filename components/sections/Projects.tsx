@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { useAppContext } from '../../context/AppContext'
 import ProjectCard from '../ProjectCard'
 
@@ -22,9 +22,9 @@ const variants = {
 }
 
 const Projects = () => {
-    const [current, setCurrent] = useState(0)
-    const [previous, setPrevious] = useState(0)
-    const [moveLeft, setMoveLeft] = useState(true)
+    const [current, setCurrent] = useState<number>(0)
+    const [previous, setPrevious] = useState<number>(0)
+    const [moveLeft, setMoveLeft] = useState<boolean>(true)
 
     const { language } = useAppContext()
     const { width } = useWindowDimensions();
@@ -44,10 +44,10 @@ const Projects = () => {
         setMoveLeft(false)
     }
 
-    const [variantsLeft, setVariantsLeft] = useState()
-    const [variantsOldLeft, setVariantsOldLeft] = useState()
-    const [variantsRight, setVariantsRight] = useState()
-    const [variantsOldRight, setVariantsOldRight] = useState()
+    const [variantsLeft, setVariantsLeft] = useState<Variants>()
+    const [variantsOldLeft, setVariantsOldLeft] = useState<Variants>()
+    const [variantsRight, setVariantsRight] = useState<Variants>()
+    const [variantsOldRight, setVariantsOldRight] = useState<Variants>()
     
     useEffect(() => {        
         setVariantsLeft({
