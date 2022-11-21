@@ -1,9 +1,13 @@
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
 import { SkillData } from './data/SkillData'
 
-const ProjectCard = ({ project }) => {
-    const projectSkills = SkillData.filter(skill => project.skills.includes(skill.name))
+type Props = {
+    project: any
+}
+
+const ProjectCard = ({ project }: Props) => {
+    const projectSkills = SkillData.filter(skill => project.skills.includes(skill.name));
 
     return (
         <div className='w-[88%] max-w-[850px] m-auto shadow-md dark:shadow-dark-900 duration-300 rounded-lg dark:bg-dark-primary'>

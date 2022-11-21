@@ -1,20 +1,38 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
+import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-const AppContext = createContext(null);
+type appContextType = {
+  language: string | null,
+  setLanguage: React.Dispatch<React.SetStateAction<string | null>>
+}
 
-export const AppContextProvider = ({ children }) => {
-    const [language, setLanguage] = useState<string>();
+const appContextDefault: appContextType = {
+  language: null,
+  setLanguage: () => {}
+}
+
+const AppContext = createContext<appContextType>(appContextDefault);
+
+
+export const AppContextProvider = ({ children }: {children: ReactNode}) => {
+    const [language, setLanguage] = useState<string | null>(null);
 
     useEffect(() => {
-      setLanguage(localStorage.getItem("language"))
+      setLanguage(localStorage.getItem("language"));
     }, [])
+
+    type valueType = {
+      language: string | null,
+      setLanguage: () => void
+    }
+
+    const value = {
+      language,
+      setLanguage
+    };
 
     return (
         <AppContext.Provider
-          value={{
-            language,
-            setLanguage
-          }}
+          value={value}
         >
             { children }
         </AppContext.Provider>

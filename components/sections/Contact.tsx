@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { contact } from '../../languages/contact'
 
-const Contact = () => {
+type Props = {
+    content: any
+}
+
+const Contact = ({ content }: Props) => {
     const [name, setName] = useState<string>()
     const [companyName, setCompanyName] = useState<string>()
     const [email, setEmail] = useState<string>()
     const [phone, setPhone] = useState<string>()
     const [subject, setSubject] = useState<string>()
     const [message, setMessage] = useState<string>()
-
-    const { language } = useAppContext()
-
-    const content = contact[language] === undefined ? contact['en'] : contact[language]
-
+    
     return (
         <div className="sectionStyle">
             <p className="sectionHead">{content.head}</p>

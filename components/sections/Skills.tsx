@@ -6,13 +6,14 @@ import Image from 'next/image'
 import { useAppContext } from '../../context/AppContext'
 import { skills } from '../../languages/skills'
 
-const Skills = () => {
-    const [selectedId, setSelectedId] = useState(null)
+type Props = {
+    content: any
+}
 
-    const { language } = useAppContext()
-    const content = skills[language] === undefined ? skills['en'] : skills[language]
+const Skills = ({ content }: Props) => {
+    const [selectedId, setSelectedId] = useState<number>(-1)
 
-    const GetRow = (rowLen, i) => {
+    const GetRow = (rowLen:number, i:number) => {
             let step = (SkillData.length - i - 1)
             step = step < rowLen ? step : rowLen;
 
@@ -54,7 +55,7 @@ const Skills = () => {
             )
     }
 
-    const ShowRows = rowLen => {
+    const ShowRows = (rowLen:number) => {
         let steps = []
 
         for (let i = 0; i < SkillData.length; i+=rowLen)
@@ -79,14 +80,14 @@ const Skills = () => {
             {ShowRows(3)}
 
             <AnimatePresence>
-                {selectedId !== null && (
+                {selectedId !== -1 && (
                     <motion.div 
-                      layoutId={selectedId}
+                    //   layoutId={selectedId}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       className="fixed z-[10] top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black/30 dark:bg-black/50"
-                      onClick={() => setSelectedId(null)}
+                      onClick={() => setSelectedId(-1)}
                     >
                         <div 
                           className='dark:bg-dark-700 p-6 rounded-xl' 

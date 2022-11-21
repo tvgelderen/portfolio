@@ -21,16 +21,18 @@ const variants = {
     }
 }
 
-const Projects = () => {
+type Props = {
+    content: any
+}
+
+const Projects = ({ content }: Props) => {
     const [current, setCurrent] = useState<number>(0)
     const [previous, setPrevious] = useState<number>(0)
     const [moveLeft, setMoveLeft] = useState<boolean>(true)
 
-    const { language } = useAppContext()
     const { width } = useWindowDimensions();
     
     const length = ProjectData.length
-    const content = projects[language] === undefined ? projects['en'] : projects[language]
 
     const handleNext = () => {
         setPrevious(current)
@@ -49,23 +51,26 @@ const Projects = () => {
     const [variantsRight, setVariantsRight] = useState<Variants>()
     const [variantsOldRight, setVariantsOldRight] = useState<Variants>()
     
-    useEffect(() => {        
-        setVariantsLeft({
-            hidden: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25 },
-            visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
-        })
-        setVariantsOldLeft({
-            hidden: { x: 0, scale: 1, opacity: 1 },
-            visible: { x: -(width / 2), scale: 0, opacity: 0.25, rotateZ: -25, transition: { duration: 1.6 } }
-        })
-        setVariantsRight({
-            hidden: { x: -(width / 2), scale: 0, opacity: 0.25, rotateZ: -25 },
-            visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
-        })
-        setVariantsOldRight({
-            hidden: { x: 0, scale: 1, opacity: 1, rotateZ: 0 },
-            visible: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25, transition: { duration: 1.6 } }
-        })
+    useEffect(() => {  
+        if (width !== null)      
+        {
+            setVariantsLeft({
+                hidden: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25 },
+                visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
+            })
+            setVariantsOldLeft({
+                hidden: { x: 0, scale: 1, opacity: 1 },
+                visible: { x: -(width / 2), scale: 0, opacity: 0.25, rotateZ: -25, transition: { duration: 1.6 } }
+            })
+            setVariantsRight({
+                hidden: { x: -(width / 2), scale: 0, opacity: 0.25, rotateZ: -25 },
+                visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
+            })
+            setVariantsOldRight({
+                hidden: { x: 0, scale: 1, opacity: 1, rotateZ: 0 },
+                visible: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25, transition: { duration: 1.6 } }
+            })
+        }
     }, [width])
 
     return (

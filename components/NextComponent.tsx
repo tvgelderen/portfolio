@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import React from 'react'
+import { useRouter } from 'next/router'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 
 const NextComponent = () => {

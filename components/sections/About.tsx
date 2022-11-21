@@ -3,11 +3,11 @@ import { useAppContext } from '../../context/AppContext'
 import { about } from '../../languages/about'
 import { motion } from 'framer-motion'
 
-const About = () => {
-    const { language } = useAppContext()
+type Props = {
+    content: any
+}
 
-    const content = about[language] === undefined ? about['en'] : about[language]
-
+const About = ({ content }: Props) => {
     return (
         <div className="sectionStyle">
             <p className="sectionHead">{content.head}</p>

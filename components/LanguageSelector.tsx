@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router'
 import React from 'react'
+import { useRouter } from 'next/router'
 import { useAppContext } from '../context/AppContext'
 
 
 const LanguageSelector = () => {
-    const { language, setLanguage } = useAppContext()
+    const { language, setLanguage } = useAppContext();
 
-    const router = useRouter()
+    const router = useRouter();
 
     return (
         <div className="lang-menu">
@@ -21,9 +21,9 @@ const LanguageSelector = () => {
                           alt='en' 
                           className="w-[25px] h-[25px] rounded-full object-cover cursor-pointer mb-2"
                           onClick={() => {
-                            localStorage.setItem("language", "en")
-                            setLanguage('en')
-                            router.push('/en/')
+                            localStorage.setItem("language", "en");
+                            setLanguage('en');
+                            router.push('/en/');
                           }} 
                         />
                     </li>
@@ -33,9 +33,9 @@ const LanguageSelector = () => {
                           alt='nl' 
                           className="w-[25px] h-[25px] rounded-full object-cover cursor-pointer"  
                           onClick={() => {
-                            localStorage.setItem("language", "nl")
-                            setLanguage('nl')
-                            router.push('/nl/')
+                            localStorage.setItem("language", "nl");
+                            setLanguage('nl');
+                            router.push('/nl/');
                           }} 
                         />
                     </li>

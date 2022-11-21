@@ -8,48 +8,53 @@ import { NavbarData } from "./data/NavbarData"
 import { useAppContext } from "../context/AppContext"
 import LanguageSelector from "./LanguageSelector"
 import { useRouter } from "next/router"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false)
-    const [color, setColor] = useState('bg-transparent')
-    const [textColor, setTextColor] = useState('white')
-    const [shadow, setShadow] = useState('')
-    const [logo, setLogo] = useState('/logos/logo_white.png')
+    const [open, setOpen] = useState<boolean>(false);
+    const [color, setColor] = useState<string>('bg-transparent');
+    const [textColor, setTextColor] = useState<string>('white');
+    const [shadow, setShadow] = useState<string>('');
+    const [logo, setLogo] = useState<string>('/logos/logo_white.png');
 
-    const { language, setLanguage } = useAppContext()
+    const { language, setLanguage } = useAppContext();
 
     const router = useRouter();
-    const { lang } = router.query
+    const { lang } = router.query;
 
-    const navItems = NavbarData(language)
+    const navItems = NavbarData(language);
 
     const handleOpen = () => {
-        setOpen(!open)
+        setOpen(!open);
     }
 
     useEffect(() => {
-        setLanguage(lang === undefined ? 'en' : lang)
+        if (lang === undefined || lang === 'en')
+            setLanguage('en');
+        else
+            setLanguage('nl');
     }, [])
 
     useEffect(() => {
-        const body = document.getElementById('body')
+        const body = document.getElementById('body');
 
         const changeColor = () => {            
-            if (body.scrollTop >= 90) {
-                setColor('bg-white dark:bg-dark-primary')
-                setTextColor('#121212')
-                setShadow('shadow-sm')
-                setLogo('/logos/logo_purple.png')
+            if (body?.scrollTop !== undefined && body?.scrollTop >= 90) {
+                setColor('bg-white dark:bg-dark-primary');
+                setTextColor('#121212');
+                setShadow('shadow-sm');
+                setLogo('/logos/logo_purple.png');
             } else {
-                setColor('bg-transparent')
-                setTextColor('#eeeeee')
-                setShadow('')
-                setLogo('/logos/logo_white.png')
+                setColor('bg-transparent');
+                setTextColor('#eeeeee');
+                setShadow('');
+                setLogo('/logos/logo_white.png');
             }
         }
 
-        document.getElementById('body').addEventListener('scroll', changeColor);
+        document.getElementById('body')?.addEventListener('scroll', changeColor);
+
+        return () => document.getElementById('body')?.removeEventListener('scroll', changeColor);
     }, []);
 
     return (
@@ -73,7 +78,7 @@ const Navbar = () => {
                         <li key={item.id}>
                             <a
                               className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${textColor === '#eeeeee' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-black/10' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
-                              onClick={() => {document.getElementById(item.id).scrollIntoView()}}
+                              onClick={() => {document.getElementById(item.id)?.scrollIntoView()}}
                             >
                                 {item.name}
                             </a>
@@ -122,8 +127,8 @@ const Navbar = () => {
                                                 <a
                                                   className="py-4 text-xl cursor-pointer hover:text-dark-200"
                                                   onClick={() => {
-                                                    document.getElementById(item.id).scrollIntoView()
-                                                    setOpen(false)
+                                                    document.getElementById(item.id)?.scrollIntoView();
+                                                    setOpen(false);
                                                   }}
                                                 >
                                                     {item.name}

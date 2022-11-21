@@ -7,7 +7,26 @@ import Projects from '../../components/sections/Projects'
 import Contact from '../../components/sections/Contact'
 import ThemeChanger from "../../components/ThemeChanger"
 
+import { hero } from '../../languages/hero'
+import { about } from '../../languages/about'
+import { skills } from '../../languages/skills'
+import { projects } from '../../languages/projects'
+import { contact } from '../../languages/contact'
+
+import { useAppContext } from '../../context/AppContext'
+
 export default function Home() {
+  let { language } = useAppContext();
+
+  if (language === null)
+    language = 'en'
+
+  const heroContent = hero.get(language) === undefined ? hero.get('en') : hero.get(language);
+  const aboutContent = about.get(language) === undefined ? about.get('en') : about.get(language);
+  const skillsContent = skills.get(language) === undefined ? skills.get('en') : skills.get(language);
+  const projectsContent = projects.get(language) === undefined ? projects.get('en') : projects.get(language);
+  const contactContent = contact.get(language) === undefined ? contact.get('en') : contact.get(language);
+
   return (
     <div>
       <Head>
@@ -16,23 +35,23 @@ export default function Home() {
       </Head>
 
       <section id='hero' className='snap-center' >
-        <Hero />
+        <Hero content={heroContent} />
       </section>
 
       <section id='about' className='snap-start'>
-        <About />
+        <About content={aboutContent} />
       </section>
       
       <section id='skills' className='snap-start'>
-        <Skills />
+        <Skills content={skillsContent} />
       </section>
 
       <section id='projects' className='snap-start'>
-        <Projects />
+        <Projects content={projectsContent} />
       </section>
       
       <section id='contact' className='snap-start'>
-        <Contact />
+        <Contact content={contactContent} />
       </section>
 
       <ThemeChanger />

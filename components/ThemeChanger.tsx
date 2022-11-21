@@ -3,10 +3,10 @@ import { useTheme } from 'next-themes'
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
 
 const ThemeChanger = () => {
-    const [loaded, setLoaded] = useState(false)
-    const { systemTheme, theme, setTheme } = useTheme()
+    const [loaded, setLoaded] = useState(false);
+    const { systemTheme, theme, setTheme } = useTheme();
 
-    useEffect(() => setLoaded(true), [])
+    useEffect(() => setLoaded(true), []);
 
     const currentTheme = theme === 'system' ? systemTheme : theme
 

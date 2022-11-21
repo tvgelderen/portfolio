@@ -8,10 +8,12 @@ import { RiContactsLine } from 'react-icons/ri'
 import { motion } from 'framer-motion'
 import Typewriter from 'typewriter-effect'
 
-const Hero = () => {
-    const { language } = useAppContext();
+type Props = {
+  content: any
+}
 
-    const content = hero[language] !== undefined ? hero[language] : hero['en'] 
+const Hero = ({ content }: Props) => {
+    const { language } = useAppContext();
 
     return (
         <div
