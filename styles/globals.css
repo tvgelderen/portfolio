@@ -8,7 +8,7 @@
   }
 
   .sectionHead {
-    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-themeLight dark:text-themeDark pb-3 border-b-2 dark:border-dark-600;
+    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-light-theme dark:text-dark-theme pb-3 border-b-2 dark:border-dark-600;
   }
 
   .sectionTitle {
@@ -35,7 +35,7 @@ html {
 }
 
 * {
-  @apply dark:text-slate-100
+  @apply dark:text-[#eeeeee]
 }
  
 h1, h2, h3, h4, h5, h6 {

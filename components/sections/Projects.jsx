@@ -55,7 +55,7 @@ const Projects = () => {
                 x: (width / 2),
                 scale: 0,
                 opacity: 0.25,
-                rotateZ: 45
+                rotateZ: 25
             },
             visible: {
                 x: 0,
@@ -77,7 +77,7 @@ const Projects = () => {
                 x: -(width / 2),
                 scale: 0,
                 opacity: 0.25,
-                rotateZ: -45,
+                rotateZ: -25,
                 transition: {
                     duration: 1.6
                 }
@@ -88,7 +88,7 @@ const Projects = () => {
                 x: -(width / 2),
                 scale: 0,
                 opacity: 0.25,
-                rotateZ: -45
+                rotateZ: -25
             },
             visible: {
                 x: 0,
@@ -111,7 +111,7 @@ const Projects = () => {
                 x: (width / 2),
                 scale: 0,
                 opacity: 0.25,
-                rotateZ: 45,
+                rotateZ: 25,
                 transition: {
                     duration: 1.6
                 }

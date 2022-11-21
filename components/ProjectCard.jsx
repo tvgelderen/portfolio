@@ -6,7 +6,7 @@ const ProjectCard = ({ project }) => {
     const projectSkills = SkillData.filter(skill => project.skills.includes(skill.name))
 
     return (
-        <div className='w-[88%] max-w-[850px] m-auto hover:scale-110 shadow-lg shadow-[#121212] duration-300 rounded-lg bg-primary'>
+        <div className='w-[88%] max-w-[850px] m-auto shadow-md dark:shadow-dark-900 duration-300 rounded-lg dark:bg-dark-primary'>
             <Image
               src={project.images[0]}
               alt={project.name}
@@ -28,9 +28,9 @@ const ProjectCard = ({ project }) => {
                         </div>
                     ))}
                 </div>
-                <div className='py-4'>
-                    <h3>{project.name}</h3>
-
+                <div className='py-4 w-full sm:w-[90%] md:w-[75%] m-auto'>
+                    <h3 className='text-center'>{project.name}</h3>
+                    <p className='text-justify'>{project.description}</p>
                 </div>
             </div>
         </div>

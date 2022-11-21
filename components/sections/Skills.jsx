@@ -16,7 +16,7 @@ const Skills = () => {
             let step = (SkillData.length - i - 1)
             step = step < rowLen ? step : rowLen;
 
-            const time = 1.6 * (i / 6 + 1 / i)
+            const time = 1 * (i / 6 + 1 / i)
 
             const variants = {
                 offscreen: {
@@ -46,7 +46,7 @@ const Skills = () => {
                     {SkillData.slice(i, i + step).map((skill, index) => (
                         <div 
                           key={skill.name}
-                          className='bg-primary rounded-full m-4 p-4 hover:scale-125 duration-300 shadow-md shadow-black'
+                          className='dark:bg-dark-primary rounded-full m-4 p-4 hover:scale-125 duration-300 shadow-md shadow-black cursor-pointer'
                           onClick={() => setSelectedId(i + index)}  
                         >
                             <img 
