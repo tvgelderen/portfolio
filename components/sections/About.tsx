@@ -1,6 +1,4 @@
 import React from 'react'
-import { useAppContext } from '../../context/AppContext'
-import { about } from '../../languages/about'
 import { motion } from 'framer-motion'
 
 type Props = {
@@ -36,7 +34,7 @@ const About = ({ content }: Props) => {
                 }}
             />
 
-            {content.paragraphs.map((paragraph, index) => (
+            {content.paragraphs.map((paragraph:string, index:number) => (
                 <p key={index} className="sectionContent">{paragraph}</p>
             ))}
         </div>
