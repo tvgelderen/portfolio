@@ -40,7 +40,7 @@ const Skills = ({ content }: Props) => {
                     {SkillData.slice(i, i + step).map((skill, index) => (
                         <div 
                           key={skill.name}
-                          className='sm:dark:bg-dark-primary rounded-full m-4 sm:p-4 hover:scale-125 duration-300 sm:shadow-md shadow-black cursor-pointer'
+                          className='sm:bg-light-primary sm:dark:bg-dark-primary rounded-full m-4 sm:p-3 hover:scale-125 duration-300 sm:shadow-lg shadow-black cursor-pointer'
                           onClick={() => setSelectedId(i + index)}  
                         >
                             <img 
@@ -72,41 +72,42 @@ const Skills = ({ content }: Props) => {
 
     return (
         <div className="sectionStyle">
-            <p className="sectionHead">{content.head}</p>
-            <h3 className="sectionTitle">{content.title}</h3>
+            <div className="sectionContent">
+                <p className="sectionHead">{content.head}</p>
+                <h3 className="sectionTitle">{content.title}</h3>
 
-            {ShowRows(3)}
+                {ShowRows(3)}
 
-            <AnimatePresence>
-                {selectedId !== -1 && (
-                    <motion.div 
-                    //   layoutId={selectedId}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="fixed z-[10] top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black/30 dark:bg-black/50"
-                      onClick={() => setSelectedId(-1)}
-                    >
-                        <div 
-                          className='dark:bg-dark-700 p-6 rounded-xl' 
-                          onClick={(event) => event.stopPropagation()}
+                <AnimatePresence>
+                    {selectedId !== -1 && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="fixed z-[10] top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black/30 dark:bg-black/50"
+                          onClick={() => setSelectedId(-1)}
                         >
-                            <div className='flex justify-between items-center'>
-                                <Image
-                                  src={SkillData[selectedId].image}
-                                  alt={SkillData[selectedId].name}
-                                  width='120'
-                                  height='120'
-                                  className='pr-6'
-                                />
-                                <div className='border-l-2 border-dark-500 pl-6'>
-                                    <p className='text-3xl md:text-4xl'>{SkillData[selectedId].name}</p>
+                            <div 
+                            className='bg-light-secondary dark:bg-dark-secondary p-6 rounded-xl' 
+                            onClick={(event) => event.stopPropagation()}
+                            >
+                                <div className='flex justify-between items-center'>
+                                    <Image
+                                    src={SkillData[selectedId].image}
+                                    alt={SkillData[selectedId].name}
+                                    width='120'
+                                    height='120'
+                                    className='pr-6'
+                                    />
+                                    <div className='border-l-2 border-dark-500 pl-6'>
+                                        <p className='text-3xl md:text-4xl'>{SkillData[selectedId].name}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
         </div>
     )
 }

@@ -18,24 +18,23 @@ const Navbar = () => {
     const [shadow, setShadow] = useState<string>('');
     
     const { systemTheme, theme } = useTheme();
-    const currentTheme = theme === 'system' ? systemTheme : theme
-    const [logo, setLogo] = useState<string>(currentTheme === 'light' ? '/logos/logo_black.png' : '/logos/logo_white.png');
-    
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+    const [logo, setLogo] = useState<string>('');
+
+
     const { language, setLanguage } = useAppContext();
     const router = useRouter();
     const { lang } = router.query;
 
     const navItems = NavbarData(language === null ? 'en' : language);
 
-    const handleOpen = () => {
-        setOpen(!open);
-    }
-
     useEffect(() => {
         if (lang === undefined || lang === 'en')
             setLanguage('en');
         else
             setLanguage('nl');
+
+        setLogo(currentTheme === 'light' ? '/logos/logo_black.png' : '/logos/logo_white.png');
     }, [])
 
     useEffect(() => {
@@ -50,15 +49,15 @@ const Navbar = () => {
 
         const changeColor = () => {            
             if (body?.scrollTop !== undefined && body?.scrollTop >= 90) {
-                setColor('bg-white dark:bg-dark-primary');
+                setColor('bg-light-primary dark:bg-dark-primary');
                 setTextColor('#121212');
                 setShadow('shadow-sm');
-                setLogo('/logos/logo_purple.png');
+                setLogo('/logos/logo_purple.png')
             } else {
                 setColor('bg-transparent');
                 setTextColor('text-[#121212] dark:text-[#eeeeee]');
                 setShadow('');
-                setLogo(currentTheme === 'dark' ? '/logos/logo_white.png' : '/logos/logo_black.png');
+                setLogo(currentTheme === 'light' ? '/logos/logo_black.png' : '/logos/logo_white.png');
             }
         }
 
@@ -67,38 +66,40 @@ const Navbar = () => {
         return () => body?.removeEventListener('scroll', changeColor);
     }, [currentTheme]);
 
+    console.log(logo)
+
     return (
-        <div className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 shadow-dark-600 dark:shadow-black ${shadow} ${color}`}>
+        <div className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 shadow-dark-400 dark:shadow-black ${shadow} ${color}`}>
             <div className="max-w-[1280px] m-auto h-full flex justify-between px-1 items-center">
                 <Link href='/' className="py-[2px]">
                     <Image 
                       src={logo}
                       alt="logo"
-                      width='240'  
-                      height='50'
+                      width={320}
+                      height={120}
                       className="w-[140px] md:w-[180px] lg:w-[220px] object-cover"
-                      priority
                     />
                 </Link>
                 <ul className={`hidden md:flex h-full uppercase lg:pt-7 ${textColor}`}>
                     {navItems.map(item => {
                         return (
-                        <li key={item.id}>
-                            <a
-                              className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-dark-theme/20' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
-                              onClick={() => {document.getElementById(item.id)?.scrollIntoView()}}
-                            >
-                                {item.name}
-                            </a>
-                        </li>
-                    )})}
+                            <li key={item.id}>
+                                <a
+                                  className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-dark-theme/20' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
+                                  onClick={() => {document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" })}}
+                                >
+                                    {item.name}
+                                </a>
+                            </li>
+                        )}
+                    )}
                     <li className="lg:mb-6 md:mt-[-4px] md:mx-1 lg:mx-5">
                         <LanguageSelector />
                     </li>
                 </ul>
 
-                <div className="flex justify-between md:hidden mr-4 z-10 cursor-pointer" onClick={handleOpen}>
-                    {!open && <AiOutlineMenu size={20} style={{ color: `${textColor}`}} />}
+                <div className={`flex justify-between md:hidden mr-2 z-10 cursor-pointer ${textColor}`} onClick={() => setOpen(true)}>
+                    {!open && <AiOutlineMenu size={20} />}
                 </div>
 
                 {open && (
@@ -112,6 +113,7 @@ const Navbar = () => {
                                 animate={{ x: 0, width: 320 }}
                                 initial={{ x: -320, width: 320 }}
                                 exit={{ x: -320 }}
+                                transition={{ stiffness: 10 }}
                             >
                                 <div className="relative flex w-full items-center justify-between pb-3 border-b-2 dark:border-dark-600">
                                     <Image 
@@ -122,7 +124,7 @@ const Navbar = () => {
                                     />
                                     <div 
                                         className="mb-4 p-2 rounded-full shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
-                                        onClick={handleOpen}
+                                        onClick={() => setOpen(false)}
                                     >
                                         <AiOutlineClose size={20} className="text-dark-900 dark:text-dark-100" />
                                     </div>
@@ -135,7 +137,7 @@ const Navbar = () => {
                                                 <a
                                                   className="py-4 text-xl cursor-pointer hover:text-dark-200"
                                                   onClick={() => {
-                                                    document.getElementById(item.id)?.scrollIntoView();
+                                                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                                                     setOpen(false);
                                                   }}
                                                 >

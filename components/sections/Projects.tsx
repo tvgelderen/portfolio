@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { motion, Variants } from 'framer-motion'
-import { useAppContext } from '../../context/AppContext'
 import ProjectCard from '../ProjectCard'
-
-import { projects } from '../../languages/projects'
 import { ProjectData } from '../data/ProjectData'
 import useWindowDimensions from '../hooks/useWindowWidth'
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 
 const variants = {
     hidden: {
@@ -30,7 +28,7 @@ const Projects = ({ content }: Props) => {
     const [previous, setPrevious] = useState<number>(0)
     const [moveLeft, setMoveLeft] = useState<boolean>(true)
 
-    const { width } = useWindowDimensions();
+    let { width } = useWindowDimensions();
     
     const length = ProjectData.length
 
@@ -51,7 +49,10 @@ const Projects = ({ content }: Props) => {
     const [variantsRight, setVariantsRight] = useState<Variants>()
     const [variantsOldRight, setVariantsOldRight] = useState<Variants>()
     
-    useEffect(() => {  
+    useEffect(() => {
+        if (width !== null && width > 1200)
+            width = 1200;
+
         if (width !== null)      
         {
             setVariantsLeft({
@@ -75,66 +76,64 @@ const Projects = ({ content }: Props) => {
 
     return (
         <div className="sectionStyle">
-            <p className="sectionHead">{content.head}</p>
-            <h3 className="sectionTitle">{content.title}</h3>
-            <div className='w-full flex justify-center items-center group mt-4 md:mt-8 lg:mt-12'>
-                {ProjectData.map((project, index) => {
-                    if (index == current) 
-                    {
-                        if (current == previous)
-                            return (
-                                <div key={index}>
-                                    <ProjectCard project={project} />
-                                </div>
-                            )
-                        else
-                            return (
-                                <>
-                                    <motion.div 
-                                        key={index + 1}
-                                        initial="hidden"
-                                        animate="visible"
-                                        variants={moveLeft ? variantsLeft : variantsRight}  
-                                        className="absolute"
-                                    >
+            <div className="sectionContent">
+                <p className="sectionHead">{content.head}</p>
+                <h3 className="sectionTitle">{content.title}</h3>
+                <div className='w-full flex justify-center items-center group mt-4 md:mt-8 lg:mt-12'>
+                    {ProjectData.map((project, index) => {
+                        if (index == current) 
+                        {
+                            if (current == previous)
+                                return (
+                                    <div key={index}>
                                         <ProjectCard project={project} />
-                                    </motion.div>
-                                    <motion.div 
-                                        key={index + 2}
-                                        initial="hidden"
-                                        animate="visible"
-                                        variants={moveLeft ? variantsOldLeft : variantsOldRight}  
-                                    >
-                                        <ProjectCard project={ProjectData[previous]} />
-                                    </motion.div>
-                                </>
-                            )
-                    }
-                })}
+                                    </div>
+                                )
+                            else
+                                return (
+                                    <>
+                                        <motion.div 
+                                            key={index + 1}
+                                            initial="hidden"
+                                            animate="visible"
+                                            variants={moveLeft ? variantsLeft : variantsRight}  
+                                            className="absolute"
+                                        >
+                                            <ProjectCard project={project} />
+                                        </motion.div>
+                                        <motion.div 
+                                            key={index + 2}
+                                            initial="hidden"
+                                            animate="visible"
+                                            variants={moveLeft ? variantsOldLeft : variantsOldRight}  
+                                        >
+                                            <ProjectCard project={ProjectData[previous]} />
+                                        </motion.div>
+                                    </>
+                                )
+                        }
+                    })}
 
-                <div className='absolute left-0 opacity-30 group-hover:opacity-100 cursor-pointer' onClick={handlePrevious}>
-                    <motion.svg 
-                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" 
-                      className="w-12 h-12 lg:w-20 lg:h-20"
+                    <motion.div 
+                      className='absolute left-0 cursor-pointer'
+                      onClick={handlePrevious}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={variants}
                     >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                    </motion.svg>
-                </div>
-                <div className='absolute right-0 opacity-30 group-hover:opacity-100 cursor-pointer' onClick={handleNext}>
-                    <motion.svg 
-                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" 
-                      className="w-12 h-12 lg:w-20 lg:h-20"
+                        <BsChevronCompactLeft className="w-10 h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 opacity-30 hover:opacity-90" />
+                    </motion.div>
+                    <motion.div 
+                      className='absolute right-0 cursor-pointer' 
+                      onClick={handleNext}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={variants}
                     >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                    </motion.svg>
+                        <BsChevronCompactRight className="w-10 h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 opacity-30 hover:opacity-90" />
+                    </motion.div>
                 </div>
             </div>
         </div>

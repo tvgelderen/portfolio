@@ -14,6 +14,7 @@ import { projects } from '../../languages/projects'
 import { contact } from '../../languages/contact'
 
 import { useAppContext } from '../../context/AppContext'
+import { BsChevronUp } from 'react-icons/bs'
 
 export default function Home() {
   let { language } = useAppContext();
@@ -33,8 +34,8 @@ export default function Home() {
         <title>Portfolio</title>
         <link rel="icon" href="/icons/favicon.ico" />
       </Head>
-
-      <section id='hero' className='snap-center' >
+      
+      <section id='hero' className='snap-center'>
         <Hero content={heroContent} />
       </section>
 
@@ -55,6 +56,13 @@ export default function Home() {
       </section>
 
       <ThemeChanger />
+
+      <div 
+        className='z-[2] fixed bottom-5 left-0 right-0 flex justify-center items-center cursor-pointer'
+        onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: "smooth" })}  
+      >
+        <BsChevronUp size={24} color="white" className='xl:w-10 xl:h-10' />
+      </div>
     </div>
   )
 }

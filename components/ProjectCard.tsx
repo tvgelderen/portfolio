@@ -2,9 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import { SkillData } from './data/SkillData'
 
-// NICE pruple threads: https://www.pixel4k.com/wp-content/uploads/2020/08/purple-threads-abstract_1596927843.jpg
-// Minimal green flying binary: https://images2.alphacoders.com/922/922574.jpg
-
 type Props = {
     project: any
 }
@@ -13,7 +10,7 @@ const ProjectCard = ({ project }: Props) => {
     const projectSkills = SkillData.filter(skill => project.skills.includes(skill.name));
 
     return (
-        <div className='w-[88%] max-w-[850px] m-auto shadow-md dark:shadow-dark-900 duration-300 rounded-lg dark:bg-dark-primary'>
+        <div className='w-[88%] max-w-[850px] m-auto shadow-md dark:shadow-dark-900 duration-300 rounded-lg bg-light-secondary dark:bg-dark-secondary'>
             <Image
               src={project.images[0]}
               alt={project.name}
