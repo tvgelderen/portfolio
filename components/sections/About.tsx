@@ -20,7 +20,7 @@ const About = ({ content }: Props) => {
                     </div>
                     <div className='hidden lg:block'>
                         <Image
-                          src='/spray.png'
+                          src='/img/spray.png'
                           alt=''
                           width={1920}
                           height={1080}

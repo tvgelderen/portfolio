@@ -19,7 +19,7 @@ const Navbar = () => {
     
     const { systemTheme, theme } = useTheme();
     const currentTheme = theme === 'system' ? systemTheme : theme;
-    const [logo, setLogo] = useState<string>('');
+    const [logo, setLogo] = useState<string>('/img/logos/logo_purple.png');
 
 
     const { language, setLanguage } = useAppContext();
@@ -34,14 +34,14 @@ const Navbar = () => {
         else
             setLanguage('nl');
 
-        setLogo(currentTheme === 'light' ? '/logos/logo_black.png' : '/logos/logo_white.png');
+        setLogo(currentTheme === 'light' ? '/img/logos/logo_black.png' : '/img/logos/logo_white.png');
     }, [])
 
     useEffect(() => {
         if (currentTheme === 'dark')
-            setLogo('/logos/logo_white.png');
+            setLogo('/img/logos/logo_white.png');
         else
-            setLogo('/logos/logo_black.png');
+            setLogo('/img/logos/logo_black.png');
     }, [currentTheme]);
 
     useEffect(() => {
@@ -52,12 +52,12 @@ const Navbar = () => {
                 setColor('bg-light-primary dark:bg-dark-primary');
                 setTextColor('#121212');
                 setShadow('shadow-sm');
-                setLogo('/logos/logo_purple.png')
+                setLogo('/img/logos/logo_purple.png')
             } else {
                 setColor('bg-transparent');
                 setTextColor('text-[#121212] dark:text-[#eeeeee]');
                 setShadow('');
-                setLogo(currentTheme === 'light' ? '/logos/logo_black.png' : '/logos/logo_white.png');
+                setLogo(currentTheme === 'light' ? '/img/logos/logo_black.png' : '/img/logos/logo_white.png');
             }
         }
 
@@ -78,18 +78,20 @@ const Navbar = () => {
                       width={320}
                       height={120}
                       className="w-[140px] md:w-[180px] lg:w-[220px] object-cover"
+                      priority
                     />
                 </Link>
                 <ul className={`hidden md:flex h-full uppercase lg:pt-7 ${textColor}`}>
                     {navItems.map(item => {
                         return (
                             <li key={item.id}>
-                                <a
-                                  className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-dark-theme/20' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
+                                <motion.a
+                                  className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px]' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
                                   onClick={() => {document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" })}}
+                                  whileHover={shadow === '' ? { backgroundColor: "rgba(168, 66, 201, 0.3)" } : {}}
                                 >
                                     {item.name}
-                                </a>
+                                </motion.a>
                             </li>
                         )}
                     )}

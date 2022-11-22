@@ -11,13 +11,13 @@ const LanguageSelector = () => {
     return (
         <div className="lang-menu">
             <div className="selected-lang cursor-pointer flex justify-between mt-[3px]">
-                <img src={`/lang/${language}-flag.png`} alt='en' className="w-[25px] h-[25px] rounded-full object-cover" />
+                <img src={`/img/lang/${language}-flag.png`} alt='en' className="w-[25px] h-[25px] rounded-full object-cover" />
             </div>
             <div className='lang-list hidden'>
                 <ul className="absolute pt-2">
                     <li>
                         <img 
-                          src='/lang/en-flag.png' 
+                          src='/img/lang/en-flag.png' 
                           alt='en' 
                           className="w-[25px] h-[25px] rounded-full object-cover cursor-pointer mb-2"
                           onClick={() => {
@@ -29,7 +29,7 @@ const LanguageSelector = () => {
                     </li>
                     <li>
                         <img 
-                          src='/lang/nl-flag.png' 
+                          src='/img/lang/nl-flag.png' 
                           alt='nl' 
                           className="w-[25px] h-[25px] rounded-full object-cover cursor-pointer"  
                           onClick={() => {

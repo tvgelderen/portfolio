@@ -1,66 +1,66 @@
 export const SkillData = [
     {
         name: "C",
-        image: "/skills/c.png"
+        image: "/img/skills/c.png"
     },
     {
         name: "C++",
-        image: "/skills/c++.png"
+        image: "/img/skills/c++.png"
     },
     {
         name: "C#",
-        image: "/skills/csharp.png"
+        image: "/img/skills/csharp.png"
     },
     {
         name: "HTML",
-        image: "/skills/html.png"
+        image: "/img/skills/html.png"
     },
     {
         name: "CSS",
-        image: "/skills/css.png"
+        image: "/img/skills/css.png"
     },
     {
         name: "JavaScript",
-        image: "/skills/javascript.png"
+        image: "/img/skills/javascript.png"
     },
     {
         name: "TypeScript",
-        image: "/skills/typescript.png"
+        image: "/img/skills/typescript.png"
     },
     {
         name: "ReactJS",
-        image: "/skills/react.png"
+        image: "/img/skills/react.png"
     },
     {
         name: "NextJS",
-        image: "/skills/nextjs2.png"
+        image: "/img/skills/nextjs2.png"
     },
     {
         name: "Bootstrap",
-        image: "/skills/bootstrap.png"
+        image: "/img/skills/bootstrap.png"
     },
     {
         name: "Tailwind CSS",
-        image: "/skills/tailwind.png"
+        image: "/img/skills/tailwind.png"
     },
     {
         name: "MaterialUI",
-        image: "/skills/mui.png"
+        image: "/img/skills/mui.png"
     },
     {
         name: "Firebase",
-        image: "/skills/firebase.png"
+        image: "/img/skills/firebase.png"
     },
     {
         name: "ASP.NET",
-        image: "/skills/asp_net.png"
+        image: "/img/skills/asp_net.png"
     },
     {
         name: "Pyton",
-        image: "/skills/python.png"
+        image: "/img/skills/python.png"
     },
     {
         name: "R",
-        image: "/skills/r.png"
+        image: "/img/skills/r.png"
     }
 ]
