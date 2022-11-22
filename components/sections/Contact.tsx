@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
+import { HiOutlinePhone } from 'react-icons/hi'
+import { AiOutlineMail } from 'react-icons/ai'
+
 type FormTypes = {
     name: string,
     companyName: string,
@@ -107,7 +110,14 @@ const Contact = ({ content }: Props) => {
                     </form>
                 </div>
                 <div className='col-span-1'>
-                    <p className='text-center dark:text-[#b9b9b9] py-4'>thvangelderen@gmail.com | +31 6 3808 4195</p>
+                    <div className='flex justiyf-center items-center'>
+                        <HiOutlinePhone size={24} />
+                        <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; +31 6 3808 4195</p>
+                    </div>
+                    <div className='flex justiyf-center items-center'>
+                        <AiOutlineMail size={24} />
+                        <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; thvangelderen@gmail.com</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -83,7 +83,7 @@ const Projects = ({ content }: Props) => {
                     {
                         if (current == previous)
                             return (
-                                <div>
+                                <div key={index}>
                                     <ProjectCard project={project} />
                                 </div>
                             )
@@ -118,6 +118,7 @@ const Projects = ({ content }: Props) => {
                       className="w-12 h-12 lg:w-20 lg:h-20"
                       initial="hidden"
                       whileInView="visible"
+                      viewport={{ once: true }}
                       variants={variants}
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -129,6 +130,7 @@ const Projects = ({ content }: Props) => {
                       className="w-12 h-12 lg:w-20 lg:h-20"
                       initial="hidden"
                       whileInView="visible"
+                      viewport={{ once: true }}
                       variants={variants}
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

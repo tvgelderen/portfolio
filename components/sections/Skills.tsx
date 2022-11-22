@@ -3,8 +3,6 @@ import { SkillData } from '../data/SkillData'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { useAppContext } from '../../context/AppContext'
-import { skills } from '../../languages/skills'
 
 type Props = {
     content: any
@@ -42,7 +40,7 @@ const Skills = ({ content }: Props) => {
                     {SkillData.slice(i, i + step).map((skill, index) => (
                         <div 
                           key={skill.name}
-                          className='dark:bg-dark-primary rounded-full m-4 p-4 hover:scale-125 duration-300 shadow-md shadow-black cursor-pointer'
+                          className='sm:dark:bg-dark-primary rounded-full m-4 sm:p-4 hover:scale-125 duration-300 sm:shadow-md shadow-black cursor-pointer'
                           onClick={() => setSelectedId(i + index)}  
                         >
                             <img 

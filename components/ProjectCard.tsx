@@ -2,6 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import { SkillData } from './data/SkillData'
 
+// NICE pruple threads: https://www.pixel4k.com/wp-content/uploads/2020/08/purple-threads-abstract_1596927843.jpg
+// Minimal green flying binary: https://images2.alphacoders.com/922/922574.jpg
+
 type Props = {
     project: any
 }

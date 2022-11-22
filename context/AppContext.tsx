@@ -18,12 +18,7 @@ export const AppContextProvider = ({ children }: {children: ReactNode}) => {
 
     useEffect(() => {
       setLanguage(localStorage.getItem("language"));
-    }, [])
-
-    type valueType = {
-      language: string | null,
-      setLanguage: () => void
-    }
+    }, []);
 
     const value = {
       language,

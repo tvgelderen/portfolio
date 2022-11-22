@@ -9,20 +9,23 @@ import { useAppContext } from "../context/AppContext"
 import LanguageSelector from "./LanguageSelector"
 import { useRouter } from "next/router"
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from "next-themes"
 
 const Navbar = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [color, setColor] = useState<string>('bg-transparent');
     const [textColor, setTextColor] = useState<string>('white');
     const [shadow, setShadow] = useState<string>('');
-    const [logo, setLogo] = useState<string>('/logos/logo_white.png');
-
+    
+    const { systemTheme, theme } = useTheme();
+    const currentTheme = theme === 'system' ? systemTheme : theme
+    const [logo, setLogo] = useState<string>(currentTheme === 'light' ? '/logos/logo_black.png' : '/logos/logo_white.png');
+    
     const { language, setLanguage } = useAppContext();
-
     const router = useRouter();
     const { lang } = router.query;
 
-    const navItems = NavbarData(language);
+    const navItems = NavbarData(language === null ? 'en' : language);
 
     const handleOpen = () => {
         setOpen(!open);
@@ -36,6 +39,13 @@ const Navbar = () => {
     }, [])
 
     useEffect(() => {
+        if (currentTheme === 'dark')
+            setLogo('/logos/logo_white.png');
+        else
+            setLogo('/logos/logo_black.png');
+    }, [currentTheme]);
+
+    useEffect(() => {
         const body = document.getElementById('body');
 
         const changeColor = () => {            
@@ -46,23 +56,21 @@ const Navbar = () => {
                 setLogo('/logos/logo_purple.png');
             } else {
                 setColor('bg-transparent');
-                setTextColor('#eeeeee');
+                setTextColor('text-[#121212] dark:text-[#eeeeee]');
                 setShadow('');
-                setLogo('/logos/logo_white.png');
+                setLogo(currentTheme === 'dark' ? '/logos/logo_white.png' : '/logos/logo_black.png');
             }
         }
 
-        document.getElementById('body')?.addEventListener('scroll', changeColor);
+        body?.addEventListener('scroll', changeColor);
 
-        return () => document.getElementById('body')?.removeEventListener('scroll', changeColor);
-    }, []);
+        return () => body?.removeEventListener('scroll', changeColor);
+    }, [currentTheme]);
 
     return (
-        <div 
-          className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 ${shadow} ${color} shadow-dark-600 dark:shadow-black`}
-        >
-            <div className="max-w-[1280px] m-auto h-full flex justify-between px-2 items-center">
-                <Link href='/' className="py-1">
+        <div className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 shadow-dark-600 dark:shadow-black ${shadow} ${color}`}>
+            <div className="max-w-[1280px] m-auto h-full flex justify-between px-1 items-center">
+                <Link href='/' className="py-[2px]">
                     <Image 
                       src={logo}
                       alt="logo"
@@ -72,12 +80,12 @@ const Navbar = () => {
                       priority
                     />
                 </Link>
-                <ul className="hidden md:flex h-full uppercase lg:pt-7" style={{ color: `${textColor}` }}>
+                <ul className={`hidden md:flex h-full uppercase lg:pt-7 ${textColor}`}>
                     {navItems.map(item => {
                         return (
                         <li key={item.id}>
                             <a
-                              className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${textColor === '#eeeeee' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-black/10' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
+                              className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px] hover:bg-dark-theme/20' : 'hover:border-gray-300 dark:hover:border-dark-600 hover:text-gray-500 lg:pb-[29px] md:pb-[23px]'}`}
                               onClick={() => {document.getElementById(item.id)?.scrollIntoView()}}
                             >
                                 {item.name}
