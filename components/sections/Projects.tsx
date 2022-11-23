@@ -53,8 +53,9 @@ const Projects = ({ content }: Props) => {
         if (width !== null && width > 1200)
             width = 1200;
 
-        if (width !== null)      
+        if (width !== null)   
         {
+            width -= 50;
             setVariantsLeft({
                 hidden: { x: (width / 2), scale: 0, opacity: 0.25, rotateZ: 25 },
                 visible: { x: 0, scale: 1, opacity: 1, rotateZ: 0, transition: { duration: 1.6 } }
@@ -79,7 +80,7 @@ const Projects = ({ content }: Props) => {
             <div className="sectionContent">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
-                <div className='w-full flex justify-center items-center group mt-4 md:mt-8 lg:mt-12'>
+                <div className='w-full flex justify-center items-center mt-4 md:mt-8 lg:mt-12'>
                     {ProjectData.map((project, index) => {
                         if (index == current) 
                         {
@@ -93,7 +94,7 @@ const Projects = ({ content }: Props) => {
                                 return (
                                     <>
                                         <motion.div 
-                                            key={index + 1}
+                                            key={index}
                                             initial="hidden"
                                             animate="visible"
                                             variants={moveLeft ? variantsLeft : variantsRight}  
@@ -102,7 +103,7 @@ const Projects = ({ content }: Props) => {
                                             <ProjectCard project={project} />
                                         </motion.div>
                                         <motion.div 
-                                            key={index + 2}
+                                            key={index + 1}
                                             initial="hidden"
                                             animate="visible"
                                             variants={moveLeft ? variantsOldLeft : variantsOldRight}  

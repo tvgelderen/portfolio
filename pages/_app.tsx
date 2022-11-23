@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import Navbar from '../components/Navbar'
 import { ThemeProvider } from 'next-themes'
 import { AppContextProvider } from '../context/AppContext'
+import ThemeChanger from '../components/ThemeChanger'
 
 function MyApp({ Component, pageProps }: { Component:any, pageProps:any}) {
   return (
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }: { Component:any, pageProps:any}) {
         <AppContextProvider>
             <Navbar />
             <Component {...pageProps} />
+            <ThemeChanger />
         </AppContextProvider>
       </ThemeProvider>
     </div>

@@ -15,7 +15,7 @@ type Props = {
 
 const Hero = ({ content }: Props) => {
     return (
-        <div className='hero flex flex-col items-center justify-center h-screen bg-center bg-cover'>
+        <div className='flex flex-col items-center justify-center h-screen bg-center bg-cover'>
             <Image
               src={backgroundURL}
               alt=""

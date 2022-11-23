@@ -40,12 +40,12 @@ const Skills = ({ content }: Props) => {
                     {SkillData.slice(i, i + step).map((skill, index) => (
                         <div 
                           key={skill.name}
-                          className='sm:bg-light-primary sm:dark:bg-dark-primary rounded-full m-4 sm:p-3 hover:scale-125 duration-300 sm:shadow-lg shadow-black cursor-pointer'
+                          className='rounded-full m-4 sm:p-3 hover:scale-125 duration-300 cursor-pointer'
                           onClick={() => setSelectedId(i + index)}  
                         >
                             <img 
                               src={skill.image}
-                              className='bg-cover h-[50px] w-[50px] md:h-[70px] md:w-[70px] object-contain'
+                              className='bg-cover h-[55px] w-[55px] sm:h-[70px] sm:w-[70px] lg:h-[80px] lg:w-[80px] object-contain'
                             />
                         </div>
                     ))}
@@ -60,7 +60,7 @@ const Skills = ({ content }: Props) => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 sm:w-[55%] w-3/4 m-auto mt-4 md:mt-12'>
+            <div className='grid grid-cols-1 sm:w-[90%] m-auto mt-4 md:mt-12'>
                 {steps.map(step => (
                     <span key={step}>
                         {GetRow(rowLen, step)}
@@ -76,7 +76,15 @@ const Skills = ({ content }: Props) => {
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
 
-                {ShowRows(3)}
+                <div className='md:hidden'>
+                    {ShowRows(3)}
+                </div>
+                <div className='hidden md:block lg:hidden'>
+                    {ShowRows(4)}
+                </div>
+                <div className='hidden lg:block'>
+                    {ShowRows(5)}
+                </div>
 
                 <AnimatePresence>
                     {selectedId !== -1 && (

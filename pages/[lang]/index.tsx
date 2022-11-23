@@ -5,7 +5,6 @@ import About from '../../components/sections/About'
 import Skills from '../../components/sections/Skills'
 import Projects from '../../components/sections/Projects'
 import Contact from '../../components/sections/Contact'
-import ThemeChanger from "../../components/ThemeChanger"
 
 import { hero } from '../../languages/hero'
 import { about } from '../../languages/about'
@@ -32,7 +31,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Portfolio</title>
-        <link rel="icon" href="/icons/favicon.ico" />
+        <link rel="icon" href="img/icons/favicon.ico" />
       </Head>
       
       <section id='hero' className='snap-center'>
@@ -54,8 +53,6 @@ export default function Home() {
       <section id='contact' className='snap-start'>
         <Contact content={contactContent} />
       </section>
-
-      <ThemeChanger />
 
       <div 
         className='z-[2] fixed bottom-5 left-0 right-0 flex justify-center items-center cursor-pointer'

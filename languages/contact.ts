@@ -7,7 +7,8 @@ const en = {
     email: "Email",
     subject: "Subject",
     message: "Message",
-    send: "Send"
+    send: "Send",
+    contact_info: "Contact Information"
 };
 
 export const contact = new Map([
