@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { SkillData } from './data/SkillData'
 import { BsGithub, BsEye, BsInfoCircle } from 'react-icons/bs'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 type Props = {
     project: any
@@ -11,7 +10,6 @@ type Props = {
 
 const ProjectCard = ({ project }: Props) => {
     const projectSkills = SkillData.filter(skill => project.skills.includes(skill.name));
-    const router = useRouter();
 
     return (
         <div className='w-[90%] max-w-[850px] m-auto shadow-md dark:shadow-dark-900 duration-300 rounded-lg bg-light-background dark:bg-dark-background'>

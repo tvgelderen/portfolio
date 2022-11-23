@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -7,9 +7,7 @@ import { AiOutlineMail } from 'react-icons/ai'
 
 type FormTypes = {
     name: string,
-    companyName: string,
     email: string,
-    phone: string,
     subject: string,
     message: string,
 };
@@ -50,17 +48,6 @@ const Contact = ({ content }: Props) => {
                                     />
                                 </div>
                                 <div className='flex flex-col'>
-                                    <label className='px-2'>
-                                        <span className='uppercase'>{content.company_name}</span><span className='italic'> - Optional</span>
-                                    </label>
-                                    <input 
-                                      type='text'
-                                      {...register('companyName')}
-                                      className='rounded-lg p-3 bg-dark-secondary'
-                                      placeholder={`${content.company_name}...`}
-                                    />
-                                </div>
-                                <div className='flex flex-col'>
                                     <label className='uppercase px-2'>
                                         {content.email}
                                     </label>
@@ -69,17 +56,6 @@ const Contact = ({ content }: Props) => {
                                       {...register('email', { required: true })}
                                       className={`rounded-lg p-3 bg-dark-secondary ${errors.email ? 'border border-[red]' : ''}`}
                                       placeholder={`${content.email}...`}
-                                    />
-                                </div>
-                                <div className='flex flex-col'>
-                                    <label className='px-2'>
-                                        <span className='uppercase'>{content.phone}</span><span className='italic'> - Optional</span>
-                                    </label>
-                                    <input 
-                                      type='text'
-                                      {...register('phone')}
-                                      className='rounded-lg p-3 bg-dark-secondary'
-                                      placeholder={`${content.phone}...`}
                                     />
                                 </div>
                             </div>

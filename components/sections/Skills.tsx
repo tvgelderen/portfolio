@@ -60,7 +60,7 @@ const Skills = ({ content }: Props) => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 sm:w-[90%] m-auto mt-4 md:mt-12'>
+            <div className='grid grid-cols-1 sm:w-[90%] m-auto mt-4 md:mt-12 mb-2 md:mb-10'>
                 {steps.map(step => (
                     <span key={step}>
                         {GetRow(rowLen, step)}

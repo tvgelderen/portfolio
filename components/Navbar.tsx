@@ -67,7 +67,7 @@ const Navbar = () => {
     return (
         <div className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 shadow-dark-400 dark:shadow-black ${shadow} ${color}`}>
             <div className="max-w-[1280px] m-auto h-full flex justify-between px-1 items-center">
-                <Link href='/' className="py-[2px]">
+                <Link href='/' className="py-1">
                     <Image 
                       src={logo}
                       alt="logo"

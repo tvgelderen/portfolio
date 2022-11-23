@@ -13,7 +13,14 @@ export const ProjectData = [
             "Tailwind CSS",
             "Firebase"
         ],
-        description: "A"
+        content: new Map([
+            ['en', {
+                description: ""
+            }],
+            ['nl', {
+                description: ""
+            }]
+        ])
     },
     {
         id: "us-national-parks",
@@ -31,7 +38,14 @@ export const ProjectData = [
             "NextJS",
             "Tailwind CSS"
         ],
-        description: ""
+        content: new Map([
+            ['en', {
+                description: ""
+            }],
+            ['nl', {
+                description: ""
+            }]
+        ])
     },
     {
         id: "crypto-watch",
@@ -49,6 +63,13 @@ export const ProjectData = [
             "ReactJS",
             "Bootstrap"
         ],
-        description: ""
+        content: new Map([
+            ['en', {
+                description: ""
+            }],
+            ['nl', {
+                description: ""
+            }]
+        ])
     }
 ]

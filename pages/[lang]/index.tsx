@@ -28,7 +28,7 @@ export default function Home() {
   const contactContent = contact.get(language) === undefined ? contact.get('en') : contact.get(language);
 
   return (
-    <div>
+    <div className='h-full'>
       <Head>
         <title>Portfolio</title>
         <link rel="icon" href="img/icons/favicon.ico" />
