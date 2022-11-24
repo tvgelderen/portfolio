@@ -9,7 +9,7 @@ const nl = {
     head: "Projecten",
     title: "Wat ik gemaakt heb",
     project: "Project",
-    technologies: "Technologiën",
+    technologies: "Tech",
 };
 
 export const projects = new Map([

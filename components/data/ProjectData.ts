@@ -15,7 +15,7 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                description: ""
+                description: "A netflix clone made using NextJS, Tailwind CSS for the front-end and Firebase for the back-end and authentication. The movie data was collected using the API from The Movie Database (TMDB)."
             }],
             ['nl', {
                 description: ""
@@ -40,7 +40,7 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                description: ""
+                description: "A NextJS web application which shows images from some of the United States' national parks. It uses a GoogleMaps API to show the location of each park."
             }],
             ['nl', {
                 description: ""
