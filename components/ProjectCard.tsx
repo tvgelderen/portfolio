@@ -34,7 +34,7 @@ const ProjectCard = ({ project, index }: Props) => {
                     />
                 </div>
             )}
-            <div className='md:col-span-6 relative flex flex-col justify-between bg-dark-secondary rounded-b-lg md:rounded-lg'>
+            <div className='md:col-span-6 relative flex flex-col justify-between bg-light-secondary dark:bg-dark-primary rounded-b-lg md:rounded-lg'>
                 <div>
                     <div className='w-[75%] m-auto flex justify-evenly items-center py-2 border-b-2 border-dark-500'>
                         {SkillData.filter(skill => project.skills.includes(skill.name)).map(skill => (
