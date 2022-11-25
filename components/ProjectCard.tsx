@@ -15,7 +15,7 @@ const ProjectCard = ({ project, index }: Props) => {
     const projectContent = project?.content.get(language) === undefined ? project?.content.get('en') : project.content.get(language);
 
     return (
-        <div className='lg:w-[90%] md:w-full sm:w-[75%] w-[95%] m-auto grid md:grid-cols-2 my-4 lg:mb-8 rounded-lg bg-dark-secondary'>
+        <div className='md:w-full sm:w-[75%] w-full m-auto grid md:grid-cols-10 my-4 lg:mb-8'>
             <div className='block md:hidden'>
                 <Image
                     src={project.images[0]}
@@ -26,15 +26,15 @@ const ProjectCard = ({ project, index }: Props) => {
                 />
             </div>
             {index % 2 === 0 && (
-                <div className='col-span-1 hidden md:block'>
+                <div className='md:col-span-4 hidden md:block mr-4'>
                     <img
                         src={project.images[0]}
                         alt={project.name}
-                        className="h-full w-full rounded-l-lg object-cover object-left-top"
+                        className="h-full w-full rounded-lg object-cover object-left-top"
                     />
                 </div>
             )}
-            <div className='col-span-1 relative flex flex-col justify-between'>
+            <div className='md:col-span-6 relative flex flex-col justify-between bg-dark-secondary rounded-b-lg md:rounded-lg'>
                 <div>
                     <div className='w-[75%] m-auto flex justify-evenly items-center py-2 border-b-2 border-dark-500'>
                         {SkillData.filter(skill => project.skills.includes(skill.name)).map(skill => (
@@ -55,22 +55,32 @@ const ProjectCard = ({ project, index }: Props) => {
                     </div>
                 </div>
                 <div className='px-4 py-4 flex'>
-                    <a target="_blank" href={project.liveURL} className="flex dark:bg-dark-theme/30 hover:dark:bg-dark-theme/75 px-2 py-1 mr-4 rounded">
+                    <a 
+                      target="_blank" 
+                      href={project.liveURL} 
+                      className="flex dark:bg-dark-theme/30 hover:dark:bg-dark-theme/75 px-2 py-1 mr-4 rounded"
+                      onClick={event => event.stopPropagation()}
+                    >
                         <BsEye className='h-5 w-4 mr-1' /><p className='text-sm'>Live Demo</p>
                     </a>
-                    <a target="_blank" href={project.githubURL} className="flex dark:bg-dark-theme/30 hover:dark:bg-dark-theme/75 px-2 py-1 rounded">
+                    <a 
+                      target="_blank" 
+                      href={project.githubURL} 
+                      className="flex dark:bg-dark-theme/30 hover:dark:bg-dark-theme/75 px-2 py-1 rounded"
+                      onClick={event => event.stopPropagation()}
+                    >
                         <BsGithub className='h-5 w-4 mr-1' /><p className='text-sm'>Code</p>
                     </a>
                 </div>
             </div>
             {index % 2 !== 0 && (
-                <div>
+                <div className='md:col-span-4 hidden md:block ml-4'>
                     <img
                         src={project.images[0]}
                         alt={project.name}
                         width={1080}
                         height={720}
-                        className="hidden md:block h-full w-full rounded-r-lg object-cover object-left-top"
+                        className="hidden md:block h-full w-full rounded-lg object-cover object-left-top"
                     />
                 </div>)}
             </div>
