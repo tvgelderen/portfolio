@@ -31,19 +31,19 @@
   } */
 
   .sectionStyle {
-    @apply relative w-full min-h-screen lg:pt-[90px] md:pt-[74px] pt-[68px] pb-[480px] bg-black/10 dark:bg-dark-background;
+    @apply relative w-full h-screen lg:pt-[90px] md:pt-[74px] pt-[68px] bg-black/10 dark:bg-dark-background;
   }
 
   .sectionContent {
-    @apply relative max-w-[1200px] w-[95%] lg:w-[90%] m-auto pt-[10px] md:pt-[14px] pb-2 md:pb-4 lg:pb-6 px-2 md:px-4 lg:px-6 mt-1 md:mt-4 rounded-xl bg-light-primary dark:bg-dark-primary;
+    @apply relative max-w-[1200px] w-[98%] lg:w-[90%] h-full overflow-y-scroll m-auto pt-[10px] md:pt-[14px] pb-[120px] md:pb-4 lg:pb-6 px-2 md:px-4 lg:px-6 mt-1 md:mt-4 rounded-xl bg-light-primary dark:bg-dark-primary;
   }
 
   .sectionHead {
-    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-light-theme dark:text-dark-theme pb-[8px] md:pb-3 border-b-2 border-[#adadad] dark:border-dark-600;
+    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-light-theme dark:text-dark-theme pb-[8px] md:pb-3 border-b-2 bg-light-primary dark:bg-dark-primary border-[#adadad] dark:border-dark-600;
   }
 
   .sectionTitle {
-    @apply uppercase text-center font-semibold pt-3 tracking-[6px];
+    @apply uppercase text-center font-semibold tracking-[6px] pt-3;
   }
 }
 
@@ -70,15 +70,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @apply text-3xl sm:text-5xl md:text-6xl
+  @apply text-3xl sm:text-5xl lg:text-6xl
 }
 
 h2 {
-  @apply text-2xl sm:text-4xl md:text-5xl
+  @apply text-2xl sm:text-4xl lg:text-5xl
 }
 
 h3 {
-  @apply text-xl sm:text-3xl md:text-4xl
+  @apply text-xl sm:text-3xl lg:text-4xl
 }
 
 h4 {
