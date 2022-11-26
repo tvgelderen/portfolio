@@ -37,51 +37,39 @@ const Contact = ({ content }: Props) => {
                         <form onSubmit={handleSubmit(sendMail)} className='w-full max-w-[900px] m-auto'>
                             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
                                 <div className='flex flex-col'>
-                                    <label className='uppercase px-2'>
-                                        {content.name}
-                                    </label>
                                     <input 
                                       type='text'
                                       {...register('name', { required: true })}
-                                      className={`rounded-lg p-3 bg-dark-secondary ${errors.name ? 'border border-[red]' : ''}`}
+                                      className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.name ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
                                       placeholder={`${content.name}...`}
                                     />
                                 </div>
                                 <div className='flex flex-col'>
-                                    <label className='uppercase px-2'>
-                                        {content.email}
-                                    </label>
                                     <input 
                                       type='text'
                                       {...register('email', { required: true })}
-                                      className={`rounded-lg p-3 bg-dark-secondary ${errors.email ? 'border border-[red]' : ''}`}
+                                      className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.email ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
                                       placeholder={`${content.email}...`}
                                     />
                                 </div>
                             </div>
                             <div className='mt-4 flex flex-col'>
-                                    <label className='uppercase px-2'>
-                                        {content.subject}
-                                    </label>
                                     <input 
                                       type='text'
                                       {...register('subject', { required: true })}
-                                      className={`rounded-lg p-3 bg-dark-secondary ${errors.subject ? 'border border-[red]' : ''}`}
+                                      className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.subject ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
                                       placeholder={`${content.subject}...`}
                                     />
                                 </div>
                             <div className='mt-4 flex flex-col'>
-                                <label className='uppercase px-2'>
-                                    {content.message}
-                                </label>
                                 <textarea 
                                   {...register('message', { required: true })}
-                                  className={`rounded-lg p-3 bg-dark-secondary ${errors.message ? 'border border-[red]' : ''}`}
-                                  rows={10}
+                                  className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.message ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
+                                  rows={8}
                                   placeholder={`${content.message}...`}
                                 />
                             </div>
-                            <button type='submit' className='w-full mt-4 px-4 py-2 dark:bg-dark-theme rounded-lg'> 
+                            <button type='submit' className='w-full mt-4 px-4 py-2 dark:bg-dark-theme/40 hover:dark:bg-dark-theme/75 rounded-lg'> 
                                 {content.send}
                             </button>
                         </form>

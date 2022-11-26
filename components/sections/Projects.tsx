@@ -31,7 +31,7 @@ const Projects = ({ content }: Props) => {
             <div className="sectionContent">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
-                <div className='pt-4'>
+                <div className='md:w-full sm:w-[75%] w-full m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
                         <motion.div
                           key={index}
@@ -54,7 +54,7 @@ const Projects = ({ content }: Props) => {
                         {selected >= 0 && (
                             <motion.div 
                             layoutId={ProjectData[selected].id}
-                            className='relative w-[95%] md:w-[90%] max-w-[1440px] p-4 rounded-xl dark:bg-dark-primary'
+                            className='relative w-[95%] md:w-[90%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-primary'
                             >
                                 <h2>{ProjectData[selected].name}</h2>
                                 <div className='absolute top-2 right-2 p-2 rounded-full hover:dark:bg-black/40 cursor-pointer' onClick={() => setSelected(-1)}>

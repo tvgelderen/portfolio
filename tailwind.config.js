@@ -9,15 +9,15 @@ module.exports = {
     extend: {
       colors: {
         light: {
-          background: "#e0e0e0",
+          background: "#fafafa",
           primary: "#efefef",
           secondary: "#f6f6f6",
           theme: "#cb24ff",
         },
         dark: {
-          background: "#141414",
-          primary: "#1a1a1a",
-          secondary: "#202020",
+          background: "#161616",
+          primary: "#1d1d1d",
+          secondary: "#242424",
           tertiary: "#2d2d2d",
           theme: "#a842c9",
           100: "#929292",
