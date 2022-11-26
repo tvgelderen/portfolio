@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { motion, AnimatePresence } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 
 import { HiOutlinePhone, HiOutlineLocationMarker } from 'react-icons/hi'
 import { AiOutlineMail } from 'react-icons/ai'
+import useWindowDimensions from '../hooks/useWindowWidth'
+import Image from 'next/image'
+import Notification from '../Notification'
 
 type FormTypes = {
     name: string,
@@ -17,13 +21,27 @@ type Props = {
 }
 
 const Contact = ({ content }: Props) => {
+    const [sent, setSent] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
     const { register, handleSubmit, reset, formState:{errors}} = useForm<FormTypes>();
-    
-    const sendMail = (data:any) => {
-        emailjs
-          .send('gmail_service', 'portfolio_template', data, process.env.NEXT_PUBLIC_EMAILJS_KEY)
-          .catch(error => console.error(error));
 
+    const { width, height } = useWindowDimensions();
+    
+    const sendMail = (data: FormTypes) => {
+        // emailjs
+        //   .send('gmail_service', 'portfolio_template', data, process.env.NEXT_PUBLIC_EMAILJS_KEY)
+        //   .then(() => {
+        //      setSent(true);
+        //      setTimeout(() => setSent(false), 4000);
+        //   })
+        //   .catch(error => {
+        //     console.error(error);
+        //     setError(true);
+        //     setTimeout(() => setError(false), 4000);
+        //   });
+
+        setSent(true);
+             setTimeout(() => setSent(false), 4000);
         reset();
     }
 
@@ -94,6 +112,9 @@ const Contact = ({ content }: Props) => {
                     </div>
                 </div>
             </div>
+            
+            {sent && <Notification type='success' message='Email sent successfully' />}
+            {error && <Notification type='error' message='Something went wrong' />}
         </div>
     )
 }

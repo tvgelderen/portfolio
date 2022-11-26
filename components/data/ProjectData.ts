@@ -15,9 +15,11 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                description: "A netflix clone made using NextJS, Tailwind CSS for the front-end and Firebase for the back-end and authentication. The movie data was collected using the API from The Movie Database (TMDB)."
+                brief_description: "A netflix clone made using NextJS, Tailwind CSS for the front-end and Firebase for the back-end and authentication. The movie data was collected using the API from The Movie Database (TMDB).",
+                description: ""
             }],
             ['nl', {
+                brief_description: "",
                 description: ""
             }]
         ])
@@ -40,9 +42,11 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                description: "A NextJS web application which shows images from some of the United States' national parks. It uses a GoogleMaps API to show the location of each park."
+                brief_description: "A NextJS web application which shows images from some of the United States' national parks. It uses a GoogleMaps API to show the location of each park.",
+                description: ""
             }],
             ['nl', {
+                brief_description: "",
                 description: ""
             }]
         ])
@@ -65,9 +69,11 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
+                brief_description: "",
                 description: ""
             }],
             ['nl', {
+                brief_description: "",
                 description: ""
             }]
         ])

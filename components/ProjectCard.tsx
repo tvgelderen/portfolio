@@ -20,19 +20,19 @@ const ProjectCard = ({ project, index }: Props) => {
         <div className='grid md:grid-cols-10 my-4 lg:mb-8 cursor-pointer'>
             <div className='block md:hidden'>
                 <Image
-                    src={project.images[0]}
-                    alt={project.name}
-                    width={1920}
-                    height={1080}
-                    className='rounded-t-lg object-cover object-left-top'
+                  src={project.images[0]}
+                  alt={project.name}
+                  width={1920}
+                  height={1080}
+                  className='rounded-t-lg object-cover object-left-top'
                 />
             </div>
             {index % 2 === 0 && (
                 <div className='md:col-span-4 hidden md:block mr-4'>
                     <img
-                        src={project.images[0]}
-                        alt={project.name}
-                        className={`h-full w-full rounded-lg object-cover object-left-top ${shadow}`}
+                      src={project.images[0]}
+                      alt={project.name}
+                      className={`h-full w-full rounded-lg object-cover object-left-top ${shadow}`}
                     />
                 </div>
             )}
@@ -44,17 +44,17 @@ const ProjectCard = ({ project, index }: Props) => {
                         {SkillData.filter(skill => project.skills.includes(skill.name)).map(skill => (
                             <div key={skill.name} className='flex flex-col justify-center items-center'>
                                 <Image
-                                    src={skill.image}
-                                    alt={skill.name}
-                                    width={60}
-                                    height={60}
-                                    className="w-7"
+                                  src={skill.image}
+                                  alt={skill.name}
+                                  width={60}
+                                  height={60}
+                                  className="w-7"
                                 />
                             </div>
                         ))}
                     </div>
                     <div className='px-4 py-2'>
-                        {projectContent.description}
+                        {projectContent.brief_description}
                     </div>
                 </div>
                 <div className='px-4 py-4 flex'>
@@ -79,11 +79,11 @@ const ProjectCard = ({ project, index }: Props) => {
             {index % 2 !== 0 && (
                 <div className='md:col-span-4 hidden md:block ml-4'>
                     <img
-                        src={project.images[0]}
-                        alt={project.name}
-                        width={1080}
-                        height={720}
-                        className={`hidden md:block h-full w-full rounded-lg object-cover object-left-top ${shadow}`}
+                      src={project.images[0]}
+                      alt={project.name}
+                      width={1080}
+                      height={720}
+                      className={`hidden md:block h-full w-full rounded-lg object-cover object-left-top ${shadow}`}
                     />
                 </div>)}
             </div>

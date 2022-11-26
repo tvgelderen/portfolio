@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import useWindowDimensions from './hooks/useWindowWidth'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
+import Image from 'next/image'
 
 type Props = {
     images: string[]
@@ -52,35 +53,42 @@ const Carousel = ({ images }: Props) => {
 
     return (
         <AnimatePresence initial={false}>
-            <div className='relative max-w-[900px] flex items-center m-auto overflow-hidden'>
+            <div className='relative max-w-[900px] flex items-center m-auto'>
                 {images.map((image, index) => {
                     if (index === current && width !== null)
                         return (
                             <motion.div key={index}>
-                                <motion.img
-                                    src={images[previous]}
-                                    alt=''
-                                    width={1920}
-                                    height={1080}
-                                    className='absolute rounded-lg'
-                                    custom={width}
-                                    initial='visible'
-                                    animate='exit'
-                                    variants={imageVariants}
-                                    transition={{ duration: 0.5 }}
-                                />
-                                <motion.img
-                                    src={image}
-                                    alt=''
-                                    width={1920}
-                                    height={1080}
-                                    className='rounded-lg'
-                                    initial='hidden'
-                                    animate='visible'
-                                    custom={width}
-                                    variants={imageVariants}
-                                    transition={{ duration: 0.5 }}
-                                />
+                                <motion.div
+                                  className='absolute'
+                                  custom={width}
+                                  initial='visible'
+                                  animate='exit'
+                                  variants={imageVariants}
+                                  transition={{ duration: 0.5 }}
+                                >
+                                    <Image
+                                      src={images[previous]}
+                                      alt=''
+                                      width={1920}
+                                      height={1080}
+                                      className='rounded-lg'
+                                    />
+                                </motion.div>
+                                <motion.div
+                                  initial='hidden'
+                                  animate='visible'
+                                  custom={width}
+                                  variants={imageVariants}
+                                  transition={{ duration: 0.5 }}
+                                >
+                                    <Image
+                                      src={image}
+                                      alt=''
+                                      width={1920}
+                                      height={1080}
+                                      className='rounded-lg'
+                                    />
+                                </motion.div>
                             </motion.div>
                         )
                 })}
