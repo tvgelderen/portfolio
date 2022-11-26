@@ -40,15 +40,18 @@ const Contact = ({ content }: Props) => {
                                     <input 
                                       type='text'
                                       {...register('name', { required: true })}
-                                      className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.name ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
+                                      className={`py-2 px-1 focus:outline-none bg-light-background dark:bg-dark-background ${errors.name ? 'border-b-2 border-[red]/75' : 'border-b-2 border-light-theme/40  focus:border-light-theme dark:border-dark-theme/40 focus:dark:border-dark-theme'}`}
                                       placeholder={`${content.name}...`}
                                     />
                                 </div>
                                 <div className='flex flex-col'>
                                     <input 
                                       type='text'
-                                      {...register('email', { required: true })}
-                                      className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.email ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
+                                      {...register('email', { required: true, pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: "invalid email address"
+                                      } })}
+                                      className={`py-2 px-1 focus:outline-none bg-light-background dark:bg-dark-background ${errors.email ? 'border-b-2 border-[red]/75' : 'border-b-2 border-light-theme/40  focus:border-light-theme dark:border-dark-theme/40 focus:dark:border-dark-theme'}`}
                                       placeholder={`${content.email}...`}
                                     />
                                 </div>
@@ -57,25 +60,25 @@ const Contact = ({ content }: Props) => {
                                     <input 
                                       type='text'
                                       {...register('subject', { required: true })}
-                                      className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.subject ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
+                                      className={`py-2 px-1 focus:outline-none bg-light-background dark:bg-dark-background ${errors.subject ? 'border-b-2 border-[red]/75' : 'border-b-2 border-light-theme/40  focus:border-light-theme dark:border-dark-theme/40 focus:dark:border-dark-theme'}`}
                                       placeholder={`${content.subject}...`}
                                     />
                                 </div>
                             <div className='mt-4 flex flex-col'>
                                 <textarea 
                                   {...register('message', { required: true })}
-                                  className={`focus:outline-none bg-light-background dark:bg-dark-background ${errors.message ? 'p-3 border rounded-lg border-[red]' : 'py-2 px-1 border-b-2 dark:border-dark-theme/70'}`}
-                                  rows={8}
+                                  className={`py-2 px-1 focus:outline-none bg-light-background dark:bg-dark-background ${errors.message ? 'border-b-2 border-[red]/75' : 'border-b-2 border-light-theme/40  focus:border-light-theme dark:border-dark-theme/40 focus:dark:border-dark-theme'}`}
+                                  rows={6}
                                   placeholder={`${content.message}...`}
                                 />
                             </div>
-                            <button type='submit' className='w-full mt-4 px-4 py-2 dark:bg-dark-theme/40 hover:dark:bg-dark-theme/75 rounded-lg'> 
+                            <button type='submit' className='w-full mt-4 px-4 py-2 bg-light-theme/40 hover:bg-light-theme/75 dark:bg-dark-theme/40 hover:dark:bg-dark-theme/75 rounded-lg'> 
                                 {content.send}
                             </button>
                         </form>
                     </div>
                     <div className='col-span-1 px-2 lg:px-4 pt-6 lg:pt-2'>
-                        <h4>{content.contact_info}</h4>
+                        <h4 className='font-semibold'>{content.contact_info}</h4>
                         <div className='flex justiyf-center items-center'>
                             <HiOutlinePhone size={24} />
                             <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; +31 6 3808 4195</p>
