@@ -1,24 +1,9 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React, { useState, useEffect } from 'react'
 import ProjectCard from '../ProjectCard'
 import { ProjectData } from '../data/ProjectData'
 import { AnimatePresence, motion } from 'framer-motion'
 import { AiOutlineClose } from 'react-icons/ai'
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
-
-const variants = {
-    hidden: {
-        x: -200,
-        opacity: 0.5,
-    },
-    visible: {
-        x: 0,
-        opacity: 1,
-        transition: {
-            duration: 1.6,
-        }
-    }
-}
+import Carousel from '../Carousel'
 
 type Props = {
     content: any
@@ -36,20 +21,20 @@ type Project = {
 
 const Projects = ({ content }: Props) => {
     const [selected, setSelected] = useState<Project | null>(null);
-    const [[current, direction], setCurrent] = useState<number[]>([0, 0]);
 
-    const handleUpdate = (idx: number, dir: number) => {
-        if (idx + dir === selected?.images.length)
-            return 0;
-        if (idx + dir < 0 && selected?.images.length)
-            return selected?.images.length - 1;
-        
-        return idx + dir;
+    const variants = {
+        hidden: {
+            x: -200,
+            opacity: 0.5,
+        },
+        visible: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                duration: 1.6,
+            }
+        }
     }
-
-    const updateCurrent = (newDirection: number) => {
-        setCurrent([handleUpdate(current, newDirection), newDirection]);
-    };
 
     return (
         <div className="sectionStyle">
@@ -83,34 +68,12 @@ const Projects = ({ content }: Props) => {
                             >
                                 <div className='border-b-2 pb-4 mb-4 dark:border-dark-600'>
                                     <h2>{selected.name}</h2>
-                                    <div className='absolute top-2 right-2 p-2 rounded-full hover:dark:bg-black/40 cursor-pointer' onClick={() => {
-                                      setSelected(null);
-                                      setCurrent([0, 0]);
-                                    }}>
+                                    <div className='absolute top-2 right-2 p-2 rounded-full hover:dark:bg-black/40 cursor-pointer' onClick={() => setSelected(null)}>
                                         <AiOutlineClose size={20} className="w-5 h-5 lg:w-7 lg:h-7" />
                                     </div>
                                 </div>
-                                <div className='relative max-w-[900px] overflow-hidden'>
-                                        <div>
-                                            <Image
-                                              src={selected.images[current]}
-                                              alt=''
-                                              width={1920}
-                                              height={1080}
-                                              className=''
-                                            />
-                                        </div>
-                                    {selected.images.length > 1 && (
-                                        <>
-                                        <div className='z-[10] absolute left-1 top-[45%] p-1 rounded-full bg-black/30 cursor-pointer' onClick={() => updateCurrent(-1)}>
-                                            <BsChevronCompactLeft className='w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12' />
-                                        </div>
-                                        <div className='z-[10] absolute right-1 top-[45%] p-1 rounded-full bg-black/30 cursor-pointer' onClick={() => updateCurrent(1)}>
-                                            <BsChevronCompactRight className='w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12' />
-                                        </div>
-                                        </>
-                                    )}
-                                </div>
+                                
+                                <Carousel images={selected.images} />
                             </motion.div>
                         )}
                     </AnimatePresence>
