@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import { SkillData } from './data/SkillData'
 import { BsGithub, BsEye } from 'react-icons/bs'
 import { useAppContext } from '../context/AppContext'
@@ -18,8 +17,8 @@ const ProjectCard = ({ project, index }: Props) => {
 
     return (
         <div className='grid md:grid-cols-10 my-4 lg:mb-8 cursor-pointer'>
-            <div className='block md:hidden'>
-                <Image
+            <div className='md:hidden'>
+                <img
                   src={project.images[0]}
                   alt={project.name}
                   width={1920}
@@ -43,7 +42,7 @@ const ProjectCard = ({ project, index }: Props) => {
                     <div className='w-[75%] m-auto flex justify-evenly items-center py-2 border-b-2 border-dark-500'>
                         {SkillData.filter(skill => project.skills.includes(skill.name)).map(skill => (
                             <div key={skill.name} className='flex flex-col justify-center items-center'>
-                                <Image
+                                <img
                                   src={skill.image}
                                   alt={skill.name}
                                   width={60}

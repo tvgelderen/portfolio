@@ -20,7 +20,7 @@ const Logo = ({ color }: Props) => {
                 visible: {
                 pathLength: 1,
                 transition: {
-                    duration: 4,
+                    duration: 5,
                 }
                 }
                 }} 

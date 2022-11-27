@@ -50,17 +50,12 @@ const Projects = ({ content }: Props) => {
                 <h3 className="sectionTitle">{content.title}</h3>
                 <div className='md:w-full sm:w-[75%] w-full m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
-                        <motion.div
+                        <div
                           key={index}
-                          layoutId={project.id}
-                          initial='hidden'
-                          whileInView='visible'
-                          viewport={{ once: true }}
-                          variants={variants}
                           onClick={() => setSelected(project)}
                         >
                             <ProjectCard project={project} index={index} />
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -123,7 +118,6 @@ const Projects = ({ content }: Props) => {
                     </AnimatePresence>
                 </div>
             )}
-
         </div>
     )
 }
