@@ -61,7 +61,7 @@ const ProjectCard = ({ project, index }: Props) => {
                     <a 
                       target="_blank" 
                       href={project.liveURL} 
-                      className="flex bg-light-theme/40 hover:bg-light-theme/75 dark:bg-dark-theme/30 hover:dark:bg-dark-theme/75 px-2 py-1 mr-4 rounded"
+                      className="flex bg-gradient-to-r from-[#7b2ff7]/30 to-[#f107a3]/30 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 px-2 py-1 mr-4 rounded"
                       onClick={event => event.stopPropagation()}
                     >
                         <BsEye className='h-5 w-4 mr-1' /><p className='text-sm'>Live Demo</p>
@@ -69,7 +69,7 @@ const ProjectCard = ({ project, index }: Props) => {
                     <a 
                       target="_blank" 
                       href={project.githubURL} 
-                      className="flex bg-light-theme/40 hover:bg-light-theme/75 dark:bg-dark-theme/30 hover:dark:bg-dark-theme/75 px-2 py-1 rounded"
+                      className="flex bg-gradient-to-r from-[#7b2ff7]/30 to-[#f107a3]/30 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 px-2 py-1 rounded"
                       onClick={event => event.stopPropagation()}
                     >
                         <BsGithub className='h-5 w-4 mr-1' /><p className='text-sm'>Code</p>

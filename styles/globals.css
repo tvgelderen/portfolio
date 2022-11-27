@@ -60,10 +60,6 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
-.lang-menu:hover .lang-list {
-  display: block;
-}
-
 * {
   @apply dark:text-[#eeeeee]
 }

@@ -90,7 +90,7 @@ const Contact = ({ content }: Props) => {
                                   placeholder={`${content.message}...`}
                                 />
                             </div>
-                            <button type='submit' className='w-full mt-4 px-4 py-2 bg-light-theme/40 hover:bg-light-theme/75 dark:bg-dark-theme/40 hover:dark:bg-dark-theme/75 rounded-lg'> 
+                            <button type='submit' className='w-full mt-4 px-4 py-2 bg-gradient-to-r from-[#7b2ff7]/40 to-[#f107a3]/40 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 rounded-lg'> 
                                 {content.send}
                             </button>
                         </form>

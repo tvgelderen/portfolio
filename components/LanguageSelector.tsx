@@ -4,45 +4,31 @@ import { useAppContext } from '../context/AppContext'
 
 
 const LanguageSelector = () => {
-    const { language, setLanguage } = useAppContext();
+  const { language, setLanguage } = useAppContext();
 
-    const router = useRouter();
+  const router = useRouter();
 
-    return (
-        <div className="lang-menu">
-            <div className="selected-lang cursor-pointer flex justify-between mt-[3px]">
-                <img src={`/img/lang/${language}-flag.png`} alt='en' className="w-[25px] h-[25px] rounded-full object-cover" />
-            </div>
-            <div className='lang-list hidden'>
-                <ul className="absolute pt-2">
-                    <li>
-                        <img 
-                          src='/img/lang/en-flag.png' 
-                          alt='en' 
-                          className="w-[25px] h-[25px] rounded-full object-cover cursor-pointer mb-2"
-                          onClick={() => {
-                            localStorage.setItem("language", "en");
-                            setLanguage('en');
-                            router.push('/en/');
-                          }} 
-                        />
-                    </li>
-                    <li>
-                        <img 
-                          src='/img/lang/nl-flag.png' 
-                          alt='nl' 
-                          className="w-[25px] h-[25px] rounded-full object-cover cursor-pointer"  
-                          onClick={() => {
-                            localStorage.setItem("language", "nl");
-                            setLanguage('nl');
-                            router.push('/nl/');
-                          }} 
-                        />
-                    </li>
-                </ul>
-            </div>
-        </div>
-    )
+  const toggleLanguage = () => {
+    switch (language)
+    {
+      case 'en':
+        localStorage.setItem("language", "nl");
+        setLanguage('nl');
+        router.push('/nl/');
+        break;
+      case 'nl':
+        localStorage.setItem("language", "en");
+        setLanguage('en');
+        router.push('/en/');
+        break;
+    }
+  }
+
+  return (
+    <div className="selected-lang cursor-pointer flex justify-between mt-[3px]" onClick={toggleLanguage}>
+        <img src={`/img/lang/${language}-flag.png`} alt='en' className="w-[25px] h-[25px] rounded-full object-cover" />
+    </div>
+  )
 }
 
 export default LanguageSelector

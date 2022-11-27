@@ -1,25 +1,60 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { motion, AnimatePresence } from 'framer-motion'
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
 
 const ThemeChanger = () => {
-    const [loaded, setLoaded] = useState(false);
-    const { systemTheme, theme, setTheme } = useTheme();
+  const [loaded, setLoaded] = useState(false);
+  const { systemTheme, theme, setTheme } = useTheme();
+  
+  const currentTheme = theme === 'system' ? systemTheme : theme
 
-    useEffect(() => setLoaded(true), []);
+  const toggleTheme = () => setTheme(currentTheme === 'dark' ? 'light' : 'dark');
 
-    const currentTheme = theme === 'system' ? systemTheme : theme
+  useEffect(() => setLoaded(true), []);
 
-    return (
-        <div 
-          className='fixed z-[11] p-3 right-4 bottom-4 rounded-full hover:bg-light-theme/30 dark:hover:bg-dark-theme/30 cursor-pointer'
-          onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
-        >
-            {currentTheme === 'dark' && loaded
-              ? <BsFillSunFill size={20} />
-              : <BsFillMoonFill size={20} />}
-        </div>
-    )
+  const variants = {
+    hidden: {
+      y: -200,
+    },
+    visible: {
+      y: 0,
+    },
+    exit: {
+      y: -200,
+    }
+  }
+
+  return (
+    <div className='fixed cursor-pointer' onClick={toggleTheme}>
+      <AnimatePresence>
+        {loaded && currentTheme === 'dark' &&
+          <motion.div
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+            variants={variants}
+            className='absolute'
+          >
+            <BsFillSunFill size={20} />
+          </motion.div>
+        }
+      </AnimatePresence>
+      <AnimatePresence>
+        {loaded && currentTheme === 'light' &&
+          <motion.div
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+            variants={variants}
+            className='absolute'
+          >
+            <BsFillMoonFill size={20} />
+          </motion.div>
+        }
+      </AnimatePresence>
+    </div>
+  )
 }
 
 export default ThemeChanger

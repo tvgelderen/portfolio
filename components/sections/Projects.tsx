@@ -71,7 +71,7 @@ const Projects = ({ content }: Props) => {
                         {selected !== null && (
                             <motion.div 
                               layoutId={selected.id}
-                              className='absolute w-[95%] md:w-[90%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-primary overflow-hidden'
+                              className='absolute w-[98%] md:w-[95%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-primary overflow-hidden'
                             >
                                 <div className='border-b-2 pb-2 mb-2 md:pb-4 md:mb-4 dark:border-dark-600'>
                                     <h2>{selected.name}</h2>
@@ -101,7 +101,7 @@ const Projects = ({ content }: Props) => {
                                         <div className='lg:col-span-3'>
 
                                         </div>
-                                        <div>
+                                        <div className='hidden lg:block'>
                                             {SkillData.filter(skill => selected.skills.includes(skill.name)).map(skill => (
                                                 <div key={skill.name} className='flex flex-col justify-center items-center'>
                                                     <Image

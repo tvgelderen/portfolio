@@ -10,9 +10,12 @@ import LanguageSelector from "./LanguageSelector"
 import { useRouter } from "next/router"
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from "next-themes"
+import ThemeChanger from "./ThemeChanger"
+import Logo from "./Logo"
 
 const Navbar = () => {
     const [open, setOpen] = useState<boolean>(false);
+    const [logo, setLogo] = useState<string>('');
     const [color, setColor] = useState<string>('bg-transparent');
     const [textColor, setTextColor] = useState<string>('white');
     const [shadow, setShadow] = useState<string>('');
@@ -20,7 +23,7 @@ const Navbar = () => {
     const { systemTheme, theme } = useTheme();
     const currentTheme = theme === 'system' ? systemTheme : theme;
 
-    const { language, setLanguage, logo, setLogo } = useAppContext();
+    const { language, setLanguage } = useAppContext();
     const router = useRouter();
     const { lang } = router.query;
 
@@ -32,14 +35,14 @@ const Navbar = () => {
         else
             setLanguage('nl');
 
-        setLogo(currentTheme === 'light' ? '/img/logos/logo_black.png' : '/img/logos/logo_white.png');
+        setLogo(currentTheme === 'light' ? 'black' : 'white');
     }, [])
 
     useEffect(() => {
         if (currentTheme === 'dark')
-            setLogo('/img/logos/logo_white.png');
+            setLogo('white');
         else
-            setLogo('/img/logos/logo_black.png');
+            setLogo('black');
     }, [currentTheme]);
 
     useEffect(() => {
@@ -50,12 +53,12 @@ const Navbar = () => {
                 setColor('bg-light-secondary dark:bg-dark-primary');
                 setTextColor('#121212');
                 setShadow('shadow-sm');
-                setLogo('/img/logos/logo_purple.png')
+                setLogo('#af35dd')
             } else {
                 setColor('bg-transparent');
                 setTextColor('text-[#121212] dark:text-[#eeeeee]');
                 setShadow('');
-                setLogo(currentTheme === 'light' ? '/img/logos/logo_black.png' : '/img/logos/logo_white.png');
+                setLogo(currentTheme === 'light' ? 'black' : 'white');
             }
         }
 
@@ -65,26 +68,48 @@ const Navbar = () => {
     }, [currentTheme]);
 
     return (
-        <div className={`fixed left-0 top-0 w-full z-10 md:pr-4 ease-in duration-300 shadow-dark-100 dark:shadow-black ${shadow} ${color}`}>
+        <div className={`fixed left-0 top-0 w-full z-10 md:pr-2 ease-in duration-300 shadow-dark-100 dark:shadow-black ${shadow} ${color}`}>
             <div className="relative w-full">
                 <div className=" max-w-[1280px] m-auto h-full flex justify-between px-1 items-center">
-                    <Link href='/' className="py-1">
-                        <Image 
-                        src={logo}
-                        alt="logo"
-                        width={320}
-                        height={120}
-                        className="w-[140px] md:w-[180px] lg:w-[220px] object-cover"
-                        priority
-                        />
-                    </Link>
-                    <ul className={`hidden md:flex h-full uppercase lg:pt-7 ${textColor}`}>
+                    <motion.div
+                      initial='hidden'
+                      animate='visible'
+                      variants={{
+                        hidden: { y: -100 },
+                        visible: { y: 0 }
+                      }}
+                    >
+                        <Link href='/'>
+                            <Logo color={logo} />
+                        </Link>
+                    </motion.div>
+                    <motion.ul 
+                      className={`hidden md:flex h-full uppercase lg:pt-7 ${textColor}`}
+                      initial='hidden'
+                      animate='visible'
+                      variants={{
+                        hidden: { y: -100 },
+                        visible: {
+                            y: 0,
+                            transition: {
+                                delayChildren: 0.5,
+                                staggerChildren: 0.25
+                            }
+                        }
+                      }}
+                    >
                         {navItems.map(item => {
                             return (
-                                <li key={item.id}>
+                                <motion.li 
+                                  key={item.id}
+                                  variants={{
+                                    hidden: { y: -100 },
+                                    visible: { y: 0 }
+                                  }}
+                                >
                                     <motion.a
-                                    className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:pb-[27px] md:pb-[21px]'}`}
-                                    onClick={() => {
+                                      className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:pb-[27px] md:pb-[21px]'}`}
+                                      onClick={() => {
                                         if (document.getElementById(item.id))
                                             document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                                         else
@@ -92,22 +117,50 @@ const Navbar = () => {
                                             router.push(`/${item.path}`);
                                             document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                                         }
-                                    }}
-                                    whileHover={shadow === '' ? { backgroundColor: "rgba(168, 66, 201, 0.2)" } : {}}
+                                      }}
+                                      whileHover={shadow === '' ? { backgroundColor: "rgba(168, 66, 201, 0.2)" } : {}}
                                     >
                                         {item.name}
                                     </motion.a>
-                                </li>
+                                </motion.li>
                             )}
                         )}
-                        <li className="lg:mb-6 md:mt-[-4px] md:mx-1 lg:mx-5">
+                        <motion.li 
+                          initial='hidden'
+                          animate='visible'
+                          variants={{
+                            hidden: { y: -100 },
+                            visible: { y: 0, transition: { delay: 0.25 * (navItems.length + 2 ) } }
+                          }}
+                          className='ml-2 mr-4 pr-4'
+                        >
+                            <ThemeChanger />
+                        </motion.li>
+                        <motion.li 
+                          initial='hidden'
+                          animate='visible'
+                          variants={{
+                            hidden: { y: -100 },
+                            visible: { y: 0, transition: { delay: 0.25 * (navItems.length + 3 ) } }
+                          }}
+                          className="lg:mb-6 md:mt-[-4px] lg:mx-4"
+                        >
                             <LanguageSelector />
-                        </li>
-                    </ul>
+                        </motion.li>
+                    </motion.ul>
 
-                    <div className={`flex justify-between md:hidden mr-2 z-10 cursor-pointer ${textColor}`} onClick={() => setOpen(true)}>
+                    <motion.div 
+                      className={`flex justify-between md:hidden mr-4 z-10 cursor-pointer ${textColor}`} 
+                      onClick={() => setOpen(true)}
+                      initial='hidden'
+                      animate='visible'
+                      variants={{
+                        hidden: { y: -100 },
+                        visible: { y: 0, transition: { delay: 0.25 } }
+                      }}
+                    >
                         {!open && <AiOutlineMenu size={20} />}
-                    </div>
+                    </motion.div>
 
                     {open && (
                         <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/50" />
