@@ -108,7 +108,7 @@ const Navbar = () => {
                                   }}
                                 >
                                     <motion.a
-                                      className={`lg:px-4 lg:pt-4 lg:my-4 md:px-[8px] md:my-3 md:pt-4 border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:pb-[27px] md:pb-[21px]'}`}
+                                      className={`lg:px-4 md:px-[8px] border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:pb-[27px] md:pb-[21px]'}`}
                                       onClick={() => {
                                         if (document.getElementById(item.id))
                                             document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
@@ -132,7 +132,7 @@ const Navbar = () => {
                             hidden: { y: -100 },
                             visible: { y: 0, transition: { delay: 0.25 * (navItems.length + 2 ) } }
                           }}
-                          className='ml-2 mr-4 pr-4'
+                          className='md:mx-3 lg:mx-2 pr-4'
                         >
                             <ThemeChanger />
                         </motion.li>
@@ -143,15 +143,15 @@ const Navbar = () => {
                             hidden: { y: -100 },
                             visible: { y: 0, transition: { delay: 0.25 * (navItems.length + 3 ) } }
                           }}
-                          className="lg:mb-6 md:mt-[-4px] lg:mx-4"
+                          className="lg:mb-6 md:mt-[-6px] lg:mx-4 mx-2"
                         >
                             <LanguageSelector />
                         </motion.li>
                     </motion.ul>
 
-                    <div className="flex justify-between md:hidden ">
+                    <div className="flex justify-between md:hidden">
                         <motion.div 
-                          className={`mt-[2px] mr-4 z-10 ${textColor}`}
+                          className={`mt-[2px] mr-6 z-10 ${textColor}`}
                           initial='hidden'
                           animate='visible'
                           variants={{
