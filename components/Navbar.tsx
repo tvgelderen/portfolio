@@ -149,18 +149,31 @@ const Navbar = () => {
                         </motion.li>
                     </motion.ul>
 
-                    <motion.div 
-                      className={`flex justify-between md:hidden mr-4 z-10 cursor-pointer ${textColor}`} 
-                      onClick={() => setOpen(true)}
-                      initial='hidden'
-                      animate='visible'
-                      variants={{
-                        hidden: { y: -100 },
-                        visible: { y: 0, transition: { delay: 0.25 } }
-                      }}
-                    >
-                        {!open && <AiOutlineMenu size={20} />}
-                    </motion.div>
+                    <div className="flex">
+                        <motion.div 
+                          className={`flex justify-between md:hidden mt-[2px] mr-4 z-10 ${textColor}`}
+                          initial='hidden'
+                          animate='visible'
+                          variants={{
+                            hidden: { y: -100 },
+                            visible: { y: 0, transition: { delay: 0.25 } }
+                          }}
+                        >
+                            {!open && <ThemeChanger />}
+                        </motion.div>
+                        <motion.div 
+                          className={`flex justify-between md:hidden mx-4 z-10 cursor-pointer ${textColor}`} 
+                          onClick={() => setOpen(true)}
+                          initial='hidden'
+                          animate='visible'
+                          variants={{
+                            hidden: { y: -100 },
+                            visible: { y: 0, transition: { delay: 0.5 } }
+                          }}
+                        >
+                            {!open && <AiOutlineMenu size={22} />}
+                        </motion.div>
+                    </div>
 
                     {open && (
                         <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/50" />
@@ -169,13 +182,13 @@ const Navbar = () => {
                         <AnimatePresence initial={false}>
                             {open && (
                                 <motion.div 
-                                    className="flex relative md:hidden left-0 top-0 flex-col w-[320px] h-screen bg-white dark:bg-dark-primary px-4 py-2"
-                                    animate={{ x: 0, width: 320 }}
-                                    initial={{ x: -320, width: 320 }}
+                                    className="flex relative md:hidden left-0 top-0 flex-col w-[280px] sm:w-[320px] h-screen bg-white dark:bg-dark-primary px-3 sm:px-4 py-1"
+                                    animate={{ x: 0 }}
+                                    initial={{ x: -320 }}
                                     exit={{ x: -320 }}
                                     transition={{ stiffness: 10 }}
                                 >
-                                    <div className="relative flex w-full items-center justify-between pb-3 border-b-2 dark:border-dark-600">
+                                    <div className="relative flex w-full items-center justify-between pb-1 border-b-2 dark:border-dark-600">
                                         <Image 
                                             src='/logos/logo_purple.png'
                                             alt='logo'
@@ -184,19 +197,19 @@ const Navbar = () => {
                                             className="w-[140px] sm:w-[180px]"
                                         />
                                         <div 
-                                            className="mb-4 p-1 sm:p-2 rounded-full shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
+                                            className="mb-4 p-1 rounded-full shadow-md shadow-dark-400 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
                                             onClick={() => setOpen(false)}
                                         >
                                             <AiOutlineClose size={20} className="text-dark-900 dark:text-dark-100 w-4 h-4 sm:w-5 sm:h-5" />
                                         </div>
                                     </div>
-                                    <div className="relative">
+                                    <div className="border-b-2 pb-4 dark:border-dark-600">
                                         <ul className="text-dark-900 uppercase pt-4">
                                             {navItems.map(item => {
                                                 return (
-                                                <li className="py-4" key={item.id}>
+                                                <li className="py-2 sm:py-4" key={item.id}>
                                                     <a
-                                                    className="py-4 sm:text-xl cursor-pointer hover:text-dark-200"
+                                                    className="sm:text-xl cursor-pointer hover:text-dark-200"
                                                     onClick={() => {
                                                         if (document.getElementById(item.id))
                                                             document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
@@ -215,31 +228,34 @@ const Navbar = () => {
                                             )})}
                                         </ul>
                                     </div>
-                                    <div className="w-[320px] text-slate-900 absolute bottom-0 left-0">
-                                        <p className="uppercase pl-4 text-light-theme dark:text-dark-theme">Get in touch</p>
-                                        <div className="flex items-center justify-between w-full mb-2">
+                                    <div className="py-4">
+                                        <LanguageSelector />
+                                    </div>
+                                    <div className=" w-[280px] sm:w-[320px] text-slate-900 absolute bottom-0 left-0">
+                                        <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">Get in touch</p>
+                                        <div className="flex items-center justify-between w-full mb-2 px-2 sm:px-0">
                                             <a 
                                             target="_blank"  
                                             href="https://www.linkedin.com/in/timen-van-gelderen/"
-                                            className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
                                                 <BsLinkedin size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
                                             target="_blank" 
                                             href="https://github.com/TvGelderen"
-                                            className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
                                                 <BsGithub size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
                                             target="_blank" 
                                             href="#"
-                                            className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
                                                 <AiOutlineMail size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
                                             target="_blank" 
                                             href="#"
-                                            className="rounded-full p-3 m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
                                                 <RiContactsLine size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                         </div>
