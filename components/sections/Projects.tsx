@@ -50,12 +50,17 @@ const Projects = ({ content }: Props) => {
                 <h3 className="sectionTitle">{content.title}</h3>
                 <div className='md:w-full sm:w-[75%] w-full m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
-                        <div
+                        <motion.div
                           key={index}
+                          layoutId={project.id}
+                          initial='hidden'
+                          whileInView='visible'
+                          viewport={{ once: true }}
+                          variants={variants}
                           onClick={() => setSelected(project)}
                         >
                             <ProjectCard project={project} index={index} />
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
@@ -81,15 +86,15 @@ const Projects = ({ content }: Props) => {
                                     <div className='grid lg:grid-cols-4'>
                                         <div className='lg:hidden w-[90%] sm:w-[70%] m-auto flex flex-row justify-evenly items-center pb-2 md:pb-4 border-b-2 dark:border-dark-600'>
                                             {SkillData.filter(skill => selected.skills.includes(skill.name)).map(skill => (
-                                                <div key={skill.name} className='flex flex-col justify-center items-center'>
+                                                <div key={skill.name} className='flex justify-center items-center group'>
                                                     <Image
                                                       src={skill.image}
                                                       alt={skill.name}
                                                       width={60}
                                                       height={60}
-                                                      className={`${skill.name === 'Firebase' ? 'w-5 h-6 sm:w-6 sm:h-7 md:w-7 md:h-8' : 'w-6 sm:w-7 md:w-8'}`}
+                                                      className={`${skill.name === 'Firebase' ? 'w-4 h-6 sm:w-5 sm:h-7 md:w-6 md:h-8' : 'w-6 sm:w-7 md:w-8'}`}
                                                     />
-                                                    <p className='text-sm sm:text-base pt-2 dark:text-[#dddddd]'>{skill.name}</p>
+                                                    <p className='text-sm sm:text-base absolute mt-16 md:mt-[70px] px-1 md:px-2 md:py-1 rounded-lg bg-black/80 hidden group-hover:block'>{skill.name}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -98,15 +103,15 @@ const Projects = ({ content }: Props) => {
                                         </div>
                                         <div className='hidden lg:block'>
                                             {SkillData.filter(skill => selected.skills.includes(skill.name)).map(skill => (
-                                                <div key={skill.name} className='flex flex-col justify-center items-center'>
+                                                <div key={skill.name} className='flex flex-col justify-center items-center py-4'>
                                                     <Image
                                                       src={skill.image}
                                                       alt={skill.name}
                                                       width={60}
                                                       height={60}
-                                                      className={`${skill.name === 'Firebase' ? 'w-5 h-6 sm:w-6 sm:h-7 md:w-7 md:h-8' : 'w-6 sm:w-7 md:w-8'}`}
+                                                      className={`${skill.name === 'Firebase' ? 'w-4 h-6 sm:w-5 sm:h-7 md:w-6 md:h-8' : 'w-6 sm:w-7 md:w-8'}`}
+                                                      title={skill.name}
                                                     />
-                                                    <p className='text-sm sm:text-base pt-2 dark:text-[#dddddd]'>{skill.name}</p>
                                                 </div>
                                             ))}
                                         </div>

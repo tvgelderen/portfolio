@@ -55,12 +55,12 @@ export const SkillData = [
         name: "ASP.NET",
         image: "/img/skills/asp_net.png"
     },
-    {
-        name: "Pyton",
-        image: "/img/skills/python.png"
-    },
-    {
-        name: "R",
-        image: "/img/skills/r.png"
-    }
+    // {
+    //     name: "Pyton",
+    //     image: "/img/skills/python.png"
+    // },
+    // {
+    //     name: "R",
+    //     image: "/img/skills/r.png"
+    // }
 ]

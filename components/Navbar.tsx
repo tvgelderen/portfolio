@@ -108,7 +108,7 @@ const Navbar = () => {
                                   }}
                                 >
                                     <motion.a
-                                      className={`lg:px-4 md:px-[8px] border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:pb-[27px] md:pb-[21px]'}`}
+                                      className={`lg:px-4 md:px-[8px] border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pt-[17px] md:pt-[15px] lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:py-[27px] md:py-[21px]'}`}
                                       onClick={() => {
                                         if (document.getElementById(item.id))
                                             document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
@@ -118,7 +118,7 @@ const Navbar = () => {
                                             document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                                         }
                                       }}
-                                      whileHover={shadow === '' ? { backgroundColor: "rgba(168, 66, 201, 0.2)" } : {}}
+                                      whileHover={shadow === '' ? { background: "linear-gradient(90deg, rgba(123, 47, 247, 0.2), rgba(241, 7, 163, 0.2))" } : {}}
                                     >
                                         {item.name}
                                     </motion.a>

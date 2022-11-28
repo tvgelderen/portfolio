@@ -11,46 +11,46 @@ type Props = {
 const Skills = ({ content }: Props) => {
     const [selectedId, setSelectedId] = useState<number>(-1)
 
-    const GetRow = (rowLen:number, i:number) => {
-            let step = (SkillData.length - i - 1)
-            step = step < rowLen ? step : rowLen;
+    const GetRow = (rowLen: number, i: number) => {
+        let step = (SkillData.length - i)
+        step = step < rowLen ? step : rowLen;
 
-            const variants = {
-                hidden: {
-                    y: -120 * (i / 3),
-                    opacity: 0,
-                },
-                visible: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                        delay: (i / 3) * 0.2
-                    }
+        const variants = {
+            hidden: {
+                y: -120 * (i / 3),
+                opacity: 0,
+            },
+            visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                    delay: (i / 3) * 0.2
                 }
             }
+        }
 
-            return (
-                <motion.div
-                  className='flex justify-center items-center'
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={variants}
-                >
-                    {SkillData.slice(i, i + step).map((skill, index) => (
-                        <div 
-                          key={skill.name}
-                          className='rounded-full m-4 sm:p-3 hover:scale-125 duration-300 cursor-pointer'
-                          onClick={() => setSelectedId(i + index)}  
-                        >
-                            <img 
-                              src={skill.image}
-                              className='bg-cover h-[55px] w-[55px] sm:h-[70px] sm:w-[70px] lg:h-[80px] lg:w-[80px] object-contain'
-                            />
-                        </div>
-                    ))}
-                </motion.div>
-            )
+        return (
+            <motion.div
+                className='flex justify-center items-center'
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={variants}
+            >
+                {SkillData.slice(i, i + step).map((skill, index) => (
+                    <div 
+                        key={skill.name}
+                        className='rounded-full m-4 sm:p-3 hover:scale-125 duration-300 cursor-pointer'
+                        onClick={() => setSelectedId(i + index)}  
+                    >
+                        <img 
+                            src={skill.image}
+                            className='bg-cover h-[55px] w-[55px] sm:h-[70px] sm:w-[70px] lg:h-[80px] lg:w-[80px] object-contain'
+                        />
+                    </div>
+                ))}
+            </motion.div>
+        )
     }
 
     const ShowRows = (rowLen:number) => {
