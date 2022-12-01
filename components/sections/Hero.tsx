@@ -15,15 +15,15 @@ type Props = {
 
 const Hero = ({ content }: Props) => {
     return (
-        <div className='flex flex-col items-center justify-center h-screen bg-center bg-cover'>
+        <div className='flex items-center justify-center h-screen bg-center bg-cover'>
             <Image
               src={backgroundURL}
               alt=""
               width={2560}
               height={1440}
-              className="hero absolute w-full h-screen object-cover object-center"
+              className="absolute w-full h-screen object-cover object-center"
             />
-            <div className='hero absolute top-0 left-0 right-0 bottom-0 bg-black/5 dark:bg-black/30' />
+            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/5 dark:bg-black/10' />
 
             <div className='relative text-[#202020] z-[2] mb-[15rem]'>
                 <div className="w-full max-w-[440px] md:max-w-[660px] m-auto flex-row justify-center text-center overflow-visible">

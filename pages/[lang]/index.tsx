@@ -13,8 +13,6 @@ import { projects } from '../../languages/projects'
 import { contact } from '../../languages/contact'
 
 import { useAppContext } from '../../context/AppContext'
-import { BsChevronUp } from 'react-icons/bs'
-import SectionCarousel from '../../components/SectionCarousel'
 
 export default function Home() {
   let { language } = useAppContext();
@@ -35,9 +33,6 @@ export default function Home() {
         <link rel="icon" href="img/icons/favicon.ico" />
       </Head>
 
-      {/* <div className='md:hidden'>
-        <SectionCarousel />
-      </div> */}
       <section id='hero' className=''>
         <Hero content={heroContent} />
       </section>

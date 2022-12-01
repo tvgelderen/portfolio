@@ -72,8 +72,8 @@ const Skills = ({ content }: Props) => {
     }
 
     return (
-        <div className="sectionStyle">
-            <div className="sectionSkills">
+        <div className="sectionEven">
+            <div className="skills">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
 

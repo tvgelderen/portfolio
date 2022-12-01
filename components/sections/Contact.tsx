@@ -42,51 +42,51 @@ const Contact = ({ content }: Props) => {
     }
 
     return (
-        <div className="sectionStyle">
-            <div className="sectionContent">
+        <div className="sectionLast">
+            <div className="contact">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
                 <div className='grid grid-cols-1 lg:grid-cols-3'>
                     <div className='col-span-2'>
                         <form onSubmit={handleSubmit(sendMail)} className='w-full max-w-[900px] m-auto'>
                             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
-                                <div className={`mt-4 flex flex-col pb-[2px] ${errors.message ? 'bg-[red]/75' : 'bg-gradient-to-r from-[#7b2ff7]/40 to-[#f107a3]/40 '}`}>
+                                <div className='sm:mt-4 flex flex-col pb-[2px]'>
                                     <input 
                                       type='text'
                                       {...register('name', { required: true })}
-                                      className='py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary'
+                                      className={`${errors.name ? 'input-error' : 'input'}`}
                                       placeholder={`${content.name}...`}
                                     />
                                 </div>
-                                <div className={`sm:mt-4 flex flex-col pb-[2px] ${errors.message ? 'bg-[red]/75' : 'bg-gradient-to-r from-[#7b2ff7]/40 to-[#f107a3]/40 '}`}>
+                                <div className='sm:mt-4 flex flex-col pb-[2px]'>
                                     <input 
                                       type='text'
                                       {...register('email', { required: true, pattern: {
                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                         message: "invalid email address"
                                       } })}
-                                      className='py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary'
+                                      className={`${errors.email ? 'input-error' : 'input'}`}
                                       placeholder={`${content.email}...`}
                                     />
                                 </div>
                             </div>
-                            <div className={`mt-4 flex flex-col pb-[2px] ${errors.message ? 'bg-[red]/75' : 'bg-gradient-to-r from-[#7b2ff7]/40 to-[#f107a3]/40 '}`}>
+                            <div className='mt-4 flex flex-col pb-[2px]'>
                                     <input 
                                       type='text'
                                       {...register('subject', { required: true })}
-                                      className='py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary'
+                                      className={`${errors.subject ? 'input-error' : 'input'}`}
                                       placeholder={`${content.subject}...`}
                                     />
                                 </div>
-                            <div className={`mt-4 flex flex-col pb-[2px] ${errors.message ? 'bg-[red]/75' : 'bg-gradient-to-r from-[#7b2ff7]/40 to-[#f107a3]/40 '}`}>
+                            <div className='mt-4 flex flex-col pb-[2px]'>
                                 <textarea 
                                   {...register('message', { required: true })}
-                                  className='py-2 px-1 focus:outline-none bg-light-background dark:bg-dark-primary'
+                                  className={`${errors.message ? 'input-error' : 'input'}`}
                                   rows={6}
                                   placeholder={`${content.message}...`}
                                 />
                             </div>
-                            <button type='submit' className='w-full mt-4 px-4 py-2 bg-gradient-to-r from-[#7b2ff7]/40 to-[#f107a3]/40 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 rounded-lg'> 
+                            <button type='submit' className='button w-full mt-4 px-4 py-2 rounded-lg'> 
                                 {content.send}
                             </button>
                         </form>

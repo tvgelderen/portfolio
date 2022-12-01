@@ -44,23 +44,15 @@ const Projects = ({ content }: Props) => {
     }
 
     return (
-        <div className="sectionStyle">
-            <div className="sectionProjects">
+        <div className="sectionUneven">
+            <div className="projects">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
                 <div className='lg:w-full md:w-[65%] sm:w-[75%] w-[full] m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
-                        <motion.div
-                          key={index}
-                          layoutId={project.id}
-                          initial='hidden'
-                          whileInView='visible'
-                          viewport={{ once: true }}
-                          variants={variants}
-                          onClick={() => setSelected(project)}
-                        >
+                        <div>
                             <ProjectCard project={project} index={index} />
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -71,7 +63,7 @@ const Projects = ({ content }: Props) => {
                         {selected !== null && (
                             <motion.div 
                               layoutId={selected.id}
-                              className='absolute w-[98%] md:w-[95%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-primary overflow-x-hidden overflow-y-scroll'
+                              className='absolute w-[98%] md:w-[95%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-background overflow-x-hidden overflow-y-scroll scrollbar-none'
                             >
                                 <div className='border-b-2 pb-2 mb-2 md:pb-4 md:mb-4 dark:border-dark-600'>
                                     <h2>{selected.name}</h2>
