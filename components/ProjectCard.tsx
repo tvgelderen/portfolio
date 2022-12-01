@@ -17,13 +17,13 @@ const ProjectCard = ({ project, index }: Props) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div className={`${isEven ? 'card-img-even' : 'card-img-uneven'}`}>
+        <div className={`${isEven ? 'card-even' : 'card-uneven'}`}>
             <img
                 src={project.images[0]}
                 alt={project.name}
                 width={1920}
                 height={1080}
-                className='rounded object-cover object-left-top w-[60%]'
+                className='rounded object-cover object-left-top lg:w-[60%]'
             />
             <div className={`${isEven ? 'card-description-even' : 'card-description-uneven'}`}>
                 <div className='w-[75%] m-auto flex justify-evenly items-center py-2 border-b-2 border-dark-500'>

@@ -20,7 +20,7 @@ type Props = {
 const Contact = ({ content }: Props) => {
     const [sent, setSent] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
-    const { register, handleSubmit, reset, formState:{errors}} = useForm<FormTypes>();
+    const { register, getValues, handleSubmit, reset, formState:{errors}} = useForm<FormTypes>();
     
     const sendMail = (data: FormTypes) => {
         emailjs
@@ -41,6 +41,8 @@ const Contact = ({ content }: Props) => {
         reset();
     }
 
+    const values = getValues();
+
     return (
         <div className="sectionLast">
             <div className="contact">
@@ -50,15 +52,15 @@ const Contact = ({ content }: Props) => {
                     <div className='col-span-2'>
                         <form onSubmit={handleSubmit(sendMail)} className='w-full max-w-[900px] m-auto'>
                             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
-                                <div className='sm:mt-4 flex flex-col pb-[2px]'>
+                                <div className='sm:mt-4 input-container'>
                                     <input 
                                       type='text'
                                       {...register('name', { required: true })}
                                       className={`${errors.name ? 'input-error' : 'input'}`}
-                                      placeholder={`${content.name}...`}
                                     />
+                                    <label className={values.name ? 'input-label-float' : 'input-label'}>{content.name}</label>
                                 </div>
-                                <div className='sm:mt-4 flex flex-col pb-[2px]'>
+                                <div className='sm:mt-4 input-container'>
                                     <input 
                                       type='text'
                                       {...register('email', { required: true, pattern: {
@@ -66,25 +68,25 @@ const Contact = ({ content }: Props) => {
                                         message: "invalid email address"
                                       } })}
                                       className={`${errors.email ? 'input-error' : 'input'}`}
-                                      placeholder={`${content.email}...`}
                                     />
+                                    <label className={values.email ? 'input-label-float' : 'input-label'}>{content.email}</label>
                                 </div>
                             </div>
-                            <div className='mt-4 flex flex-col pb-[2px]'>
+                            <div className='mt-4 input-container'>
                                     <input 
                                       type='text'
                                       {...register('subject', { required: true })}
                                       className={`${errors.subject ? 'input-error' : 'input'}`}
-                                      placeholder={`${content.subject}...`}
                                     />
+                                    <label className={values.subject ? 'input-label-float' : 'input-label'}>{content.subject}</label>
                                 </div>
-                            <div className='mt-4 flex flex-col pb-[2px]'>
+                            <div className='mt-4 input-container'>
                                 <textarea 
                                   {...register('message', { required: true })}
                                   className={`${errors.message ? 'input-error' : 'input'}`}
                                   rows={6}
-                                  placeholder={`${content.message}...`}
                                 />
+                                <label className={values.message ? 'input-label-float' : 'input-label'}>{content.message}</label>
                             </div>
                             <button type='submit' className='button w-full mt-4 px-4 py-2 rounded-lg'> 
                                 {content.send}

@@ -60,7 +60,7 @@
 
   .input {
     @apply border-b-2 py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary;
-    border-image-source: linear-gradient(90deg, rgba(123, 47, 247, 0.3), rgba(241, 7, 163, 0.3));
+    border-image-source: linear-gradient(45deg, rgba(123, 47, 247, 0.3), rgba(241, 7, 163, 0.3));
     border-image-slice: 1;
   }
 
@@ -73,20 +73,52 @@
     @apply border-b-2 border-[red]/75 py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary;
   }
 
-  .card-img {
-    @apply flex items-center my-12 w-full;
+  .input-container {
+    @apply relative flex flex-col pb-[2px];
   }
 
-  .card-img-even {
-    @apply card-img;
+  .input-label {
+    position: absolute;
+    pointer-events: none;
+    transform: translate(0, 14px) scale(1);
+    transform-origin: top left;
+    transition: 200ms;
+    color: #888888;
+    line-height: 1;
+    left: 6px;
   }
 
-  .card-img-uneven {
-    @apply card-img justify-end;
+  .input-container:focus-within .input-label {
+    transform: translate(0, -10px) scale(0.8);
+    color: #888888;
+  }
+
+  .input-label-float {
+    position: absolute;
+    pointer-events: none;
+    transform-origin: top left;
+    transition: 200ms;
+    color: #888888;
+    line-height: 1;
+    left: 6px;
+    transform: translate(0, -10px) scale(0.8);
+    color: #888888;
+  }
+
+  .card {
+    @apply lg:flex items-center my-12 w-full;
+  }
+
+  .card-even {
+    @apply card;
+  }
+
+  .card-uneven {
+    @apply card justify-end;
   }
 
   .card-description {
-    @apply absolute lg:w-[45%] bg-dark-secondary rounded;
+    @apply lg:absolute lg:w-[45%] bg-dark-secondary rounded;
   }
 
   .card-description-even {
