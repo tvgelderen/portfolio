@@ -8,7 +8,7 @@ type Props = {
 const About = ({ content }: Props) => {
     return (
         <div className="sectionStyle">
-            <div className="sectionContent">
+            <div className="sectionContent" style={{}}>
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
 

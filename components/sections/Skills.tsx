@@ -31,22 +31,23 @@ const Skills = ({ content }: Props) => {
 
         return (
             <motion.div
-                className='flex justify-center items-center'
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={variants}
+              className='flex justify-center items-center'
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={variants}
             >
                 {SkillData.slice(i, i + step).map((skill, index) => (
                     <div 
-                        key={skill.name}
-                        className='rounded-full m-4 sm:p-3 hover:scale-125 duration-300 cursor-pointer'
-                        onClick={() => setSelectedId(i + index)}  
+                      key={skill.name}
+                      className='rounded-full my-4 mx-8 sm:p-3 hover:scale-125 duration-300 cursor-pointer flex justify-center group'
+                      onClick={() => setSelectedId(i + index)}  
                     >
                         <img 
-                            src={skill.image}
-                            className='bg-cover h-[55px] w-[55px] sm:h-[70px] sm:w-[70px] lg:h-[80px] lg:w-[80px] object-contain'
+                          src={skill.image}
+                          className='bg-cover h-[55px] w-[55px] sm:h-[70px] sm:w-[70px] object-contain'
                         />
+                        <p className='absolute hidden group-hover:block truncate text-sm md:text-base mt-16 sm:mt-[75px] lg:mt-[85px] px-2 py-1 rounded-lg bg-black/90'>{skill.name}</p>
                     </div>
                 ))}
             </motion.div>
@@ -60,7 +61,7 @@ const Skills = ({ content }: Props) => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 sm:w-[90%] m-auto mt-4 md:mt-12 mb-2 md:mb-10'>
+            <div className='grid grid-cols-1 mt-4 md:mt-12 mb-2 md:mb-10'>
                 {steps.map(step => (
                     <span key={step}>
                         {GetRow(rowLen, step)}
@@ -72,18 +73,15 @@ const Skills = ({ content }: Props) => {
 
     return (
         <div className="sectionStyle">
-            <div className="sectionContent">
+            <div className="sectionSkills">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
 
                 <div className='md:hidden'>
                     {ShowRows(3)}
                 </div>
-                <div className='hidden md:block lg:hidden'>
+                <div className='hidden md:block'>
                     {ShowRows(4)}
-                </div>
-                <div className='hidden lg:block'>
-                    {ShowRows(5)}
                 </div>
 
                 <AnimatePresence>

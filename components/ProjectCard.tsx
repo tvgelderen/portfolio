@@ -16,8 +16,8 @@ const ProjectCard = ({ project, index }: Props) => {
     const shadow = 'shadow-lg shadow-black/20'
 
     return (
-        <div className='grid md:grid-cols-10 my-4 lg:mb-8 cursor-pointer'>
-            <div className='md:hidden'>
+        <div className='grid lg:grid-cols-10 my-4 lg:mb-8 cursor-pointer'>
+            <div className='lg:hidden'>
                 <img
                   src={project.images[0]}
                   alt={project.name}
@@ -27,7 +27,7 @@ const ProjectCard = ({ project, index }: Props) => {
                 />
             </div>
             {index % 2 === 0 && (
-                <div className='md:col-span-4 hidden md:block mr-4'>
+                <div className='lg:col-span-4 hidden lg:block mr-4'>
                     <img
                       src={project.images[0]}
                       alt={project.name}
@@ -35,9 +35,7 @@ const ProjectCard = ({ project, index }: Props) => {
                     />
                 </div>
             )}
-            <div 
-              className={`md:col-span-6 relative flex flex-col justify-between bg-light-secondary dark:bg-dark-primary rounded-b-lg md:rounded-lg ${shadow}`}
-            >
+            <div className={`lg:col-span-6 relative flex flex-col justify-between bg-light-secondary dark:bg-dark-secondary rounded-b-lg lg:rounded-lg ${shadow}`}>
                 <div>
                     <div className='w-[75%] m-auto flex justify-evenly items-center py-2 border-b-2 border-dark-500'>
                         {SkillData.filter(skill => project.skills.includes(skill.name)).map(skill => (
@@ -47,7 +45,7 @@ const ProjectCard = ({ project, index }: Props) => {
                                   alt={skill.name}
                                   width={60}
                                   height={60}
-                                  className="w-7"
+                                  className="w-7 lg:w-8"
                                 />
                             </div>
                         ))}
@@ -60,23 +58,23 @@ const ProjectCard = ({ project, index }: Props) => {
                     <a 
                       target="_blank" 
                       href={project.liveURL} 
-                      className="flex bg-gradient-to-r from-[#7b2ff7]/30 to-[#f107a3]/30 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 px-2 py-1 mr-4 rounded"
+                      className="flex bg-gradient-to-r from-[#7b2ff7]/30 to-[#f107a3]/30 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 px-2 py-1 lg:px-[10px] lg:py-[6px] mr-4 rounded"
                       onClick={event => event.stopPropagation()}
                     >
-                        <BsEye className='h-5 w-4 mr-1' /><p className='text-sm'>Live Demo</p>
+                        <BsEye className='h-5 w-4 mr-1' /><p className='text-sm'>&nbsp;Live Demo</p>
                     </a>
                     <a 
                       target="_blank" 
                       href={project.githubURL} 
-                      className="flex bg-gradient-to-r from-[#7b2ff7]/30 to-[#f107a3]/30 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 px-2 py-1 rounded"
+                      className="flex bg-gradient-to-r from-[#7b2ff7]/30 to-[#f107a3]/30 hover:from-[#7b2ff7]/75 hover:to-[#f107a3]/75 px-2 py-1 lg:px-[10px] lg:py-[6px] rounded"
                       onClick={event => event.stopPropagation()}
                     >
-                        <BsGithub className='h-5 w-4 mr-1' /><p className='text-sm'>Code</p>
+                        <BsGithub className='h-5 w-4 mr-1' /><p className='text-sm'>&nbsp;Code</p>
                     </a>
                 </div>
             </div>
             {index % 2 !== 0 && (
-                <div className='md:col-span-4 hidden md:block ml-4'>
+                <div className='lg:col-span-4 hidden lg:block ml-4'>
                     <img
                       src={project.images[0]}
                       alt={project.name}
@@ -84,7 +82,8 @@ const ProjectCard = ({ project, index }: Props) => {
                       height={720}
                       className={`hidden md:block h-full w-full rounded-lg object-cover object-left-top ${shadow}`}
                     />
-                </div>)}
+                </div>
+            )}
             </div>
     )
 }

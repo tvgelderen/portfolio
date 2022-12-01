@@ -14,6 +14,7 @@ import { contact } from '../../languages/contact'
 
 import { useAppContext } from '../../context/AppContext'
 import { BsChevronUp } from 'react-icons/bs'
+import SectionCarousel from '../../components/SectionCarousel'
 
 export default function Home() {
   let { language } = useAppContext();
@@ -33,32 +34,30 @@ export default function Home() {
         <title>Portfolio</title>
         <link rel="icon" href="img/icons/favicon.ico" />
       </Head>
-      
-      <section id='hero' className='snap-center'>
+
+      {/* <div className='md:hidden'>
+        <SectionCarousel />
+      </div> */}
+      <section id='hero' className=''>
         <Hero content={heroContent} />
       </section>
 
-      <section id='about' className='snap-start'>
-        <About content={aboutContent} />
-      </section>
-      
-      <section id='skills' className='snap-start'>
-        <Skills content={skillsContent} />
-      </section>
+      <div className=''>
+        <section id='about' className=''>
+          <About content={aboutContent} />
+        </section>
+        
+        <section id='skills' className=''>
+          <Skills content={skillsContent} />
+        </section>
 
-      <section id='projects' className='snap-start'>
-        <Projects content={projectsContent} />
-      </section>
-      
-      <section id='contact' className='snap-start'>
-        <Contact content={contactContent} />
-      </section>
-
-      <div 
-        className='z-[2] fixed bottom-5 left-0 right-0 flex justify-center items-center cursor-pointer'
-        onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: "smooth" })}  
-      >
-        <BsChevronUp size={24} color="white" className='xl:w-10 xl:h-10' />
+        <section id='projects' className=''>
+          <Projects content={projectsContent} />
+        </section>
+        
+        <section id='contact' className=''>
+          <Contact content={contactContent} />
+        </section>
       </div>
     </div>
   )

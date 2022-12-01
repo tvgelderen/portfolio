@@ -45,10 +45,10 @@ const Projects = ({ content }: Props) => {
 
     return (
         <div className="sectionStyle">
-            <div className="sectionContent">
+            <div className="sectionProjects">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
-                <div className='md:w-full sm:w-[75%] w-full m-auto pt-4'>
+                <div className='lg:w-full md:w-[65%] sm:w-[75%] w-[full] m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
                         <motion.div
                           key={index}
@@ -71,11 +71,14 @@ const Projects = ({ content }: Props) => {
                         {selected !== null && (
                             <motion.div 
                               layoutId={selected.id}
-                              className='absolute w-[98%] md:w-[95%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-primary overflow-hidden'
+                              className='absolute w-[98%] md:w-[95%] max-w-[1440px] p-4 rounded-xl bg-light-primary dark:bg-dark-primary overflow-x-hidden overflow-y-scroll'
                             >
                                 <div className='border-b-2 pb-2 mb-2 md:pb-4 md:mb-4 dark:border-dark-600'>
                                     <h2>{selected.name}</h2>
-                                    <div className='absolute top-2 right-2 p-2 rounded-full hover:dark:bg-black/40 cursor-pointer' onClick={() => setSelected(null)}>
+                                    <div 
+                                      className='absolute top-2 right-2 p-2 rounded-full hover:dark:bg-black/40 cursor-pointer' 
+                                      onClick={() => setSelected(null)}
+                                    >
                                         <AiOutlineClose size={20} className="w-5 h-5 lg:w-7 lg:h-7" />
                                     </div>
                                 </div>
@@ -94,7 +97,7 @@ const Projects = ({ content }: Props) => {
                                                       height={60}
                                                       className={`${skill.name === 'Firebase' ? 'w-4 h-6 sm:w-5 sm:h-7 md:w-6 md:h-8' : 'w-6 sm:w-7 md:w-8'}`}
                                                     />
-                                                    <p className='text-sm sm:text-base absolute mt-16 md:mt-[70px] px-1 md:px-2 md:py-1 rounded-lg bg-black/80 hidden group-hover:block'>{skill.name}</p>
+                                                    <p className='text-sm sm:text-base absolute mt-16 md:mt-[70px] px-1 md:px-2 md:py-1 rounded-lg bg-black/90 hidden group-hover:block'>{skill.name}</p>
                                                 </div>
                                             ))}
                                         </div>

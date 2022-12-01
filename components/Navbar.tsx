@@ -46,10 +46,8 @@ const Navbar = () => {
     }, [currentTheme]);
 
     useEffect(() => {
-        const body = document.getElementById('body');
-
         const changeColor = () => {            
-            if (body?.scrollTop !== undefined && body?.scrollTop >= 90) {
+            if (window.scrollY >= 90) {
                 setColor('bg-light-secondary dark:bg-dark-primary');
                 setTextColor('#121212');
                 setShadow('shadow-sm');
@@ -62,15 +60,15 @@ const Navbar = () => {
             }
         }
 
-        body?.addEventListener('scroll', changeColor);
+        window.addEventListener('scroll', changeColor);
 
-        return () => body?.removeEventListener('scroll', changeColor);
+        return () => window.removeEventListener('scroll', changeColor);
     }, [currentTheme]);
 
     return (
         <div className={`fixed left-0 top-0 w-full z-10 md:pr-2 ease-in duration-300 shadow-dark-100 dark:shadow-black ${shadow} ${color}`}>
             <div className="relative w-full">
-                <div className=" max-w-[1280px] m-auto h-full flex justify-between px-1 items-center">
+                <div className=" max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                     <motion.div
                       initial='hidden'
                       animate='visible'
@@ -78,6 +76,7 @@ const Navbar = () => {
                         hidden: { y: -100 },
                         visible: { y: 0 }
                       }}
+                      className='lg:mx-4 mx-2'
                     >
                         <Link href='/'>
                             <Logo color={logo} />
@@ -151,7 +150,7 @@ const Navbar = () => {
 
                     <div className="flex justify-between md:hidden">
                         <motion.div 
-                          className={`mt-[2px] mr-6 z-10 ${textColor}`}
+                          className={`mt-[1px] mr-6 z-10 ${textColor}`}
                           initial='hidden'
                           animate='visible'
                           variants={{
@@ -162,7 +161,7 @@ const Navbar = () => {
                             {!open && <ThemeChanger />}
                         </motion.div>
                         <motion.div 
-                          className={`mx-4 z-10 cursor-pointer ${textColor}`} 
+                          className={`mx-2 z-10 cursor-pointer ${textColor}`} 
                           onClick={() => setOpen(true)}
                           initial='hidden'
                           animate='visible'
@@ -176,97 +175,95 @@ const Navbar = () => {
                     </div>
 
                     {open && (
-                        <>
-                            <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/50" />
-                    
-                            <div className="flex fixed md:hidden left-0 top-0">
-                                <AnimatePresence initial={false}>
-                                    {open && (
-                                        <motion.div 
-                                            className="flex relative md:hidden left-0 top-0 flex-col w-[280px] sm:w-[320px] h-screen bg-white dark:bg-dark-primary px-3 sm:px-4 py-1"
-                                            animate={{ x: 0 }}
-                                            initial={{ x: -320 }}
-                                            exit={{ x: -320 }}
-                                            transition={{ stiffness: 10 }}
-                                        >
-                                            <div className="relative flex w-full items-center justify-between pb-1 border-b-2 dark:border-dark-600">
-                                                <Image 
-                                                    src='/logos/logo_purple.png'
-                                                    alt='logo'
-                                                    width='190'  
-                                                    height='50'
-                                                    className="w-[140px] sm:w-[170px]"
-                                                />
-                                                <div 
-                                                    className="mb-4 p-1 rounded-full shadow-md shadow-dark-400 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
-                                                    onClick={() => setOpen(false)}
-                                                >
-                                                    <AiOutlineClose size={20} className="text-dark-900 dark:text-dark-100 w-4 h-4 sm:w-5 sm:h-5" />
-                                                </div>
-                                            </div>
-                                            <div className="border-b-2 pb-4 dark:border-dark-600">
-                                                <ul className="text-dark-900 uppercase pt-4">
-                                                    {navItems.map(item => {
-                                                        return (
-                                                        <li className="py-2 sm:py-4" key={item.id}>
-                                                            <a
-                                                            className="sm:text-xl cursor-pointer hover:text-dark-200"
-                                                            onClick={() => {
-                                                                if (document.getElementById(item.id))
-                                                                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                                                else
-                                                                {
-                                                                    router.push(`/${item.path}`);
-                                                                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                                                }
-
-                                                                setOpen(false)
-                                                            }}
-                                                            >
-                                                                {item.name}
-                                                            </a>
-                                                        </li>
-                                                    )})}
-                                                </ul>
-                                            </div>
-                                            <div className="py-4">
-                                                <LanguageSelector />
-                                            </div>
-                                            <div className=" w-[280px] sm:w-[320px] text-slate-900 absolute bottom-0 left-0">
-                                                <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">Get in touch</p>
-                                                <div className="flex items-center justify-between w-full mb-2 px-2 sm:px-0">
-                                                    <a 
-                                                    target="_blank"  
-                                                    href="https://www.linkedin.com/in/timen-van-gelderen/"
-                                                    className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
-                                                        <BsLinkedin size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                    </a>
-                                                    <a  
-                                                    target="_blank" 
-                                                    href="https://github.com/TvGelderen"
-                                                    className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
-                                                        <BsGithub size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                    </a>
-                                                    <a  
-                                                    target="_blank" 
-                                                    href="#"
-                                                    className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
-                                                        <AiOutlineMail size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                    </a>
-                                                    <a  
-                                                    target="_blank" 
-                                                    href="#"
-                                                    className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
-                                                        <RiContactsLine size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        </>
+                        <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/50" />
                     )}
+                    
+                    <div className="flex fixed md:hidden left-0 top-0">
+                        <AnimatePresence>
+                            {open && (
+                                <motion.div 
+                                    className="flex relative md:hidden left-0 top-0 flex-col w-[280px] sm:w-[320px] h-screen bg-white dark:bg-dark-primary px-3 sm:px-4 py-1"
+                                    initial={{ x: -320 }}
+                                    animate={{ x: 0 }}
+                                    exit={{ x: -320 }}
+                                    transition={{ stiffness: 5 }}
+                                >
+                                    <div className="relative flex w-full items-center justify-between pb-1 border-b-2 dark:border-dark-600">
+                                        <Image 
+                                            src='/logos/logo_purple.png'
+                                            alt='logo'
+                                            width='190'  
+                                            height='50'
+                                            className="w-[140px] sm:w-[170px]"
+                                        />
+                                        <div 
+                                            className="mb-4 p-1 rounded-full shadow-md shadow-dark-400 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            <AiOutlineClose size={20} className="text-dark-900 dark:text-dark-100 w-4 h-4 sm:w-5 sm:h-5" />
+                                        </div>
+                                    </div>
+                                    <div className="border-b-2 pb-4 dark:border-dark-600">
+                                        <ul className="text-dark-900 uppercase pt-4">
+                                            {navItems.map(item => {
+                                                return (
+                                                <li className="py-2 sm:py-4" key={item.id}>
+                                                    <a
+                                                    className="sm:text-xl cursor-pointer hover:text-dark-200"
+                                                    onClick={() => {
+                                                        if (document.getElementById(item.id))
+                                                            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                                        else
+                                                        {
+                                                            router.push(`/${item.path}`);
+                                                            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                                        }
+
+                                                        setOpen(false)
+                                                    }}
+                                                    >
+                                                        {item.name}
+                                                    </a>
+                                                </li>
+                                            )})}
+                                        </ul>
+                                    </div>
+                                    <div className="py-4">
+                                        <LanguageSelector />
+                                    </div>
+                                    <div className=" w-[280px] sm:w-[320px] text-slate-900 absolute bottom-0 left-0">
+                                        <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">Get in touch</p>
+                                        <div className="flex items-center justify-between w-full mb-2 px-2 sm:px-0">
+                                            <a 
+                                            target="_blank"  
+                                            href="https://www.linkedin.com/in/timen-van-gelderen/"
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                                <BsLinkedin size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
+                                            </a>
+                                            <a  
+                                            target="_blank" 
+                                            href="https://github.com/TvGelderen"
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                                <BsGithub size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
+                                            </a>
+                                            <a  
+                                            target="_blank" 
+                                            href="#"
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                                <AiOutlineMail size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
+                                            </a>
+                                            <a  
+                                            target="_blank" 
+                                            href="#"
+                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                                <RiContactsLine size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </div>

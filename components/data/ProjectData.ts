@@ -6,7 +6,7 @@ export const ProjectData = [
             '/img/projects/netflix.png'
         ],
         githubURL: "https://github.com/TvGelderen/netflix-clone",
-        liveURL: "https://netflix-clone-tvgelderen.vercel.app/",
+        liveURL: "https://netflix-clone-b7491.web.app/",
         skills: [
             "TypeScript",
             "NextJS",
@@ -15,8 +15,8 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                brief_description: "A netflix clone made using NextJS, Tailwind CSS for the front-end and Firebase for the back-end and authentication. The movie data was collected using the API from The Movie Database (TMDB).",
-                description: ""
+                brief_description: "A Netflix look-alike web application, which allows users to log in and save movies to their own watch list. It shows movies in different categories such as trending, top rated, and different genres. By clicking on a movie more information about it is shown along with the trailer.",
+                description: "A website with a UI similar to Netflix which allows users to save movies to their watch list. Users can log in either with their Google accounts or by creating a new account using an email and password combination. By clicking on a movie's image a modal is shown which offers the movie trailer, a brief description of the movie, and the movie's genre, cast, and release date. All the data shown is pulled from the API offered by The Movie Database (TMDB)."
             }],
             ['nl', {
                 brief_description: "",
@@ -42,7 +42,7 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                brief_description: "A NextJS web application which shows images from some of the United States' national parks. It uses a GoogleMaps API to show the location of each park.",
+                brief_description: "A web application which shows images from some of the United States' national parks. It uses a GoogleMaps API to show the location of each park.",
                 description: ""
             }],
             ['nl', {
