@@ -4,7 +4,7 @@
 
 @layer components {
   .section {
-    @apply relative w-full;
+    @apply relative w-full overflow-hidden;
   }
 
   .sectionEven {
@@ -117,8 +117,38 @@
     @apply card justify-end;
   }
 
+  .sm-card-img-even {
+    @apply w-full;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 120px), 0 100%);
+  }
+
+  .sm-card-img-uneven {
+    @apply w-full;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 120px));
+  }
+
+  .card-img {
+    @apply w-full;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .sm-card-description {
+    @apply w-full bg-dark-secondary rounded mt-[-120px] pt-[120px];
+  }
+
+  .sm-card-description-even {
+    @apply sm-card-description;
+    clip-path: polygon(0 120px, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .sm-card-description-uneven {
+    @apply sm-card-description;
+    clip-path: polygon(0 0, 100% 120px, 100% 100%, 0 100%);
+  }
+  
   .card-description {
     @apply lg:absolute lg:w-[45%] bg-dark-secondary rounded;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
   .card-description-even {

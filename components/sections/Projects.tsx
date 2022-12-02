@@ -50,9 +50,13 @@ const Projects = ({ content }: Props) => {
                 <h3 className="sectionTitle">{content.title}</h3>
                 <div className='lg:w-full md:w-[65%] sm:w-[75%] w-[full] m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
-                        <div>
+                        <motion.div 
+                          key={index} 
+                          layoutId={project.id} 
+                          onClick={() => setSelected(project)}
+                        >
                             <ProjectCard project={project} index={index} />
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
