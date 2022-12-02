@@ -34,11 +34,11 @@
   }
 
   .projects {
-    @apply contentStyle max-w-[1200px];
+    @apply contentStyle max-w-[1300px];
   }
   
   .contact {
-    @apply contentStyle max-w-[1000px] pb-[200px];
+    @apply contentStyle max-w-[1100px] pb-[200px];
   }
 
   .sectionHead {
@@ -106,7 +106,7 @@
   }
 
   .card {
-    @apply lg:flex items-center my-12 w-full;
+    @apply relative lg:flex lg:items-center my-12 w-full;
   }
 
   .card-even {
@@ -118,18 +118,19 @@
   }
 
   .sm-card-img-even {
-    @apply w-full;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 120px), 0 100%);
   }
 
   .sm-card-img-uneven {
-    @apply w-full;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 120px));
   }
 
   .card-img {
-    @apply w-full;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .card-img-uneven {
+    @apply card-img right-0;
   }
 
   .sm-card-description {
@@ -147,16 +148,16 @@
   }
   
   .card-description {
-    @apply lg:absolute lg:w-[45%] bg-dark-secondary rounded;
+    @apply lg:absolute lg:w-[45%] lg:mt-0 lg:pt-0 bg-dark-secondary;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
   .card-description-even {
-    @apply card-description right-8;
+    @apply card-description right-0;
   }
 
   .card-description-uneven {
-    @apply card-description left-8;
+    @apply card-description left-0;
   }
 }
 
