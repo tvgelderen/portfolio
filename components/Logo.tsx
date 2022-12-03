@@ -10,10 +10,8 @@ const Logo = ({ color }: Props) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
-  console.log(currentTheme)
-
   return (
-    <svg viewBox="0 0 300 109" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[160px] md:w-[190px] lg:w-[240px] pt-1">
+    <svg viewBox="0 0 300 109" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[150px] md:w-[190px] pt-1">
       <motion.path 
         initial='hidden'
         animate='visible'
@@ -24,7 +22,7 @@ const Logo = ({ color }: Props) => {
           visible: {
             pathLength: 1,
             transition: {
-              duration: 5,
+              duration: 4,
             }
           }
         }} 

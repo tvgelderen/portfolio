@@ -23,7 +23,6 @@ const Hero = ({ content }: Props) => {
               height={1440}
               className="absolute w-full h-screen object-cover object-center"
             />
-            <div className='absolute top-0 left-0 right-0 bottom-0 bg-black/5 dark:bg-black/10' />
 
             <div className='relative text-[#202020] z-[2] mb-[15rem]'>
                 <div className="w-full max-w-[440px] md:max-w-[660px] m-auto flex-row justify-center text-center overflow-visible">

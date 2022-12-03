@@ -14,11 +14,13 @@ import ThemeChanger from "./ThemeChanger"
 import Logo from "./Logo"
 
 const Navbar = () => {
+    const [currentIdx, setCurrentIdx] = useState<number>(-1);
+    const [loaded, setLoaded] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
     const [logo, setLogo] = useState<string>('');
     const [color, setColor] = useState<string>('bg-transparent');
-    const [textColor, setTextColor] = useState<string>('white');
     const [shadow, setShadow] = useState<string>('');
+    const textColor = 'text-[#121212] dark:text-[#eeeeee]';
     
     const { systemTheme, theme } = useTheme();
     const currentTheme = theme === 'system' ? systemTheme : theme;
@@ -36,6 +38,7 @@ const Navbar = () => {
             setLanguage('nl');
 
         setLogo(currentTheme === 'light' ? 'black' : 'white');
+        setLoaded(true);
     }, [])
 
     useEffect(() => {
@@ -49,12 +52,10 @@ const Navbar = () => {
         const changeColor = () => {            
             if (window.scrollY >= 90) {
                 setColor('bg-light-secondary dark:bg-dark-primary');
-                setTextColor('#121212');
                 setShadow('shadow-sm');
                 setLogo('#af35dd')
             } else {
                 setColor('bg-transparent');
-                setTextColor('text-[#121212] dark:text-[#eeeeee]');
                 setShadow('');
                 setLogo(currentTheme === 'light' ? 'black' : 'white');
             }
@@ -66,96 +67,76 @@ const Navbar = () => {
     }, [currentTheme]);
 
     return (
-        <div className={`fixed left-0 top-0 w-full z-10 md:pr-2 ease-in duration-300 shadow-dark-100 dark:shadow-black ${shadow} ${color}`}>
+        <div className={`fixed left-0 top-0 w-full z-10 md:pr-2 shadow-dark-100 dark:shadow-black ${shadow} ${color}`}>
             <div className="relative w-full">
-                <div className=" max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
-                    <motion.div
-                      initial='hidden'
-                      animate='visible'
-                      variants={{
-                        hidden: { y: -100 },
-                        visible: { y: 0 }
-                      }}
-                      className='lg:mx-4 mx-2'
-                    >
+                <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
+                    <div className='lg:mx-4 mx-2'>
                         <Link href='/'>
                             <Logo color={logo} />
                         </Link>
-                    </motion.div>
-                    <motion.ul 
-                      className={`hidden md:flex h-full uppercase lg:pt-7 ${textColor}`}
-                      initial='hidden'
-                      animate='visible'
-                      variants={{
-                        hidden: { y: -100 },
-                        visible: {
-                            y: 0,
-                            transition: {
-                                delayChildren: 0.5,
-                                staggerChildren: 0.25
-                            }
-                        }
-                      }}
-                    >
-                        {navItems.map(item => {
-                            return (
-                                <motion.li 
-                                  key={item.id}
-                                  variants={{
-                                    hidden: { y: -100 },
-                                    visible: { y: 0 }
-                                  }}
-                                >
-                                    <motion.a
-                                      className={`lg:px-4 md:px-[8px] border-b-4 border-transparent cursor-pointer ${shadow === '' ? 'lg:pt-[17px] md:pt-[15px] lg:pb-[14px] md:pb-[12px]' : 'hover:border-light-theme/80 dark:hover:border-dark-theme/80 hover:text-gray-500 lg:py-[27px] md:py-[21px]'}`}
-                                      onClick={() => {
-                                        if (document.getElementById(item.id))
-                                            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                        else
-                                        {
-                                            router.push(`/${item.path}`);
-                                            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                        }
-                                      }}
-                                      whileHover={shadow === '' ? { background: "linear-gradient(90deg, rgba(123, 47, 247, 0.2), rgba(241, 7, 163, 0.2))" } : {}}
-                                    >
-                                        {item.name}
-                                    </motion.a>
-                                </motion.li>
-                            )}
-                        )}
-                        <motion.li 
-                          initial='hidden'
-                          animate='visible'
-                          variants={{
-                            hidden: { y: -100 },
-                            visible: { y: 0, transition: { delay: 0.25 * (navItems.length + 2 ) } }
-                          }}
-                          className='md:mx-3 lg:mx-2 pr-4'
-                        >
-                            <ThemeChanger />
-                        </motion.li>
-                        <motion.li 
-                          initial='hidden'
-                          animate='visible'
-                          variants={{
-                            hidden: { y: -100 },
-                            visible: { y: 0, transition: { delay: 0.25 * (navItems.length + 3 ) } }
-                          }}
-                          className="lg:mb-6 md:mt-[-6px] lg:mx-4 mx-2"
-                        >
-                            <LanguageSelector />
-                        </motion.li>
-                    </motion.ul>
+                    </div>
+                    <ul className={`hidden lg:flex h-full uppercase border-light-theme ${textColor}`}>
+                        {navItems.map((item, index) => {
+                            if (loaded) {
+                                const width = document?.getElementById(item.id)?.offsetWidth;
 
-                    <div className="flex justify-between md:hidden">
+                                return (
+                                    <motion.li 
+                                    key={item.id} 
+                                    className="m-4"
+                                    onHoverStart={() => setCurrentIdx(index)}
+                                    onHoverEnd={() => setCurrentIdx(-1)}
+                                    >
+                                        <a
+                                        id={item.id}
+                                        className={`cursor-pointer`}
+                                        onClick={() => {
+                                            if (document.getElementById(item.id))
+                                                document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                            else
+                                            {
+                                                router.push(`/${item.path}`);
+                                                document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                            }
+                                        }}
+                                        >
+                                            {item.name}
+                                            <AnimatePresence>
+                                                {index === currentIdx &&
+                                                    <svg height="3px" viewBox={`0 0 ${width !== undefined ? width / 3 : 0} 1`} xmlns="http://www.w3.org/2000/svg" className="absolute">
+                                                        <motion.line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(203, 36, 255, 0.6)" strokeWidth={3}
+                                                        initial="hidden"
+                                                        animate="visible"
+                                                        exit="hidden"
+                                                        variants={{
+                                                            hidden: { pathLength: 0, transition: { duration: 0.5 } },
+                                                            visible: { pathLength: 1, transition: { duration: 0.5 }}
+                                                        }}
+                                                        />
+                                                    </svg>
+                                                }
+                                            </AnimatePresence>
+                                        </a>
+                                    </motion.li>
+                                )}
+                            }
+                        )}
+                        <li className='md:mx-3 lg:mx-2 mt-[18px]' >
+                            <ThemeChanger />
+                        </li>
+                        <li className="mt-3 mx-4" >
+                            <LanguageSelector />
+                        </li>
+                    </ul>
+
+                    <div className="flex justify-between lg:hidden">
                         <motion.div 
-                          className={`mt-[1px] mr-6 z-10 ${textColor}`}
+                          className={`mt-[3px] mr-2 z-10 ${textColor}`}
                           initial='hidden'
                           animate='visible'
                           variants={{
                             hidden: { y: -100 },
-                            visible: { y: 0, transition: { delay: 0.25 } }
+                            visible: { y: 0 }
                           }}
                         >
                             {!open && <ThemeChanger />}
@@ -167,22 +148,22 @@ const Navbar = () => {
                           animate='visible'
                           variants={{
                             hidden: { y: -100 },
-                            visible: { y: 0, transition: { delay: 0.5 } }
+                            visible: { y: 0 }
                           }}
                         >
-                            {!open && <AiOutlineMenu size={22} />}
+                            {!open && <AiOutlineMenu size={22} className="w-5 sm:w-6 md:h-6 md:ml-1" />}
                         </motion.div>
                     </div>
 
                     {open && (
-                        <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/50" />
+                        <div className="fixed lg:hidden left-0 top-0 w-full h-screen bg-black/50" />
                     )}
                     
-                    <div className="flex fixed md:hidden left-0 top-0">
+                    <div className="flex fixed lg:hidden left-0 top-0">
                         <AnimatePresence>
                             {open && (
                                 <motion.div 
-                                    className="flex relative md:hidden left-0 top-0 flex-col w-[280px] sm:w-[320px] h-screen bg-white dark:bg-dark-primary px-3 sm:px-4 py-1"
+                                    className="flex relative left-0 top-0 flex-col w-[280px] sm:w-[320px] h-screen bg-white dark:bg-dark-primary px-3 sm:px-4 py-1"
                                     initial={{ x: -320 }}
                                     animate={{ x: 0 }}
                                     exit={{ x: -320 }}

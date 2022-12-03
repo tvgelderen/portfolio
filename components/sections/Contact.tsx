@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -95,15 +95,15 @@ const Contact = ({ content }: Props) => {
                     </div>
                     <div className='col-span-1 px-2 lg:px-4 pt-6 lg:pt-2'>
                         <h4 className='font-semibold'>{content.contact_info}</h4>
-                        <div className='flex justiyf-center items-center'>
+                        <div className='flex justify-center items-center'>
                             <HiOutlinePhone size={24} />
                             <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; +31 6 3808 4195</p>
                         </div>
-                        <div className='flex justiyf-center items-center'>
+                        <div className='flex justify-center items-center'>
                             <AiOutlineMail size={24} />
                             <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; thvangelderen@gmail.com</p>
                         </div>
-                        <div className='flex justiyf-center items-center'>
+                        <div className='flex justify-center items-center'>
                             <HiOutlineLocationMarker size={24} />
                             <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; Boeijengastrjitte 18D, 8627SG Gauw</p>
                         </div>

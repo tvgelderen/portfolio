@@ -42,7 +42,7 @@
   }
 
   .sectionHead {
-    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-light-theme dark:text-dark-theme pb-[8px] md:pb-3 border-b-2 border-[#adadad] dark:border-dark-600;
+    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-light-theme dark:text-dark-theme pb-[8px] md:pb-3 border-b-2 border-[#adadad] dark:border-dark-600 hover:dark:border-dark-600;
   }
 
   .sectionTitle {
@@ -85,11 +85,11 @@
     transition: 200ms;
     color: #888888;
     line-height: 1;
-    left: 6px;
+    left: 4px;
   }
 
   .input-container:focus-within .input-label {
-    transform: translate(0, -10px) scale(0.8);
+    transform: translate(0, -12px) scale(0.8);
     color: #888888;
   }
 
@@ -97,11 +97,9 @@
     position: absolute;
     pointer-events: none;
     transform-origin: top left;
-    transition: 200ms;
-    color: #888888;
     line-height: 1;
-    left: 6px;
-    transform: translate(0, -10px) scale(0.8);
+    left: 4px;
+    transform: translate(0, -12px) scale(0.8);
     color: #888888;
   }
 

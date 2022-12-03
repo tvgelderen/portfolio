@@ -26,33 +26,13 @@ const ThemeChanger = () => {
   }
 
   return (
-    <div className='fixed cursor-pointer' onClick={toggleTheme}>
-      <AnimatePresence>
+    <div className='cursor-pointer' onClick={toggleTheme}>
         {loaded && currentTheme === 'dark' &&
-          <motion.div
-            initial='hidden'
-            animate='visible'
-            exit='exit'
-            variants={variants}
-            className='absolute'
-          >
-            <BsFillSunFill size={20} />
-          </motion.div>
+          <BsFillSunFill size={18} className='w-4 sm:w-5 md:w-6' />
         }
-      </AnimatePresence>
-      <AnimatePresence>
         {loaded && currentTheme === 'light' &&
-          <motion.div
-            initial='hidden'
-            animate='visible'
-            exit='exit'
-            variants={variants}
-            className='absolute'
-          >
-            <BsFillMoonFill size={20} />
-          </motion.div>
+          <BsFillMoonFill size={18} className='w-4 sm:w-5 md:h-5' />
         }
-      </AnimatePresence>
     </div>
   )
 }
