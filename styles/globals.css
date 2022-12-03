@@ -49,12 +49,29 @@
     @apply uppercase text-center font-semibold tracking-[6px] pt-3;
   }
 
-  .button {
+  .button-primary {
     @apply flex justify-center items-center;
-    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.3), rgba(241, 7, 163, 0.3));
+    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.5), rgba(241, 7, 163, 0.5));
   }
 
-  .button:hover {
+  .button-primary:hover {
+    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.9), rgba(241, 7, 163, 0.9));
+  }
+
+  .button-secondary-bg {
+    @apply rounded p-[2px];
+    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.5), rgba(241, 7, 163, 0.5));
+  }
+
+  .button-secondary-bg:hover {
+    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.75), rgba(241, 7, 163, 0.75));
+  }
+
+  .button-secondary {
+    @apply flex justify-center items-center rounded dark:bg-dark-secondary px-2 py-1 md:px-[12px] md:py-[6px];
+  }
+
+  .button-secondary:hover {
     background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.75), rgba(241, 7, 163, 0.75));
   }
 
@@ -132,7 +149,7 @@
   }
 
   .sm-card-description {
-    @apply w-full bg-dark-secondary rounded mt-[-120px] pt-[120px];
+    @apply w-full bg-dark-secondary rounded mt-[-120px] pt-[98px] pb-2 px-2;
   }
 
   .sm-card-description-even {
@@ -146,7 +163,7 @@
   }
   
   .card-description {
-    @apply absolute w-[45%] rounded bg-light-secondary dark:bg-dark-secondary;
+    @apply absolute w-[50%] xl:w-[45%] rounded bg-light-secondary dark:bg-dark-secondary;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 

@@ -104,7 +104,7 @@ const Navbar = () => {
                                             <AnimatePresence>
                                                 {index === currentIdx &&
                                                     <svg height="3px" viewBox={`0 0 ${width !== undefined ? width / 3 : 0} 1`} xmlns="http://www.w3.org/2000/svg" className="absolute">
-                                                        <motion.line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(203, 36, 255, 0.6)" strokeWidth={3}
+                                                        <motion.line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(203, 36, 255, 0.75)" strokeWidth={3}
                                                         initial="hidden"
                                                         animate="visible"
                                                         exit="hidden"

@@ -54,7 +54,7 @@ const ProjectCard = ({ project, index }: Props) => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={imgVariants}
-              className={`lg:hidden rounded object-cover object-left-top lg:w-[60%] ${isEven ? 'sm-card-img-even lg:card-img' : 'sm-card-img-uneven lg:card-img lg:card-img-uneven'}`}
+              className={`lg:hidden rounded object-cover object-left-top ${isEven ? 'sm-card-img-even lg:card-img' : 'sm-card-img-uneven lg:card-img lg:card-img-uneven'}`}
             />
             <motion.div 
               className={`lg:hidden ${isEven ? 'sm-card-description-even' : 'sm-card-description-uneven'}`}

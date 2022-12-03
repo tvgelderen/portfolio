@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -88,7 +88,7 @@ const Contact = ({ content }: Props) => {
                                 />
                                 <label className={values.message ? 'input-label-float' : 'input-label'}>{content.message}</label>
                             </div>
-                            <button type='submit' className='button w-full mt-4 px-4 py-2 rounded-lg'> 
+                            <button type='submit' className='button-primary w-full mt-4 px-4 py-2 rounded-lg'> 
                                 {content.send}
                             </button>
                         </form>
