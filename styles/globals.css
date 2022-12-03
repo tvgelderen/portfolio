@@ -30,7 +30,7 @@
   }
 
   .skills {
-    @apply contentStyle max-w-[700px];
+    @apply contentStyle max-w-[1000px];
   }
 
   .projects {

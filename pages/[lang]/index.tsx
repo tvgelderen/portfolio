@@ -37,23 +37,21 @@ export default function Home() {
         <Hero content={heroContent} />
       </section>
 
-      <div className=''>
-        <section id='about' className=''>
-          <About content={aboutContent} />
-        </section>
-        
-        <section id='skills' className=''>
-          <Skills content={skillsContent} />
-        </section>
+      <section id='about' className=''>
+        <About content={aboutContent} />
+      </section>
+      
+      <section id='skills' className=''>
+        <Skills content={skillsContent} />
+      </section>
 
-        <section id='projects' className=''>
-          <Projects content={projectsContent} />
-        </section>
-        
-        <section id='contact' className=''>
-          <Contact content={contactContent} />
-        </section>
-      </div>
+      <section id='projects' className=''>
+        <Projects content={projectsContent} />
+      </section>
+      
+      <section id='contact' className=''>
+        <Contact content={contactContent} />
+      </section>
     </div>
   )
 }

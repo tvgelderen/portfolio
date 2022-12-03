@@ -40,14 +40,18 @@ const Skills = ({ content }: Props) => {
                 {SkillData.slice(i, i + step).map((skill, index) => (
                     <div 
                       key={skill.name}
-                      className='rounded-full my-4 mx-8 sm:p-3 hover:scale-125 duration-300 cursor-pointer flex justify-center group'
+                      className='m-4 hover:scale-125 duration-300 cursor-pointer justify-center'
                       onClick={() => setSelectedId(i + index)}  
                     >
-                        <img 
-                          src={skill.image}
-                          className='bg-cover h-[55px] w-[55px] sm:h-[70px] sm:w-[70px] object-contain'
-                        />
-                        <p className='absolute hidden group-hover:block truncate text-sm md:text-base mt-16 sm:mt-[75px] lg:mt-[85px] px-2 py-1 rounded-lg bg-black/90'>{skill.name}</p>
+                        <div className='p-6 rounded-t dark:bg-dark-secondary'>
+                            <img 
+                              src={skill.image}
+                              className='h-[65px] w-[65px] sm:h-[80px] sm:w-[80px] object-contain'
+                            />
+                        </div>
+                        <div className='flex justify-center items-center p-2 rounded-b dark:bg-dark-tertiary'>
+                            <p className='lg:text-lg' style={{ fontWeight: 500 }}>{skill.name}</p>
+                        </div>
                     </div>
                 ))}
             </motion.div>
@@ -61,7 +65,7 @@ const Skills = ({ content }: Props) => {
             steps.push(i)
 
         return (
-            <div className='grid grid-cols-1 mt-4 md:mt-12 mb-2 md:mb-10'>
+            <div className='grid grid-cols-1 mt-4 mb-2 md:my-12'>
                 {steps.map(step => (
                     <span key={step}>
                         {GetRow(rowLen, step)}
