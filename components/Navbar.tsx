@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
 import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { RiContactsLine } from 'react-icons/ri'
@@ -17,9 +16,6 @@ const Navbar = () => {
     const [currentIdx, setCurrentIdx] = useState<number>(-1);
     const [loaded, setLoaded] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
-    const [logo, setLogo] = useState<string>('');
-    const [color, setColor] = useState<string>('bg-transparent');
-    const [shadow, setShadow] = useState<string>('');
     const textColor = 'text-[#121212] dark:text-[#eeeeee]';
     
     const { systemTheme, theme } = useTheme();
@@ -37,45 +33,19 @@ const Navbar = () => {
         else
             setLanguage('nl');
 
-        setLogo(currentTheme === 'light' ? 'black' : 'white');
         setLoaded(true);
     }, [])
 
-    useEffect(() => {
-        if (currentTheme === 'dark')
-            setLogo('white');
-        else
-            setLogo('black');
-    }, [currentTheme]);
-
-    useEffect(() => {
-        const changeColor = () => {            
-            if (window.scrollY >= 90) {
-                setColor('bg-light-secondary dark:bg-dark-primary');
-                setShadow('shadow-sm');
-                setLogo('#af35dd')
-            } else {
-                setColor('bg-transparent');
-                setShadow('');
-                setLogo(currentTheme === 'light' ? 'black' : 'white');
-            }
-        }
-
-        window.addEventListener('scroll', changeColor);
-
-        return () => window.removeEventListener('scroll', changeColor);
-    }, [currentTheme]);
-
     return (
-        <div className={`absolute left-0 top-0 w-full z-10 md:pr-2 shadow-dark-100 dark:shadow-black ${shadow} ${color}`}>
+        <div className='absolute left-0 top-0 w-full z-10 md:pr-2 shadow-dark-100 dark:shadow-black'>
             <div className="relative w-full">
                 <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                     <div className='lg:mx-4 mx-2'>
                         <Link href='/'>
-                            <Logo color={logo} />
+                            <Logo color='#cb24ff' animate='once' />
                         </Link>
                     </div>
-                    <ul className={`hidden lg:flex h-full uppercase border-light-theme ${textColor}`}>
+                    <ul className='hidden lg:flex h-full uppercase border-light-theme'>
                         {navItems.map((item, index) => {
                             if (loaded) {
                                 const width = document?.getElementById(item.id + 'navbar')?.offsetWidth;
@@ -94,12 +64,7 @@ const Navbar = () => {
                                             if (document.getElementById(item.id))
                                                 document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                                             else
-                                            {
                                                 router.push(`/${item.path}`);
-                                                document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                            }
-
-                                            console.log(document.getElementById("projects"))
                                           }}
                                         >
                                             {item.name}
@@ -171,13 +136,9 @@ const Navbar = () => {
                                     transition={{ stiffness: 5 }}
                                 >
                                     <div className="relative flex w-full items-center justify-between pb-1 border-b-2 dark:border-dark-600">
-                                        <Image 
-                                          src='/logos/logo_purple.png'
-                                          alt='logo'
-                                          width='190'  
-                                          height='50'
-                                          className="w-[140px] sm:w-[170px]"
-                                        />
+                                        <div className="w-[140px] sm:w-[170px]">
+                                            <Logo color='#cb24ff' animate='none' />
+                                        </div>    
                                         <div 
                                             className="mb-4 p-1 rounded-full shadow-md shadow-dark-400 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
                                             onClick={() => setOpen(false)}
@@ -194,24 +155,21 @@ const Navbar = () => {
 
                                                     return (
                                                         <motion.li
-                                                        key={item.id}
-                                                        className="py-2 sm:py-4"  
-                                                        onHoverStart={() => setCurrentIdx(index)}
-                                                        onHoverEnd={() => setCurrentIdx(-1)}>
+                                                          key={item.id}
+                                                          className="py-2 sm:py-4"  
+                                                          onHoverStart={() => setCurrentIdx(index)}
+                                                          onHoverEnd={() => setCurrentIdx(-1)}>
                                                             <a
-                                                                id={item.id + 'nav'}
-                                                                className="sm:text-xl cursor-pointer hover:text-dark-100"
-                                                                onClick={() => {
+                                                              id={item.id + 'nav'}
+                                                              className="sm:text-xl cursor-pointer hover:text-dark-100"
+                                                              onClick={() => {
                                                                 if (document.getElementById(item.id))
-                                                                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                                                  document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                                                                 else
-                                                                {
-                                                                    router.push(`/${item.path}`);
-                                                                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                                                }
+                                                                  router.push(`/${item.path}`);
 
                                                                 setOpen(false)
-                                                                }}
+                                                              }}
                                                             >
                                                                 {item.name}
                                                                 <AnimatePresence>
@@ -242,27 +200,31 @@ const Navbar = () => {
                                         <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">Get in touch</p>
                                         <div className="flex items-center justify-between w-full mb-2 px-2 sm:px-0">
                                             <a 
-                                            target="_blank"  
-                                            href="https://www.linkedin.com/in/timen-van-gelderen/"
-                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                              target="_blank"  
+                                              href="https://www.linkedin.com/in/timen-van-gelderen/"
+                                              className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
+                                            >
                                                 <BsLinkedin size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
-                                            target="_blank" 
-                                            href="https://github.com/TvGelderen"
-                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                              target="_blank" 
+                                              href="https://github.com/TvGelderen"
+                                              className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
+                                            >
                                                 <BsGithub size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
-                                            target="_blank" 
-                                            href="#"
-                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                              target="_blank" 
+                                              href="#"
+                                              className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
+                                            >
                                                 <AiOutlineMail size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
-                                            target="_blank" 
-                                            href="#"
-                                            className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110">
+                                              target="_blank" 
+                                              href="#"
+                                              className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
+                                            >
                                                 <RiContactsLine size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                         </div>

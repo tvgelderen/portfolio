@@ -3,17 +3,18 @@ import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 
 type Props = {
-    color: string
+    color: string,
+    animate: string
 }
 
-const Logo = ({ color }: Props) => {
+const Logo = ({ color, animate }: Props) => {
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <svg viewBox="0 0 300 109" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[150px] md:w-[190px] pt-1">
       <motion.path 
-        initial='hidden'
+        initial={animate === 'none' ? 'visible' : 'hidden'}
         animate='visible'
         variants={{
           hidden: {

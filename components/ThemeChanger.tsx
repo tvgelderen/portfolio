@@ -16,23 +16,30 @@ const ThemeChanger = () => {
   const variants = {
     hidden: {
       y: -200,
+      transition: { stiffness: 10 }
     },
     visible: {
       y: 0,
-    },
-    exit: {
-      y: -200,
+      transition: { stiffness: 10 }
     }
   }
 
   return (
-    <div className='cursor-pointer' onClick={toggleTheme}>
+    <div className='cursor-pointer mr-4' onClick={toggleTheme}>
+      <AnimatePresence exitBeforeEnter>
         {loaded && currentTheme === 'dark' &&
-          <BsFillSunFill size={18} className='w-4 sm:w-5 md:w-6' />
+          <motion.div className='absolute' initial='hidden' animate='visible' exit='hidden' variants={variants}>
+            <BsFillSunFill size={18} className='w-4 sm:w-5 md:w-6' />
+          </motion.div>
         }
+      </AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         {loaded && currentTheme === 'light' &&
-          <BsFillMoonFill size={18} className='w-4 sm:w-5 md:h-5' />
+          <motion.div className='absolute' initial='hidden' animate='visible' exit='hidden' variants={variants}>
+            <BsFillMoonFill size={18} className='w-[14px] sm:w-[18px] md:h-[18px]' />
+          </motion.div>
         }
+      </AnimatePresence>
     </div>
   )
 }

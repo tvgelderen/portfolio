@@ -48,10 +48,10 @@ const Contact = ({ content }: Props) => {
             <div className="contact">
                 <p className="sectionHead">{content.head}</p>
                 <h3 className="sectionTitle">{content.title}</h3>
-                <div className='grid grid-cols-1 lg:grid-cols-3'>
-                    <div className='col-span-2'>
+                <div className='grid grid-cols-1 lg:grid-cols-5'>
+                    <div className='col-span-3'>
                         <form onSubmit={handleSubmit(sendMail)} className='w-full max-w-[900px] m-auto'>
-                            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
+                            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4'>
                                 <div className='sm:mt-4 input-container'>
                                     <input 
                                       type='text'
@@ -65,7 +65,7 @@ const Contact = ({ content }: Props) => {
                                       type='text'
                                       {...register('email', { required: true, pattern: {
                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                        message: "invalid email address"
+                                        message: "Invalid email address"
                                       } })}
                                       className={`${errors.email ? 'input-error' : 'input'}`}
                                     />
@@ -93,17 +93,17 @@ const Contact = ({ content }: Props) => {
                             </button>
                         </form>
                     </div>
-                    <div className='col-span-1 px-2 lg:px-4 pt-6 lg:pt-2'>
+                    <div className='col-span-1 lg:col-span-2 px-2 lg:px-4 pt-6 lg:pt-2'>
                         <h4 className='font-semibold'>{content.contact_info}</h4>
-                        <div className='flex justify-center items-center'>
+                        <div className='flex items-center'>
                             <HiOutlinePhone size={24} />
-                            <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; +31 6 3808 4195</p>
+                            <p className='dark:text-[#b9b9b9] py-4'>&nbsp; +31 6 3808 4195</p>
                         </div>
-                        <div className='flex justify-center items-center'>
+                        <div className='flex items-center'>
                             <AiOutlineMail size={24} />
-                            <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; thvangelderen@gmail.com</p>
+                            <p className='dark:text-[#b9b9b9] py-4'>&nbsp; thvangelderen@gmail.com</p>
                         </div>
-                        <div className='flex justify-center items-center'>
+                        <div className='flex items-center'>
                             <HiOutlineLocationMarker size={24} />
                             <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; Boeijengastrjitte 18D, 8627SG Gauw</p>
                         </div>
