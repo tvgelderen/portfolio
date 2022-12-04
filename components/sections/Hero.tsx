@@ -5,9 +5,6 @@ import { RiContactsLine } from 'react-icons/ri'
 
 import { motion } from 'framer-motion'
 import Typewriter from 'typewriter-effect'
-import Image from "next/image";
-
-const backgroundURL = "/bg.png"
 
 type Props = {
   content: any
@@ -15,14 +12,7 @@ type Props = {
 
 const Hero = ({ content }: Props) => {
     return (
-        <div className='flex items-center justify-center h-screen bg-center bg-cover'>
-            <Image
-              src={backgroundURL}
-              alt=""
-              width={2560}
-              height={1440}
-              className="absolute w-full h-screen object-cover object-center"
-            />
+        <div className='flex items-center justify-center h-screen bg-center bg-cover' style={{ backgroundImage: `url(/img/bg.png)` }}>
 
             <div className='relative text-[#202020] z-[2] mb-[15rem]'>
                 <div className="w-full max-w-[440px] md:max-w-[660px] m-auto flex-row justify-center text-center overflow-visible">

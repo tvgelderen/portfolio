@@ -5,6 +5,7 @@ export const ProjectData = [
         images: [
             '/img/projects/netflix_home.png',
             '/img/projects/netflix_profile.png',
+            '/img/projects/netflix_stripe.png',
             '/img/projects/netflix_logged-out.png',
         ],
         githubURL: "https://github.com/TvGelderen/netflix-clone",
@@ -59,10 +60,10 @@ export const ProjectData = [
         id: "crypto-watch",
         name: "Crypto Watch",
         images: [
-            '/img/projects/cryptowatch_home.png',
-            '/img/projects/cryptowatch_list.png',
-            '/img/projects/cryptowatch_chartsearch.png',
-            '/img/projects/cryptowatch_coinsearch.png' 
+            '/img/projects/crypto-watch_home.png',
+            '/img/projects/crypto-watch_list.png',
+            '/img/projects/crypto-watch_chartsearch.png',
+            '/img/projects/crypto-watch_coinpage.png' 
         ],
         githubURL: "https://github.com/TvGelderen/crypto-watch",
         liveURL: "https://crypto-watch-tvgelderen.vercel.app/",
