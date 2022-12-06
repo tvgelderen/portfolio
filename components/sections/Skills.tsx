@@ -40,16 +40,16 @@ const Skills = ({ content }: Props) => {
                 {SkillData.slice(i, i + step).map((skill, index) => (
                     <div 
                       key={skill.name}
-                      className='m-4 hover:scale-125 duration-300 cursor-pointer justify-center'
+                      className='m-4 hover:scale-110 duration-300 justify-center'
                       onClick={() => setSelectedId(i + index)}  
                     >
-                        <div className='p-6 rounded-t dark:bg-dark-secondary'>
+                        <div className='p-6 rounded-t bg-[#1121e5]/30 dark:bg-dark-secondary'>
                             <img 
                               src={skill.image}
                               className='h-[65px] w-[65px] sm:h-[80px] sm:w-[80px] object-contain'
                             />
                         </div>
-                        <div className='flex justify-center items-center p-2 rounded-b dark:bg-dark-tertiary'>
+                        <div className='flex justify-center items-center p-2 rounded-b bg-[#1121e5]/60 dark:bg-dark-tertiary'>
                             <p className='lg:text-lg' style={{ fontWeight: 500 }}>{skill.name}</p>
                         </div>
                     </div>
@@ -87,36 +87,6 @@ const Skills = ({ content }: Props) => {
                 <div className='hidden md:block'>
                     {ShowRows(4)}
                 </div>
-
-                <AnimatePresence>
-                    {selectedId !== -1 && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="fixed z-[10] top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black/30 dark:bg-black/50"
-                          onClick={() => setSelectedId(-1)}
-                        >
-                            <div 
-                            className='bg-light-secondary dark:bg-dark-secondary p-6 rounded-xl' 
-                            onClick={(event) => event.stopPropagation()}
-                            >
-                                <div className='flex justify-between items-center'>
-                                    <Image
-                                    src={SkillData[selectedId].image}
-                                    alt={SkillData[selectedId].name}
-                                    width='120'
-                                    height='120'
-                                    className='pr-6'
-                                    />
-                                    <div className='border-l-2 border-dark-500 pl-6'>
-                                        <p className='text-3xl md:text-4xl'>{SkillData[selectedId].name}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
         </div>
     )

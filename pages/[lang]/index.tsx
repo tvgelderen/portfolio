@@ -49,7 +49,7 @@ export default function Home() {
 
       <section id='hero' className='lg:cursor-none'>
         <Hero content={heroContent} />
-        <div className='hidden lg:block cursor-circle'>
+        <div className='hidden lg:block cursor-circle overflow-hidden'>
           <Hero content={heroContent} />
           <div className='dot' />
         </div>

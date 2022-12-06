@@ -28,7 +28,7 @@ const Hero = ({ content }: Props) => {
     <div className='flex items-center justify-center h-screen bg-center bg-cover bg-light-background dark:bg-dark-background' style={{ backgroundImage: `url(/img/bg.png)` }}>
       <Navbar />
       <div className='relative text-[#202020] z-[2]'>
-          <div className="w-full max-w-[440px] md:max-w-[660px] m-auto flex-row justify-center text-center overflow-visible">
+          <div className="w-full max-w-[440px] md:max-w-[720px] m-auto flex-row justify-center text-center overflow-visible">
               <motion.h3 
                 initial={{
                   y: -250,
@@ -43,11 +43,11 @@ const Hero = ({ content }: Props) => {
                 transition={{
                   duration: 2.1
                 }}
-                className='text-4xl sm:text-5xl md:text-6xl font-bold'
+                className='text-4xl sm:text-5xl md:text-6xl lg:text-[6vw] xl:text-[5vw] 2xl:text-[3.8vw]'
               >
                   {content.hello} <span className="text-light-theme dark:text-dark-theme">Timen</span>.
               </motion.h3>
-              <div className="mt-4">
+              <div className="mt-4 font-[500] text-lg sm:text-xl md:text-2xl lg:text-[2.6vw] xl:text-[2.1vw] 2xl:text-[1.6vw]">
                 I'm a software developer.
               </div>
           </div>
