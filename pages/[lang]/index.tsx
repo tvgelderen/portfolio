@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 
 import Hero from '../../components/sections/Hero'
@@ -26,6 +27,19 @@ export default function Home() {
   const projectsContent = projects.get(language) === undefined ? projects.get('en') : projects.get(language);
   const contactContent = contact.get(language) === undefined ? contact.get('en') : contact.get(language);
 
+  useEffect(() => {
+    const doc = document.documentElement;
+    
+    const updateCoordinates = (event: any) => {
+      doc.style.setProperty('--x', event.clientX + 'px');
+      doc.style.setProperty('--y', event.clientY + 'px');
+    }
+
+    window.addEventListener('mousemove', updateCoordinates);
+
+    return () => window.removeEventListener('mousemove', updateCoordinates);
+  }, []);
+
   return (
     <div className='h-full'>
       <Head>
@@ -33,8 +47,12 @@ export default function Home() {
         <link rel="icon" href="img/icons/favicon.ico" />
       </Head>
 
-      <section id='hero' className=''>
+      <section id='hero' className='lg:cursor-none'>
         <Hero content={heroContent} />
+        <div className='hidden lg:block cursor-circle'>
+          <Hero content={heroContent} />
+          <div className='dot' />
+        </div>
       </section>
 
       <section id='about' className=''>

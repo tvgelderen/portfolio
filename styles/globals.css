@@ -2,13 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --x: 50%;
+  --y: 50%;
+  --bg-grad-30: linear-gradient(45deg, rgba(123, 47, 247, 0.3), rgba(241, 7, 163, 0.3));
+  --bg-grad-50: linear-gradient(45deg, rgba(123, 47, 247, 0.5), rgba(241, 7, 163, 0.5));
+  --bg-grad-75: linear-gradient(45deg, rgba(123, 47, 247, 0.75), rgba(241, 7, 163, 0.75));
+  --bg-grad-90: linear-gradient(45deg, rgba(123, 47, 247, 0.9), rgba(241, 7, 163, 0.9));
+}
+
 @layer components {
+  .hero {
+    @apply absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center;
+  }
+
+  .cursor-circle {
+    @apply absolute top-0 left-0 right-0 bottom-0 z-[2];
+    filter: invert(100%);
+    transition: 0.1s;
+    clip-path: circle(60px at var(--x) var(--y));
+  }
+
+  .dot {
+    @apply absolute rounded-full p-[2px] bg-black dark:bg-white;
+    left: var(--x);
+    top: var(--y);
+  }
+
+  .hero-heading {
+    @apply text-[8vw] sm:text-[7vw] md:text-[6vw] 2xl:text-[4vw];
+  }
+
+  .hero-subheading {
+    @apply text-[5vw] lg:text-[2vw] font-[400] lg:py-4;
+  }
+
   .section {
     @apply relative w-full overflow-hidden;
   }
 
   .sectionEven {
-    @apply section bg-light-background dark:bg-dark-primary;
+    @apply section bg-light-theme/5 dark:bg-dark-primary;
     clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 calc(100% - 5vw));
   }
 
@@ -17,12 +51,12 @@
   }
 
   .sectionLast {
-    @apply section bg-light-background dark:bg-dark-primary;
+    @apply section bg-light-theme/5 dark:bg-dark-primary;
     clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
   }
 
   .contentStyle {
-    @apply relative w-full m-auto lg:py-[104px] md:py-[88px] py-[70px] px-8;
+    @apply relative w-full m-auto lg:py-[104px] md:py-[88px] py-[70px] px-4 lg:px-8;
   }
   
   .about {
@@ -38,7 +72,7 @@
   }
   
   .contact {
-    @apply contentStyle max-w-[1100px] pb-[200px];
+    @apply contentStyle max-w-[1200px] pb-[200px];
   }
 
   .sectionHead {
@@ -51,43 +85,43 @@
 
   .button-primary {
     @apply flex justify-center items-center;
-    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.5), rgba(241, 7, 163, 0.5));
+    background-image: var(--bg-grad-50);
   }
 
   .button-primary:hover {
-    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.9), rgba(241, 7, 163, 0.9));
+    background-image: var(--bg-grad-90);
   }
 
   .button-secondary-bg {
     @apply rounded p-[2px];
-    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.5), rgba(241, 7, 163, 0.5));
+    background-image: var(--bg-grad-50);
   }
 
   .button-secondary-bg:hover {
-    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.75), rgba(241, 7, 163, 0.75));
+    background-image: var(--bg-grad-75);
   }
 
   .button-secondary {
-    @apply flex justify-center items-center rounded dark:bg-dark-secondary px-2 py-1 md:px-[12px] md:py-[6px];
+    @apply flex justify-center items-center rounded-sm bg-light-secondary dark:bg-dark-secondary px-2 py-1 md:px-[12px] md:py-[6px];
   }
 
   .button-secondary:hover {
-    background-image: linear-gradient(45deg, rgba(123, 47, 247, 0.75), rgba(241, 7, 163, 0.75));
+    background-image: var(--bg-grad-75);
   }
 
   .input {
-    @apply border-b-2 py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary;
-    border-image-source: linear-gradient(45deg, rgba(123, 47, 247, 0.3), rgba(241, 7, 163, 0.3));
+    @apply border-b-2 py-2 px-1 focus:outline-none bg-transparent dark:bg-dark-primary;
+    border-image-source: var(--bg-grad-30);
     border-image-slice: 1;
   }
 
   .input:focus, :hover {
-    border-image-source: linear-gradient(90deg, rgba(123, 47, 247, 0.75), rgba(241, 7, 163, 0.75));
+    border-image-source: var(--bg-grad-75);
     transition-duration: 200ms;
   }
 
   .input-error {
-    @apply border-b-2 border-[red]/75 py-2 px-1 focus:outline-none bg-light-primary dark:bg-dark-primary;
+    @apply border-b-2 border-[red]/75 py-2 px-1 focus:outline-none bg-transparent dark:bg-dark-primary;
   }
 
   .input-container {

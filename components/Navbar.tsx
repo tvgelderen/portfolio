@@ -37,11 +37,11 @@ const Navbar = () => {
     }, [])
 
     return (
-        <div className='absolute left-0 top-0 w-full z-10 md:pr-2 shadow-dark-100 dark:shadow-black'>
+        <div className='absolute left-0 top-0 w-full md:pr-2 shadow-dark-100 dark:shadow-black'>
             <div className="relative w-full">
                 <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                     <div className='lg:mx-4 mx-2'>
-                        <Link href='/'>
+                        <Link href='/' className='lg:cursor-none'>
                             <Logo color='#cb24ff' animate='once' />
                         </Link>
                     </div>
@@ -53,13 +53,13 @@ const Navbar = () => {
                                 return (
                                     <motion.li 
                                       key={item.id} 
-                                      className="m-4"
+                                      className="m-4 group"
                                       onHoverStart={() => setCurrentIdx(index)}
                                       onHoverEnd={() => setCurrentIdx(-1)}
                                     >
                                         <a
                                           id={item.id + 'navbar'}
-                                          className='cursor-pointer hover:text-light-theme/75 hover:dark:text-dark-theme/75'
+                                          className='cursor-none group-hover:text-light-theme/75 group-hover:dark:text-dark-theme/75'
                                           onClick={() => {
                                             if (document.getElementById(item.id))
                                                 document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
@@ -95,7 +95,7 @@ const Navbar = () => {
                         </li>
                     </ul>
 
-                    <div className="flex justify-between lg:hidden">
+                    <div className="flex justify-between lg:hidden mt-[-4px]">
                         <motion.div 
                           className={`mt-[3px] mr-2 z-10 ${textColor}`}
                           initial='hidden'

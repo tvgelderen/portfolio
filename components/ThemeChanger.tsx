@@ -25,7 +25,7 @@ const ThemeChanger = () => {
   }
 
   return (
-    <div className='cursor-pointer mr-4' onClick={toggleTheme}>
+    <div className='cursor-pointer lg:cursor-none mr-4' onClick={toggleTheme}>
       <AnimatePresence exitBeforeEnter>
         {loaded && currentTheme === 'dark' &&
           <motion.div className='absolute' initial='hidden' animate='visible' exit='hidden' variants={variants}>
