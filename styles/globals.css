@@ -42,7 +42,7 @@
   }
 
   .sectionEven {
-    @apply section pt-[120px] bg-light-theme/5 dark:bg-dark-primary;
+    @apply section bg-light-theme/5 dark:bg-dark-primary;
     clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 calc(100% - 5vw));
   }
 
@@ -73,11 +73,11 @@
   }
 
   .projects {
-    @apply contentStyle max-w-[1300px];
+    @apply contentStyle max-w-[1300px] mt-[120px];
   }
   
   .contact {
-    @apply contentStyle max-w-[1200px] pb-[320px];
+    @apply contentStyle max-w-[1200px] pb-[280px];
   }
 
   .sectionHead {

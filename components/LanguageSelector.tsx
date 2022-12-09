@@ -25,7 +25,7 @@ const LanguageSelector = () => {
   }
 
   return (
-    <div className="selected-lang cursor-pointer lg:cursor-none flex justify-between mt-[3px]" onClick={toggleLanguage}>
+    <div className="selected-lang cursor-pointer flex justify-between mt-[3px]" onClick={toggleLanguage}>
         <img src={`/img/lang/${language}-flag.png`} alt='en' className="w-[24px] h-[24px] rounded-full object-cover" />
     </div>
   )
