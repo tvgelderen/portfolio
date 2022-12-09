@@ -42,7 +42,7 @@
   }
 
   .sectionEven {
-    @apply section bg-light-theme/5 dark:bg-dark-primary;
+    @apply section pt-[120px] bg-light-theme/5 dark:bg-dark-primary;
     clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 calc(100% - 5vw));
   }
 
@@ -50,8 +50,13 @@
     @apply section bg-light-background dark:bg-dark-background;
   }
 
-  .sectionLast {
-    @apply section bg-light-theme/5 dark:bg-dark-primary;
+  .sectionLastEven {
+    @apply sectionEven;
+    clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
+  }
+
+  .sectionLastUneven {
+    @apply sectionUneven;
     clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
   }
 
@@ -72,15 +77,11 @@
   }
   
   .contact {
-    @apply contentStyle max-w-[1200px] pb-[200px];
+    @apply contentStyle max-w-[1200px] pb-[320px];
   }
 
   .sectionHead {
-    @apply uppercase text-center text-lg sm:text-xl lg:text-2xl tracking-[12px] text-light-theme dark:text-dark-theme pb-[8px] md:pb-3 border-b-2 border-[#adadad] dark:border-dark-600 hover:dark:border-dark-600;
-  }
-
-  .sectionTitle {
-    @apply uppercase text-center font-semibold tracking-[6px] pt-3;
+    @apply uppercase text-center text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] tracking-[15px] text-light-theme dark:text-dark-theme;
   }
 
   .button-primary {
@@ -110,7 +111,7 @@
   }
 
   .input {
-    @apply border-b-2 py-2 px-1 focus:outline-none bg-transparent dark:bg-dark-primary;
+    @apply border-b-2 py-2 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
     border-image-source: var(--bg-grad-30);
     border-image-slice: 1;
   }
@@ -121,7 +122,7 @@
   }
 
   .input-error {
-    @apply border-b-2 border-[red]/75 py-2 px-1 focus:outline-none bg-transparent dark:bg-dark-primary;
+    @apply border-b-2 border-[red]/75 py-2 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
   }
 
   .input-container {

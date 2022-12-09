@@ -47,16 +47,12 @@ export default function Home() {
         <link rel="icon" href="img/icons/favicon.ico" />
       </Head>
 
-      <section id='hero' className='lg:cursor-none'>
+      <section id='hero'>
         <Hero content={heroContent} />
-        <div className='hidden lg:block cursor-circle overflow-hidden'>
+        {/* <div className='hidden lg:block cursor-circle overflow-hidden'>
           <Hero content={heroContent} />
           <div className='dot' />
-        </div>
-      </section>
-
-      <section id='about' className=''>
-        <About content={aboutContent} />
+        </div> */}
       </section>
       
       <section id='skills' className=''>
@@ -66,6 +62,10 @@ export default function Home() {
       <section id='projects' className=''>
         <Projects content={projectsContent} />
       </section>
+
+      {/* <section id='about' className=''>
+        <About content={aboutContent} />
+      </section> */}
       
       <section id='contact' className=''>
         <Contact content={contactContent} />

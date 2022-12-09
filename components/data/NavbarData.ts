@@ -12,11 +12,6 @@ export const NavbarData = (language:string) => {
 
     },
     {
-        id: "about",
-        name: navbar.get(language)?.about,
-        path: "/#about",
-    },
-    {
         id: "skills",
         name: navbar.get(language)?.skills,
         path: "/#skills",
@@ -26,6 +21,11 @@ export const NavbarData = (language:string) => {
         name: navbar.get(language)?.projects,
         path: "/#projects",
     },
+        // {
+        //     id: "about",
+        //     name: navbar.get(language)?.about,
+        //     path: "/#about",
+        // },
     {
         id: "contact",
         name: navbar.get(language)?.contact,

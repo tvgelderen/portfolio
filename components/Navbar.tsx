@@ -41,7 +41,7 @@ const Navbar = () => {
             <div className="relative w-full">
                 <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                     <div className='lg:mx-4 mx-2'>
-                        <Link href='/' className='lg:cursor-none'>
+                        <Link href='/'>
                             <Logo color='#cb24ff' animate='once' />
                         </Link>
                     </div>
@@ -53,13 +53,13 @@ const Navbar = () => {
                                 return (
                                     <motion.li 
                                       key={item.id} 
-                                      className="m-4 group"
+                                      className="p-4 group"
                                       onHoverStart={() => setCurrentIdx(index)}
                                       onHoverEnd={() => setCurrentIdx(-1)}
                                     >
                                         <a
                                           id={item.id + 'navbar'}
-                                          className='cursor-none group-hover:text-light-theme/75 group-hover:dark:text-dark-theme/75'
+                                          className='cursor-pointer group-hover:text-light-theme/75 group-hover:dark:text-dark-theme/75'
                                           onClick={() => {
                                             if (document.getElementById(item.id))
                                                 document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });

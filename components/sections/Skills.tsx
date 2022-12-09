@@ -76,10 +76,9 @@ const Skills = ({ content }: Props) => {
     }
 
     return (
-        <div className="sectionEven">
+        <div className="sectionUneven">
             <div className="skills">
                 <p className="sectionHead">{content.head}</p>
-                <h3 className="sectionTitle">{content.title}</h3>
 
                 <div className='md:hidden'>
                     {ShowRows(3)}

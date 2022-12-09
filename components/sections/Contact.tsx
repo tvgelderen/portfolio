@@ -44,11 +44,10 @@ const Contact = ({ content }: Props) => {
     const values = getValues();
 
     return (
-        <div className="sectionLast">
+        <div className="sectionLastUneven">
             <div className="contact">
                 <p className="sectionHead">{content.head}</p>
-                <h3 className="sectionTitle">{content.title}</h3>
-                <div className='grid grid-cols-1 lg:grid-cols-5'>
+                <div className='grid grid-cols-1 lg:grid-cols-5 pt-12'>
                     <div className='col-span-3'>
                         <form onSubmit={handleSubmit(sendMail)} className='w-full max-w-[900px] m-auto'>
                             <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4'>
@@ -103,10 +102,10 @@ const Contact = ({ content }: Props) => {
                             <AiOutlineMail size={24} />
                             <p className='dark:text-[#b9b9b9] py-4'>&nbsp; thvangelderen@gmail.com</p>
                         </div>
-                        <div className='flex items-center'>
+                        {/* <div className='flex items-center'>
                             <HiOutlineLocationMarker size={24} />
                             <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; Boeijengastrjitte 18D, 8627SG Gauw</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

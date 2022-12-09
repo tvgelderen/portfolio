@@ -71,26 +71,20 @@ const Hero = ({ content }: Props) => {
               <a 
                 target="_blank"  
                 href="https://www.linkedin.com/in/timen-van-gelderen/"
-                className="lg:cursor-none rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
+                className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
                   <BsLinkedin size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
               </a>
               <a  
                 target="_blank" 
                 href="https://github.com/TvGelderen"
-                className="lg:cursor-none rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
+                className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
                   <BsGithub size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
               </a>
               <a  
                 target="_blank" 
                 href="#"
-                className="lg:cursor-none rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
+                className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
                   <AiOutlineMail size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
-              </a>
-              <a  
-                target="_blank" 
-                href="#"
-                className="lg:cursor-none rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
-                  <RiContactsLine size={20} className="md:w-7 md:h-7" />
               </a>
             </motion.div>
           </div>

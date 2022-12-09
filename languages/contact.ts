@@ -1,6 +1,5 @@
 const en = {
     head: "Contact",
-    title: "Get in touch!",
     name: "Name",
     company_name: "Company Name",
     phone: "Phone",

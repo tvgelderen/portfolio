@@ -44,10 +44,9 @@ const Projects = ({ content }: Props) => {
     }
 
     return (
-        <div className="sectionUneven">
+        <div className="sectionEven">
             <div className="projects">
                 <p className="sectionHead">{content.head}</p>
-                <h3 className="sectionTitle">{content.title}</h3>
                 <div className='lg:w-full md:w-[65%] sm:w-[75%] w-full m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
                         <motion.div 
