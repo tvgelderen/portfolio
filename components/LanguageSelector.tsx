@@ -2,7 +2,6 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { useAppContext } from '../context/AppContext'
 
-
 const LanguageSelector = () => {
   const { language, setLanguage } = useAppContext();
 

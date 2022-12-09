@@ -16,8 +16,11 @@ const AppContext = createContext<appContextType>(appContextDefault);
 export const AppContextProvider = ({ children }: {children: ReactNode}) => {
     const [language, setLanguage] = useState<string | null>(null);
 
-    useEffect(() => {
-      setLanguage(localStorage.getItem("language"));
+    useEffect(() => {      
+      if (localStorage.getItem("language"))
+        setLanguage(localStorage.getItem("language"));
+      else  
+        setLanguage(window.navigator.language.substring(0, 2));
     }, []);
 
     const value = {
