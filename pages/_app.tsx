@@ -8,7 +8,8 @@ function MyApp({ Component, pageProps }: { Component:any, pageProps:any}) {
     <div id='body' className='bg-light-background dark:bg-dark-background'>
       <ThemeProvider enableSystem={true} attribute="class">
         <AppContextProvider>
-            <Component {...pageProps} />
+          <Navbar />
+          <Component {...pageProps} />
         </AppContextProvider>
       </ThemeProvider>
     </div>

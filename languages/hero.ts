@@ -1,16 +1,16 @@
 const en = {
     hello: "Hi! I'm ",
-    messages: [
-        "Hi! I'm Timen.",
+    typewriter: [
+        "Welcome to my portfolio website!",
         "I'm a software engineer.",
-        "Welcome to my portfolio website!"
     ]
 };
 
 const nl = {
     hello: "Hoi! Ik ben ",
-    messages: [
-        "Welkom op mijn portfolio website!"
+    typewriter: [
+        "Welkom op mijn portfolio website!",
+        "Ik ben een software ontwikkelaar.",
     ]
 };
 

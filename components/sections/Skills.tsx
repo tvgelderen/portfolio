@@ -43,13 +43,13 @@ const Skills = ({ content }: Props) => {
                       className='m-4 hover:scale-110 duration-300 justify-center'
                       onClick={() => setSelectedId(i + index)}  
                     >
-                        <div className='p-6 rounded-t bg-[#1121e5]/30 dark:bg-dark-secondary'>
+                        <div className='p-6 rounded-t bg-[#1121e5]/30 dark:bg-dark-primary'>
                             <img 
                               src={skill.image}
                               className='h-[65px] w-[65px] sm:h-[80px] sm:w-[80px] object-contain'
                             />
                         </div>
-                        <div className='flex justify-center items-center p-2 rounded-b bg-[#1121e5]/60 dark:bg-dark-tertiary'>
+                        <div className='flex justify-center items-center p-2 rounded-b bg-[#1121e5]/60 dark:bg-dark-secondary'>
                             <p className='lg:text-lg' style={{ fontWeight: 500 }}>{skill.name}</p>
                         </div>
                     </div>

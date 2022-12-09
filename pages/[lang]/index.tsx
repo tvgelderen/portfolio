@@ -14,6 +14,7 @@ import { projects } from '../../languages/projects'
 import { contact } from '../../languages/contact'
 
 import { useAppContext } from '../../context/AppContext'
+import Navbar from '../../components/Navbar'
 
 export default function Home() {
   let { language } = useAppContext();

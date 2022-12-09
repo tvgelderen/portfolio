@@ -37,7 +37,7 @@ const Navbar = () => {
     }, [])
 
     return (
-        <div className='absolute left-0 top-0 w-full md:pr-2 shadow-dark-100 dark:shadow-black'>
+        <div className='z-[9] absolute left-0 top-0 w-full md:pr-2 shadow-dark-100 dark:shadow-black'>
             <div className="relative w-full">
                 <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                     <div className='lg:mx-4 mx-2'>
