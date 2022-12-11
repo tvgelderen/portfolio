@@ -12,7 +12,7 @@ export const ProjectData = [
         liveURL: "https://netflix-clone-b7491.web.app/",
         skills: [
             "TypeScript",
-            "NextJS",
+            "Next.js",
             "Tailwind CSS",
             "Firebase"
         ],
@@ -42,7 +42,7 @@ export const ProjectData = [
         liveURL: "https://us-national-parks-tvgelderen.vercel.app/",
         skills: [
             "JavaScript",
-            "NextJS",
+            "Next.js",
             "Tailwind CSS"
         ],
         content: new Map([
@@ -69,7 +69,7 @@ export const ProjectData = [
         liveURL: "https://crypto-watch-tvgelderen.vercel.app/",
         skills: [
             "JavaScript",
-            "ReactJS",
+            "React",
             "Bootstrap"
         ],
         content: new Map([

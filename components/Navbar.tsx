@@ -202,6 +202,7 @@ const Navbar = () => {
                                             <a 
                                               target="_blank"  
                                               href="https://www.linkedin.com/in/timen-van-gelderen/"
+                                              onClick={() => setOpen(false)}
                                               className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
                                             >
                                                 <BsLinkedin size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -209,23 +210,19 @@ const Navbar = () => {
                                             <a  
                                               target="_blank" 
                                               href="https://github.com/TvGelderen"
+                                              onClick={() => setOpen(false)}
                                               className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
                                             >
                                                 <BsGithub size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                             <a  
-                                              target="_blank" 
-                                              href="#"
+                                              onClick={() => {
+                                                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                                                setOpen(false);
+                                              }}
                                               className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
                                             >
                                                 <AiOutlineMail size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
-                                            </a>
-                                            <a  
-                                              target="_blank" 
-                                              href="#"
-                                              className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
-                                            >
-                                                <RiContactsLine size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </a>
                                         </div>
                                     </div>
