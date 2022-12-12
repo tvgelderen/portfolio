@@ -1,6 +1,6 @@
 import { navbar } from "../../languages/ui"
 
-export const NavbarData = (language:string) => {
+export const NavbarData = (language: string) => {
     if (navbar.get(language) === undefined)
         language = 'en'
 
@@ -32,3 +32,10 @@ export const NavbarData = (language:string) => {
         path: "/#contact",
     },
 ])}
+
+export const GetInTouch = (language: string) => {
+    if (navbar.get(language) === undefined)
+        language = 'en'
+
+    return navbar.get(language)?.get_in_touch;
+}

@@ -13,7 +13,7 @@ const nl = {
     skills: "Vaardigheden",
     projects: "Projecten",
     contact: "Contact",
-    get_in_touch: "Neem contact met mij op"
+    get_in_touch: "Neem contact op"
 };
 
 export const navbar = new Map([

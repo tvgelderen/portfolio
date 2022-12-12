@@ -1,22 +1,22 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-type appContextType = {
+type AppContextType = {
   language: string | null,
   setLanguage: React.Dispatch<React.SetStateAction<string | null>>,
 }
 
-const appContextDefault: appContextType = {
+const appContextDefault: AppContextType = {
   language: null,
   setLanguage: () => {},
 }
 
-const AppContext = createContext<appContextType>(appContextDefault);
+const AppContext = createContext<AppContextType>(appContextDefault);
 
 
 export const AppContextProvider = ({ children }: {children: ReactNode}) => {
     const [language, setLanguage] = useState<string | null>(null);
 
-    useEffect(() => {      
+    useEffect(() => {
       if (localStorage.getItem("language"))
         setLanguage(localStorage.getItem("language"));
       else  
@@ -29,9 +29,7 @@ export const AppContextProvider = ({ children }: {children: ReactNode}) => {
     };
 
     return (
-        <AppContext.Provider
-          value={value}
-        >
+        <AppContext.Provider value={value} >
             { children }
         </AppContext.Provider>
     )

@@ -25,7 +25,7 @@ const Hero = ({ content }: Props) => {
                   scale: 1
                 }}
                 transition={{
-                  duration: 2.1
+                  duration: 1.6
                 }}
                 className='text-4xl sm:text-5xl md:text-6xl lg:text-[6vw] xl:text-[5vw] 2xl:text-[3.8vw]'
               >
@@ -54,7 +54,7 @@ const Hero = ({ content }: Props) => {
                 scale: 1
               }}
               transition={{
-                duration: 2.1
+                duration: 1.6
               }}
               className="flex items-center justify-between w-full"
             >

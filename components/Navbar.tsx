@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
 import { BsGithub, BsLinkedin } from 'react-icons/bs'
-import { RiContactsLine } from 'react-icons/ri'
-import { NavbarData } from "./data/NavbarData"
+import { GetInTouch, NavbarData } from "./data/NavbarData"
 import { useAppContext } from "../context/AppContext"
 import LanguageSelector from "./LanguageSelector"
 import { useRouter } from "next/router"
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTheme } from "next-themes"
 import ThemeChanger from "./ThemeChanger"
 import Logo from "./Logo"
 
@@ -17,24 +15,22 @@ const Navbar = () => {
     const [loaded, setLoaded] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
     const textColor = 'text-[#121212] dark:text-[#eeeeee]';
-    
-    const { systemTheme, theme } = useTheme();
-    const currentTheme = theme === 'system' ? systemTheme : theme;
 
     const { language, setLanguage } = useAppContext();
     const router = useRouter();
     const { lang } = router.query;
 
     const navItems = NavbarData(language === null ? 'en' : language);
+    const getInTouch = GetInTouch(language === null ? 'en' : language);
 
     useEffect(() => {
-        if (lang === undefined || lang === 'en')
+        if (lang === null || lang === 'en')
             setLanguage('en');
         else
             setLanguage('nl');
 
         setLoaded(true);
-    }, [])
+    }, [lang])
 
     return (
         <div className='z-[9] absolute left-0 top-0 w-full md:pr-2 shadow-dark-100 dark:shadow-black'>
@@ -197,7 +193,7 @@ const Navbar = () => {
                                         <LanguageSelector />
                                     </div>
                                     <div className=" w-[280px] sm:w-[320px] text-slate-900 absolute bottom-0 left-0">
-                                        <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">Get in touch</p>
+                                        <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">{getInTouch}</p>
                                         <div className="flex items-center justify-between w-full mb-2 px-2 sm:px-0">
                                             <a 
                                               target="_blank"  
