@@ -1,8 +1,6 @@
 const en = {
     head: "Contact",
     name: "Name",
-    company_name: "Company Name",
-    phone: "Phone",
     email: "Email",
     subject: "Subject",
     message: "Message",
@@ -10,6 +8,17 @@ const en = {
     contact_info: "Contact Information"
 };
 
+const nl = {
+    head: "Contact",
+    name: "Naam",
+    email: "Email",
+    subject: "Onderwerp",
+    message: "Bericht",
+    send: "Verstuur",
+    contact_info: "Contact Informatie"
+};
+
 export const contact = new Map([
-    ['en', en]
+    ['en', en],
+    ['nl', nl]
 ]);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
-import { HiOutlinePhone, HiOutlineLocationMarker } from 'react-icons/hi'
+import { HiOutlinePhone } from 'react-icons/hi'
 import { AiOutlineMail } from 'react-icons/ai'
 import Notification from '../Notification'
 
@@ -20,7 +20,9 @@ type Props = {
 const Contact = ({ content }: Props) => {
     const [sent, setSent] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
-    const { register, getValues, handleSubmit, reset, formState:{errors}} = useForm<FormTypes>();
+    const { register, watch, getValues, handleSubmit, reset, formState:{errors}} = useForm<FormTypes>();
+
+    const watchForm = watch(["name", "email", "subject", "message"])
     
     const sendMail = (data: FormTypes) => {
         emailjs
@@ -44,18 +46,18 @@ const Contact = ({ content }: Props) => {
     let values = getValues();
 
     useEffect(() => {
-        console.log(values)
-    }, [values])
+        values = getValues();
+    }, [watchForm])
 
     return (
         <div className="sectionLastUneven">
-            <div className="contact">
+            <div id='contact' className="contact">
                 <p className="sectionHead">{content.head}</p>
                 <div className='grid grid-cols-1 lg:grid-cols-5 pt-12'>
                     <div className='col-span-3'>
                         <form onSubmit={handleSubmit(sendMail)} className='w-full max-w-[900px] m-auto'>
                             <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4'>
-                                <div className='sm:mt-4 input-container'>
+                                <div className='mt-4 input-container'>
                                     <input 
                                       type='text'
                                       {...register('name', { required: true })}
@@ -63,7 +65,7 @@ const Contact = ({ content }: Props) => {
                                     />
                                     <label className={values.name ? 'input-label-float' : 'input-label'}>{content.name}</label>
                                 </div>
-                                <div className='md:mt-4 input-container'>
+                                <div className='mt-4 input-container'>
                                     <input 
                                       type='text'
                                       {...register('email', { required: true, pattern: {
@@ -75,7 +77,7 @@ const Contact = ({ content }: Props) => {
                                     <label className={values.email ? 'input-label-float' : 'input-label'}>{content.email}</label>
                                 </div>
                             </div>
-                            <div className='mt-4 input-container'>
+                            <div className='mt-8 input-container'>
                                     <input 
                                       type='text'
                                       {...register('subject', { required: true })}
@@ -83,7 +85,7 @@ const Contact = ({ content }: Props) => {
                                     />
                                     <label className={values.subject ? 'input-label-float' : 'input-label'}>{content.subject}</label>
                                 </div>
-                            <div className='mt-4 input-container'>
+                            <div className='mt-8 input-container'>
                                 <textarea 
                                   {...register('message', { required: true })}
                                   className={`${errors.message ? 'input-error' : 'input'}`}
@@ -106,10 +108,6 @@ const Contact = ({ content }: Props) => {
                             <AiOutlineMail size={24} />
                             <p className='dark:text-[#b9b9b9] py-4'>&nbsp; thvangelderen@gmail.com</p>
                         </div>
-                        {/* <div className='flex items-center'>
-                            <HiOutlineLocationMarker size={24} />
-                            <p className='text-center dark:text-[#b9b9b9] py-4'>&nbsp; Boeijengastrjitte 18D, 8627SG Gauw</p>
-                        </div> */}
                     </div>
                 </div>
             </div>

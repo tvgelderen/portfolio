@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 
 import Hero from './sections/Hero'
@@ -7,12 +6,12 @@ import Projects from './sections/Projects'
 import Contact from './sections/Contact'
 
 import { hero } from '../languages/hero'
-import { about } from '../languages/about'
 import { skills } from '../languages/skills'
 import { projects } from '../languages/projects'
 import { contact } from '../languages/contact'
 
 import { useAppContext } from '../context/AppContext'
+
 const Layout = () => {
     let { language } = useAppContext();
 
@@ -20,7 +19,6 @@ const Layout = () => {
       language = 'en'
   
     const heroContent = hero.get(language) === undefined ? hero.get('en') : hero.get(language);
-    const aboutContent = about.get(language) === undefined ? about.get('en') : about.get(language);
     const skillsContent = skills.get(language) === undefined ? skills.get('en') : skills.get(language);
     const projectsContent = projects.get(language) === undefined ? projects.get('en') : projects.get(language);
     const contactContent = contact.get(language) === undefined ? contact.get('en') : contact.get(language);
@@ -45,29 +43,19 @@ const Layout = () => {
           <link rel="icon" href="img/icons/favicon.ico" />
         </Head>
   
-        <section id='hero'>
+        <Hero content={heroContent} />
+        {/* <div className='hidden lg:block cursor-circle overflow-hidden'>
           <Hero content={heroContent} />
-          {/* <div className='hidden lg:block cursor-circle overflow-hidden'>
-            <Hero content={heroContent} />
-            <div className='dot' />
-          </div> */}
-        </section>
-        
-        <section id='skills' className=''>
-          <Skills content={skillsContent} />
-        </section>
-  
-        <section id='projects' className=''>
-          <Projects content={projectsContent} />
-        </section>
-  
-        {/* <section id='about' className=''>
-          <About content={aboutContent} />
-        </section> */}
-        
-        <section id='contact' className=''>
-          <Contact content={contactContent} />
-        </section>
+          <div className='dot' />
+        </div> */}
+      
+        <Skills content={skillsContent} />
+
+        <Projects content={projectsContent} />
+
+        {/*<About content={aboutContent} />*/}
+      
+        <Contact content={contactContent} />
       </div>
     )
 }

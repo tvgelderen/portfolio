@@ -13,7 +13,7 @@ const LanguageSelector = () => {
       case 'en':
         localStorage.setItem("language", "nl");
         setLanguage('nl');
-        router.push('/nl/');
+        router.push('/');
         break;
       case 'nl':
         localStorage.setItem("language", "en");

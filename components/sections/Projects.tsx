@@ -45,7 +45,7 @@ const Projects = ({ content }: Props) => {
 
     return (
         <div className={`sectionEven`}>
-            <div className="projects">
+            <div id='projects' className="projects">
                 <p className="sectionHead">{content.head}</p>
                 <div className='lg:w-full md:w-[65%] sm:w-[75%] w-full m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
