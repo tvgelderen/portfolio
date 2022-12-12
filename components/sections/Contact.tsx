@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -41,7 +41,11 @@ const Contact = ({ content }: Props) => {
         reset();
     }
 
-    const values = getValues();
+    let values = getValues();
+
+    useEffect(() => {
+        console.log(values)
+    }, [values])
 
     return (
         <div className="sectionLastUneven">
@@ -59,7 +63,7 @@ const Contact = ({ content }: Props) => {
                                     />
                                     <label className={values.name ? 'input-label-float' : 'input-label'}>{content.name}</label>
                                 </div>
-                                <div className='sm:mt-4 input-container'>
+                                <div className='md:mt-4 input-container'>
                                     <input 
                                       type='text'
                                       {...register('email', { required: true, pattern: {
