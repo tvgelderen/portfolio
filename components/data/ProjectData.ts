@@ -9,7 +9,7 @@ export const ProjectData = [
             '/img/projects/netflix_logged-out.png',
         ],
         githubURL: "https://github.com/TvGelderen/netflix-clone",
-        liveURL: "https://netflix-clone-b7491.web.app/",
+        liveURL: "https://netflix-clone-tvgelderen.vercel.app/",
         skills: [
             "TypeScript",
             "Next.js",
@@ -19,7 +19,7 @@ export const ProjectData = [
         content: new Map([
             ['en', {
                 brief_description: "A Netflix look-alike web application, which allows users to log in and save movies to their own watch list. It shows movies in different categories such as trending, top rated, and different genres. By clicking on a movie more information about it is shown along with the trailer.",
-                description: "A website with a UI similar to Netflix which allows users to save movies to their watch list. Users can log in either with their Google accounts or by creating a new account using an email and password combination. By clicking on a movie's image a modal is shown which offers the movie trailer, a brief description of the movie, and the movie's genre, cast, and release date. All the data shown is pulled from the API offered by The Movie Database (TMDB)."
+                description: ""
             }],
             ['nl', {
                 brief_description: "Een namaak versie van Netflix met beperkte functionaliteit. Gebruikers kunnen een account aanmaken en onder hun account films toevoegen aan hun persoonlijke lijst. Er zijn verschillende categoriën zoals de trending, top rated, en verschillende genres. Wanneer een gebruiker op een film klikt komt meer informatie over de film tevoorschijn samen met de trailer.",
