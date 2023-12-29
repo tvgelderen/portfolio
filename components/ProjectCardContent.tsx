@@ -11,17 +11,23 @@ const ProjectCardContent = ({ project, projectContent }: Props) => {
     return (
         <>
             <div className='w-[75%] m-auto flex justify-evenly items-center lg:pt-4 pb-4 border-b-2 border-dark-500'>
-                {SkillData.filter(skill => project.skills.includes(skill.name)).map(skill => (
-                    <div key={skill.name} className='flex flex-col justify-center items-center'>
-                        <img
-                          src={skill.image}
-                          alt={skill.name}
-                          width={40}
-                          height={40}
-                          className={`${skill.name === "Firebase" ? 'w-6' : 'w-7'}`}
-                        />
-                    </div>
-                ))}
+                {project.skills.map((projectSkill: any) => {
+                    const skill = SkillData.find(s => s.name == projectSkill)
+                    
+                    if (skill) {
+                        return (
+                            <div key={skill.name} className='flex flex-col justify-center items-center'>
+                                <img
+                                  src={skill.image}
+                                  alt={skill.name}
+                                  width={40}
+                                  height={40}
+                                  className={`${skill.name === "Firebase" ? 'w-6' : 'w-7'}`}
+                                />
+                            </div>
+                        );
+                    }
+                })}
             </div>
             <div className='px-6 py-4 text-[0.9rem] dark:text-dark-text'>
                 {projectContent.brief_description}
@@ -47,7 +53,7 @@ const ProjectCardContent = ({ project, projectContent }: Props) => {
                 </a>
             </div>
         </>
-    )
+    );
 }
 
 export default ProjectCardContent

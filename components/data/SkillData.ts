@@ -32,6 +32,10 @@ export const SkillData = [
         image: "/img/skills/nextjs2.png"
     },
     {
+        name: "Nuxt",
+        image: "/img/skills/nuxt.png"
+    },
+    {
         name: "Bootstrap",
         image: "/img/skills/bootstrap.png"
     },
@@ -46,5 +50,9 @@ export const SkillData = [
     {
         name: "ASP.NET",
         image: "/img/skills/asp_net.png"
-    }
+    },
+    {
+        name: "Go",
+        image: "/img/skills/go.png"
+    },
 ]
