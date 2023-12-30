@@ -29,7 +29,7 @@ const Navbar = () => {
         const body = document.getElementById("body");
 
         const onScroll = () => {
-            if (body?.scrollTop >= 50) {
+            if (body && body.scrollTop >= 50) {
                 setBackground("shadow-[0_0_10px_0_rgba(0,0,0,0.25)] bg-light-secondary dark:bg-dark-secondary");
             } else {
                 setBackground("");
