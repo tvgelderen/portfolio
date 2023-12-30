@@ -47,8 +47,8 @@ const ProjectCard = ({ project, index }: Props) => {
             <motion.img
               src={project.images[0]}
               alt={project.name}
-              width={1920}
-              height={1080}
+              width={640}
+              height={360}
               custom={{width, isEven}}
               initial="hidden"
               whileInView="visible"
@@ -71,8 +71,8 @@ const ProjectCard = ({ project, index }: Props) => {
             <motion.img
               src={project.images[0]}
               alt={project.name}
-              width={1920}
-              height={1080}
+              width={854}
+              height={480}
               className={`hidden lg:block rounded object-cover object-left-top lg:w-[60%] ${isEven ? 'sm-card-img-even lg:card-img' : 'sm-card-img-uneven lg:card-img lg:card-img-uneven'}`}
               custom={{width, isEven}}
               initial="hidden"

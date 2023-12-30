@@ -47,7 +47,7 @@ const Projects = ({ content }: Props) => {
         <div className={`sectionEven`}>
             <div id='projects' className="projects">
                 <p className="sectionHead">{content.head}</p>
-                <div className='lg:w-full md:w-[65%] sm:w-[75%] w-full m-auto pt-4'>
+                <div className='lg:w-full md:w-[65%] sm:w-[75%] w-[95%] m-auto pt-4'>
                     {ProjectData?.map((project, index) => (
                         <motion.div 
                           key={index} 

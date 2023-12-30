@@ -24,16 +24,20 @@ export const SkillData = [
         image: "/img/skills/typescript.png"
     },
     {
+        name: "Go",
+        image: "/img/skills/go.png"
+    },
+    {
+        name: "Nuxt",
+        image: "/img/skills/nuxt.png"
+    },
+    {
         name: "React",
         image: "/img/skills/react.png"
     },
     {
         name: "Next.js",
         image: "/img/skills/nextjs2.png"
-    },
-    {
-        name: "Nuxt",
-        image: "/img/skills/nuxt.png"
     },
     {
         name: "Bootstrap",
@@ -50,9 +54,5 @@ export const SkillData = [
     {
         name: "ASP.NET",
         image: "/img/skills/asp_net.png"
-    },
-    {
-        name: "Go",
-        image: "/img/skills/go.png"
     },
 ]

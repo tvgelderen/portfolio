@@ -6,7 +6,7 @@ export const ProjectData = [
             '/img/projects/film-finder_home.png'
         ],
         githubURL: "https://github.com/TvGelderen/film-finder",
-        liveURL: "https://film-finder-tvgelderen.vercel.app/",
+        liveURL: "https://film-finder.tvgelderen.nl/",
         skills: [
             "TypeScript",
             "Nuxt",
@@ -14,7 +14,7 @@ export const ProjectData = [
         ],
         content: new Map([
             ['en', {
-                brief_description: "A web app for searching and saving movies. The frontend uses Nuxt and uses the API from The Movie Database (www.themoviedb.org) to fetch the movie data. A seperate backend has been written in Go to handle the user management and authentication, user data is stored in a PostgreSQL database.",
+                brief_description: "A web app for searching and saving movies. The frontend uses Nuxt and uses the API from The Movie Database to fetch the movie data. A seperate backend has been written in Go to handle the user management and authentication, user data is stored in a PostgreSQL database.",
                 description: ""
             }],
             ['nl', {
@@ -63,7 +63,7 @@ export const ProjectData = [
             '/img/projects/us-national-parks_yosemite3.png',
         ],
         githubURL: "https://github.com/TvGelderen/us-national-parks",
-        liveURL: "https://us-national-parks-tvgelderen.vercel.app/",
+        liveURL: "https://us-national-parks.tvgelderen.nl/",
         skills: [
             "JavaScript",
             "Tailwind CSS",

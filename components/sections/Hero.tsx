@@ -10,7 +10,7 @@ type Props = {
 
 const Hero = ({ content }: Props) => {
   return (
-    <div id="hero" className='flex items-center justify-center h-screen bg-center bg-cover bg-light-background dark:bg-dark-background' style={{ backgroundImage: `url(/img/bg.png)` }}>
+    <div id="hero" className='flex items-center justify-center h-screen bg-center bg-cover bg-light-background dark:bg-dark-background' style={{ backgroundImage: `url(/img/bg.png)`, backgroundAttachment: 'fixed' }}>
       <div className='relative text-[#202020] z-[2]'>
           <div className="w-full max-w-[440px] md:max-w-[720px] m-auto flex-row justify-center text-center overflow-visible">
               <motion.h3 
@@ -72,7 +72,7 @@ const Hero = ({ content }: Props) => {
               </a>
               <a  
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110">
+                className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110 cursor-pointer">
                   <AiOutlineMail size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
               </a>
             </motion.div>

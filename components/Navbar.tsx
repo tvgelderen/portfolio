@@ -14,6 +14,8 @@ const Navbar = () => {
     const [currentIdx, setCurrentIdx] = useState<number>(-1);
     const [loaded, setLoaded] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
+    const [background, setBackground] = useState<string>("");
+
     const textColor = 'text-[#121212] dark:text-[#eeeeee]';
 
     const { language, setLanguage } = useAppContext();
@@ -22,6 +24,22 @@ const Navbar = () => {
 
     const navItems = NavbarData(language === null ? 'en' : language);
     const getInTouch = GetInTouch(language === null ? 'en' : language);
+
+    useEffect(() => {
+        const body = document.getElementById("body");
+
+        const onScroll = () => {
+            if (body?.scrollTop >= 50) {
+                setBackground("shadow-[0_0_10px_0_rgba(0,0,0,0.25)] bg-light-secondary dark:bg-dark-secondary");
+            } else {
+                setBackground("");
+            }
+        }
+
+        body?.addEventListener("scroll", onScroll);
+
+        return () => body?.removeEventListener("scroll", onScroll);
+    }, []);
 
     useEffect(() => {
         if (lang === null || lang === 'en')
@@ -33,7 +51,7 @@ const Navbar = () => {
     }, [lang])
 
     return (
-        <div className='z-[9] absolute left-0 top-0 w-full md:pr-2 shadow-dark-100 dark:shadow-black'>
+        <div className={`z-[3] absolute left-0 top-0 w-full md:pr-2 ${background}`}>
             <div className="relative w-full">
                 <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                     <div className='lg:mx-4 mx-2'>
@@ -49,20 +67,18 @@ const Navbar = () => {
                                 return (
                                     <motion.li 
                                       key={item.id} 
-                                      className="p-4 group"
+                                      className="p-4 group cursor-pointer"
                                       onHoverStart={() => setCurrentIdx(index)}
                                       onHoverEnd={() => setCurrentIdx(-1)}
+                                      onClick={() => {
+                                        if (document.getElementById(item.id)) {
+                                            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                        } else {
+                                            router.push(`/${item.path}`);
+                                        }
+                                      }}
                                     >
-                                        <a
-                                          id={item.id + 'navbar'}
-                                          className='cursor-pointer group-hover:text-light-theme/75 group-hover:dark:text-dark-theme/75'
-                                          onClick={() => {
-                                            if (document.getElementById(item.id))
-                                                document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                            else
-                                                router.push(`/${item.path}`);
-                                          }}
-                                        >
+                                        <div id={item.id + 'navbar'} className='group-hover:text-light-theme/75 group-hover:dark:text-dark-theme/75'>
                                             {item.name}
                                             <AnimatePresence>
                                                 {index === currentIdx &&
@@ -78,7 +94,7 @@ const Navbar = () => {
                                                         />
                                                     </svg>}
                                             </AnimatePresence>
-                                        </a>
+                                        </div>
                                     </motion.li>
                                 )
                             }
@@ -131,7 +147,7 @@ const Navbar = () => {
                                     exit={{ x: -320 }}
                                     transition={{ stiffness: 5 }}
                                 >
-                                    <div className="relative flex w-full items-center justify-between pb-1 border-b-2 dark:border-dark-600">
+                                    <div className="relative flex w-full items-center justify-between pb-1">
                                         <div className="w-[140px] sm:w-[170px]">
                                             <Logo color='#cb24ff' animate='none' />
                                         </div>    
@@ -142,53 +158,51 @@ const Navbar = () => {
                                             <AiOutlineClose size={20} className="text-dark-900 dark:text-dark-100 w-4 h-4 sm:w-5 sm:h-5" />
                                         </div>
                                     </div>
-                                    <div className="border-b-2 pb-4 dark:border-dark-600">
-                                        <ul className="text-dark-900 uppercase pt-4">
-                                            {navItems.map((item, index) => {
-                                                if (loaded)
-                                                {
-                                                    const width = document.getElementById(item.id + 'nav')?.offsetWidth;
+                                    <ul className="text-dark-900 uppercase pt-4">
+                                        {navItems.map((item, index) => {
+                                            if (loaded)
+                                            {
+                                                const width = document.getElementById(item.id + 'nav')?.offsetWidth;
 
-                                                    return (
-                                                        <motion.li
-                                                          key={item.id}
-                                                          className="py-2 sm:py-4"  
-                                                          onHoverStart={() => setCurrentIdx(index)}
-                                                          onHoverEnd={() => setCurrentIdx(-1)}>
-                                                            <a
-                                                              id={item.id + 'nav'}
-                                                              className="sm:text-xl cursor-pointer hover:text-dark-100"
-                                                              onClick={() => {
-                                                                if (document.getElementById(item.id))
-                                                                  document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                                                                else
-                                                                  router.push(`/${item.path}`);
+                                                return (
+                                                    <motion.li
+                                                      key={item.id}
+                                                      className="py-2 sm:py-4"  
+                                                      onHoverStart={() => setCurrentIdx(index)}
+                                                      onHoverEnd={() => setCurrentIdx(-1)}>
+                                                        <a
+                                                          id={item.id + 'nav'}
+                                                          className="sm:text-xl cursor-pointer hover:text-dark-100"
+                                                          onClick={() => {
+                                                            if (document.getElementById(item.id))
+                                                              document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+                                                            else
+                                                              router.push(`/${item.path}`);
 
-                                                                setOpen(false)
-                                                              }}
-                                                            >
-                                                                {item.name}
-                                                                <AnimatePresence>
-                                                                    {index === currentIdx &&
-                                                                        <svg height="3px" viewBox={`0 0 ${width !== undefined ? width / 3 : 0} 1`} xmlns="http://www.w3.org/2000/svg" className="absolute">
-                                                                            <motion.line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(203, 36, 255, 0.75)" strokeWidth={3}
-                                                                              initial="hidden"
-                                                                              animate="visible"
-                                                                              exit="hidden"
-                                                                              variants={{
-                                                                                hidden: { pathLength: 0, transition: { duration: 0.5 } },
-                                                                                visible: { pathLength: 1, transition: { duration: 0.5 }}
-                                                                              }}
-                                                                            />
-                                                                        </svg>}
-                                                                </AnimatePresence>
-                                                            </a>
-                                                        </motion.li>
-                                                    )
-                                                }
-                                            })}
-                                        </ul>
-                                    </div>
+                                                            setOpen(false)
+                                                          }}
+                                                        >
+                                                            {item.name}
+                                                            <AnimatePresence>
+                                                                {index === currentIdx &&
+                                                                    <svg height="3px" viewBox={`0 0 ${width !== undefined ? width / 3 : 0} 1`} xmlns="http://www.w3.org/2000/svg" className="absolute">
+                                                                        <motion.line x1="0" y1="0" x2="100%" y2="0" stroke="rgba(203, 36, 255, 0.75)" strokeWidth={3}
+                                                                          initial="hidden"
+                                                                          animate="visible"
+                                                                          exit="hidden"
+                                                                          variants={{
+                                                                            hidden: { pathLength: 0, transition: { duration: 0.5 } },
+                                                                            visible: { pathLength: 1, transition: { duration: 0.5 }}
+                                                                          }}
+                                                                        />
+                                                                    </svg>}
+                                                            </AnimatePresence>
+                                                        </a>
+                                                    </motion.li>
+                                                )
+                                            }
+                                        })}
+                                    </ul>
                                     <div className="py-4">
                                         <LanguageSelector />
                                     </div>
