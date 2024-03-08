@@ -10,7 +10,7 @@ type Props = {
 
 const Hero = ({ content }: Props) => {
   return (
-    <div id="hero" className='flex items-center justify-center h-screen bg-center bg-cover bg-light-background dark:bg-dark-background' style={{ backgroundImage: `url(/img/bg.png)`, backgroundAttachment: 'fixed' }}>
+    <div id="hero" className='flex items-center justify-center h-screen bg-center bg-cover bg-light-background dark:bg-dark-background' style={{ backgroundImage: `url("https://i.imgur.com/2Bwe76s.png")`, backgroundAttachment: 'fixed' }}>
       <div className='relative text-[#202020] z-[2]'>
           <div className="w-full max-w-[440px] md:max-w-[720px] m-auto flex-row justify-center text-center overflow-visible">
               <motion.h3 
