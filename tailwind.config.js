@@ -31,16 +31,13 @@ module.exports = {
           700: "#323232",
           800: "#222222",
           900: "#121212",
-        }
+        },
       },
       fontFamily: {
-        'courier': ['Courier Prime', 'Montserrat', 'sans-serif']
-      }
+        courier: ["Courier Prime", "Montserrat", "sans-serif"],
+      },
     },
   },
-  plugins: [
-    require("tailwind-scrollbar"),
-    require('tailwind-scrollbar-hide')
-  ],
-  darkMode: 'class'
-}
+  plugins: [require("tailwind-scrollbar"), require("tailwind-scrollbar-hide")],
+  darkMode: "class",
+};

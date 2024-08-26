@@ -1,16 +1,16 @@
 const en = {
-    head: "Projects",
-    project: "Project",
-    technologies: "Technologies",
+  head: "Projects",
+  project: "Project",
+  technologies: "Technologies",
 };
 
 const nl = {
-    head: "Projecten",
-    project: "Project",
-    technologies: "Tech",
+  head: "Projecten",
+  project: "Project",
+  technologies: "Tech",
 };
 
 export const projects = new Map([
-    ['en', en],
-    ['nl', nl]
+  ["en", en],
+  ["nl", nl],
 ]);

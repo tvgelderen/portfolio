@@ -1,66 +1,66 @@
-import React, { useState, useEffect } from 'react'
-import ProjectCard from '../ProjectCard'
-import { ProjectData } from '../data/ProjectData'
-import { AnimatePresence, motion } from 'framer-motion'
-import { AiOutlineClose } from 'react-icons/ai'
-import Carousel from '../Carousel'
-import { useAppContext } from '../../context/AppContext'
-import { SkillData } from '../data/SkillData'
-import Image from 'next/image'
+import React, { useState, useEffect } from "react";
+import ProjectCard from "../ProjectCard";
+import { ProjectData } from "../data/ProjectData";
+import { AnimatePresence, motion } from "framer-motion";
+import { AiOutlineClose } from "react-icons/ai";
+import Carousel from "../Carousel";
+import { useAppContext } from "../../context/AppContext";
+import { SkillData } from "../data/SkillData";
+import Image from "next/image";
 
 type Props = {
-    content: any
-}
+  content: any;
+};
 
 type Project = {
-    id: string,
-    name: string,
-    images: string[],
-    githubURL: string,
-    liveURL: string,
-    skills: string[],
-    content: Map<string, { brief_description: string, description: string }>,
-}
+  id: string;
+  name: string;
+  images: string[];
+  githubURL: string;
+  liveURL: string;
+  skills: string[];
+  content: Map<string, { brief_description: string; description: string }>;
+};
 
 const Projects = ({ content }: Props) => {
-    const [selected, setSelected] = useState<Project | null>(null);
-    
-    let { language } = useAppContext();
+  const [selected, setSelected] = useState<Project | null>(null);
 
-    const projectContent = selected?.content.get(language || 'en');
+  let { language } = useAppContext();
 
-    const variants = {
-        hidden: {
-            x: -200,
-            opacity: 0.5,
-        },
-        visible: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                duration: 1.6,
-            }
-        }
-    }
+  const projectContent = selected?.content.get(language || "en");
 
-    return (
-        <div className={`sectionEven`}>
-            <div id='projects' className="projects">
-                <p className="sectionHead">{content.head}</p>
-                <div className='lg:w-full md:w-[65%] sm:w-[75%] w-[95%] m-auto pt-4'>
-                    {ProjectData?.map((project, index) => (
-                        <motion.div 
-                          key={index} 
-                          layoutId={project.id} 
-                          onClick={() => setSelected(project)}
-                        >
-                            <ProjectCard project={project} index={index} />
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+  const variants = {
+    hidden: {
+      x: -200,
+      opacity: 0.5,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1.6,
+      },
+    },
+  };
 
-            {/* {selected !== null && (
+  return (
+    <div className={`sectionEven`}>
+      <div id="projects" className="projects">
+        <p className="sectionHead">{content.head}</p>
+        <div className="lg:w-full md:w-[65%] sm:w-[75%] w-[95%] m-auto pt-4">
+          {ProjectData?.map((project, index) => (
+            <motion.div
+              key={index}
+              layoutId={project.id}
+              onClick={() => setSelected(project)}
+            >
+              <ProjectCard project={project} index={index} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* {selected !== null && (
                 <div className="absolute z-[10] top-0 left-0 right-0 h-screen bg-black/50 flex justify-center items-center">
                     <AnimatePresence initial={false}>
                         {selected !== null && (
@@ -121,8 +121,8 @@ const Projects = ({ content }: Props) => {
                     </AnimatePresence>
                 </div>
             )} */}
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default Projects
+export default Projects;
