@@ -3,7 +3,7 @@ export const ProjectData = [
         id: "netflix-clone",
         name: "Netflix Clone",
         images: [
-            "/img/projects/netflix_home.png",
+            "/img/projects/netflix_home.webp",
             "/img/projects/netflix_profile.png",
             "/img/projects/netflix_stripe.png",
             "/img/projects/netflix_logged-out.png",
@@ -34,7 +34,7 @@ export const ProjectData = [
         id: "us-national-parks",
         name: "National Parks",
         images: [
-            "/img/projects/us-national-parks.png",
+            "/img/projects/us-national-parks.webp",
             "/img/projects/us-national-parks2.png",
             "/img/projects/us-national-parks3.png",
             "/img/projects/us-national-parks_yosemite.png",
@@ -42,7 +42,7 @@ export const ProjectData = [
             "/img/projects/us-national-parks_yosemite3.png",
         ],
         githubURL: "https://github.com/TvGelderen/us-national-parks",
-        liveURL: "https://us-national-parks.tvgelderen.nl/",
+        liveURL: "https://https://us-national-parks.vercel.app/",
         skills: ["JavaScript", "Tailwind CSS", "Next.js"],
         content: new Map([
             [
@@ -67,7 +67,7 @@ export const ProjectData = [
         id: "crypto-watch",
         name: "Crypto Watch",
         images: [
-            "/img/projects/crypto-watch_home.png",
+            "/img/projects/crypto-watch_home.webp",
             "/img/projects/crypto-watch_list.png",
             "/img/projects/crypto-watch_chartsearch.png",
             "/img/projects/crypto-watch_coinpage.png",
