@@ -3,265 +3,257 @@
 @tailwind utilities;
 
 :root {
-  --x: 50%;
-  --y: 50%;
-  --bg-grad-30: linear-gradient(
-    45deg,
-    rgba(123, 47, 247, 0.3),
-    rgba(241, 7, 163, 0.3)
-  );
-  --bg-grad-50: linear-gradient(
-    45deg,
-    rgba(123, 47, 247, 0.5),
-    rgba(241, 7, 163, 0.5)
-  );
-  --bg-grad-75: linear-gradient(
-    45deg,
-    rgba(123, 47, 247, 0.75),
-    rgba(241, 7, 163, 0.75)
-  );
-  --bg-grad-90: linear-gradient(
-    45deg,
-    rgba(123, 47, 247, 0.9),
-    rgba(241, 7, 163, 0.9)
-  );
+    --x: 50%;
+    --y: 50%;
+    --bg-grad-30: linear-gradient(45deg,
+            rgba(123, 47, 247, 0.3),
+            rgba(241, 7, 163, 0.3));
+    --bg-grad-50: linear-gradient(45deg,
+            rgba(123, 47, 247, 0.5),
+            rgba(241, 7, 163, 0.5));
+    --bg-grad-75: linear-gradient(45deg,
+            rgba(123, 47, 247, 0.75),
+            rgba(241, 7, 163, 0.75));
+    --bg-grad-90: linear-gradient(45deg,
+            rgba(123, 47, 247, 0.9),
+            rgba(241, 7, 163, 0.9));
 }
 
 #body {
-  height: 100dvh;
-  overflow-y: auto;
+    height: 100dvh;
+    overflow-y: auto;
 }
 
 .scrollbar::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: #1a1a1a;
+    background: #1a1a1a;
 }
 
 .scrollbar::-webkit-scrollbar-thumb,
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #cb24ff;
+    background: #cb24ff;
 }
 
 .light .scrollbar::-webkit-scrollbar-track {
-  background: #ffffff;
+    background: #ffffff;
 }
 
 .light .scrollbar::-webkit-scrollbar-thumb,
 .light .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #cb24ff;
+    background: #cb24ff;
 }
 
 @layer components {
-  .hero {
-    @apply absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center;
-  }
+    .hero {
+        @apply absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center;
+    }
 
-  .cursor-circle {
-    @apply absolute top-0 left-0 right-0 bottom-0 z-[2];
-    filter: invert(100%);
-    transition: 0.1s;
-    clip-path: circle(60px at var(--x) var(--y));
-  }
+    .cursor-circle {
+        @apply absolute top-0 left-0 right-0 bottom-0 z-[2];
+        filter: invert(100%);
+        transition: 0.1s;
+        clip-path: circle(60px at var(--x) var(--y));
+    }
 
-  .dot {
-    @apply absolute rounded-full p-[2px] bg-black dark:bg-white;
-    left: var(--x);
-    top: var(--y);
-  }
+    .dot {
+        @apply absolute rounded-full p-[2px] bg-black dark:bg-white;
+        left: var(--x);
+        top: var(--y);
+    }
 
-  .hero-heading {
-    @apply text-[8vw] sm:text-[7vw] md:text-[6vw] 2xl:text-[4vw];
-  }
+    .hero-heading {
+        @apply text-[8vw] sm:text-[7vw] md:text-[6vw] 2xl:text-[4vw];
+    }
 
-  .hero-subheading {
-    @apply text-[5vw] lg:text-[2vw] font-[400] lg:py-4;
-  }
+    .hero-subheading {
+        @apply text-[5vw] lg:text-[2vw] font-[400] lg:py-4;
+    }
 
-  .section {
-    @apply relative w-full overflow-hidden;
-  }
+    .section {
+        @apply relative w-full overflow-hidden;
+    }
 
-  .sectionEven {
-    @apply section bg-light-theme/5 dark:bg-dark-primary;
-    clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 calc(100% - 5vw));
-  }
+    .section-even {
+        @apply section bg-light-primary dark:bg-dark-primary;
+        clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 calc(100% - 5vw));
+    }
 
-  .sectionUneven {
-    @apply section bg-light-background dark:bg-dark-background;
-  }
+    .section-uneven {
+        @apply section bg-light-background dark:bg-dark-background;
+    }
 
-  .sectionLastEven {
-    @apply sectionEven;
-    clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
-  }
+    .section-last-even {
+        @apply section-even;
+        clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
+    }
 
-  .sectionLastUneven {
-    @apply sectionUneven;
-    clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
-  }
+    .section-last-uneven {
+        @apply section-uneven;
+        clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
+    }
 
-  .contentStyle {
-    @apply relative w-full m-auto lg:py-[104px] md:py-[88px] py-[70px] px-4 lg:px-8;
-  }
+    .content-style {
+        @apply relative w-full m-auto lg:py-[104px] md:py-[88px] py-[70px] px-4 lg:px-8;
+    }
 
-  .about {
-    @apply contentStyle max-w-[1000px];
-  }
+    .about {
+        @apply content-style max-w-[1000px];
+    }
 
-  .skills {
-    @apply contentStyle max-w-[1000px];
-  }
+    .skills {
+        @apply content-style max-w-[1000px];
+    }
 
-  .projects {
-    @apply contentStyle max-w-[1300px] mt-[120px];
-  }
+    .projects {
+        @apply content-style max-w-[1300px] mt-[120px];
+    }
 
-  .contact {
-    @apply contentStyle max-w-[1200px] pb-[280px];
-  }
+    .contact {
+        @apply content-style max-w-[1200px] pb-[280px];
+    }
 
-  .sectionHead {
-    @apply uppercase text-center text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] tracking-[15px] text-light-theme dark:text-dark-theme;
-  }
+    .section-head {
+        @apply uppercase text-center text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] tracking-[15px] text-light-theme dark:text-dark-theme;
+    }
 
-  .button-primary {
-    @apply flex justify-center items-center;
-    background-image: var(--bg-grad-50);
-  }
+    .button-primary {
+        @apply flex justify-center items-center;
+        background-image: var(--bg-grad-50);
+    }
 
-  .button-primary:hover {
-    background-image: var(--bg-grad-90);
-  }
+    .button-primary:hover {
+        background-image: var(--bg-grad-90);
+    }
 
-  .button-secondary-bg {
-    @apply rounded p-[2px];
-    background-image: var(--bg-grad-50);
-  }
+    .button-secondary-bg {
+        @apply rounded p-[2px];
+        background-image: var(--bg-grad-50);
+    }
 
-  .button-secondary-bg:hover {
-    background-image: var(--bg-grad-75);
-  }
+    .button-secondary-bg:hover {
+        background-image: var(--bg-grad-75);
+    }
 
-  .button-secondary {
-    @apply flex justify-center items-center rounded-sm bg-light-secondary dark:bg-dark-secondary px-2 py-1 md:px-[12px] md:py-[6px];
-  }
+    .button-secondary {
+        @apply flex justify-center items-center rounded-sm bg-light-secondary dark:bg-dark-secondary px-2 py-1 md:px-[12px] md:py-[6px];
+    }
 
-  .button-secondary:hover {
-    background-image: var(--bg-grad-75);
-  }
+    .button-secondary:hover {
+        background-image: var(--bg-grad-75);
+    }
 
-  .input {
-    @apply border-b-2 pt-2 pb-1 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
-    border-image-source: var(--bg-grad-30);
-    border-image-slice: 1;
-  }
+    .input {
+        @apply border-b-2 pt-2 pb-1 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
+        border-image-source: var(--bg-grad-30);
+        border-image-slice: 1;
+    }
 
-  .input:focus,
-  :hover {
-    border-image-source: var(--bg-grad-75);
-    transition-duration: 200ms;
-  }
+    .input:focus,
+    :hover {
+        border-image-source: var(--bg-grad-75);
+        transition-duration: 200ms;
+    }
 
-  .input-error {
-    @apply border-b-2 border-[red]/75 pt-2 pb-1 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
-  }
+    .input-error {
+        @apply border-b-2 border-[red]/75 pt-2 pb-1 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
+    }
 
-  .input-container {
-    @apply relative flex flex-col pb-[2px];
-  }
+    .input-container {
+        @apply relative flex flex-col pb-[2px];
+    }
 
-  .input-label {
-    position: absolute;
-    pointer-events: none;
-    transform: translate(0, 14px) scale(1);
-    transform-origin: top left;
-    transition: 200ms;
-    color: #9e9e9e !important;
-    line-height: 1;
-    left: 4px;
-  }
+    .input-label {
+        position: absolute;
+        pointer-events: none;
+        transform: translate(0, 14px) scale(1);
+        transform-origin: top left;
+        transition: 200ms;
+        color: #9e9e9e !important;
+        line-height: 1;
+        left: 4px;
+    }
 
-  .input-container:focus-within .input-label {
-    transform: translate(0, -12px) scale(0.8);
-    color: #9e9e9e;
-  }
+    .input-container:focus-within .input-label {
+        transform: translate(0, -12px) scale(0.8);
+        color: #9e9e9e;
+    }
 
-  .input-label-float {
-    position: absolute;
-    pointer-events: none;
-    transform-origin: top left;
-    line-height: 1;
-    left: 4px;
-    transform: translate(0, -12px) scale(0.8);
-    color: #9e9e9e;
-  }
+    .input-label-float {
+        position: absolute;
+        pointer-events: none;
+        transform-origin: top left;
+        line-height: 1;
+        left: 4px;
+        transform: translate(0, -12px) scale(0.8);
+        color: #9e9e9e;
+    }
 
-  .card {
-    @apply relative lg:flex lg:items-center my-12 w-full;
-  }
+    .card {
+        @apply relative lg:flex lg:items-center my-12 w-full;
+    }
 
-  .card-even {
-    @apply card;
-  }
+    .card-even {
+        @apply card;
+    }
 
-  .card-uneven {
-    @apply card justify-end;
-  }
+    .card-uneven {
+        @apply card justify-end;
+    }
 
-  .sm-card-img-even {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 120px), 0 100%);
-  }
+    .sm-card-img-even {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 120px), 0 100%);
+    }
 
-  .sm-card-img-uneven {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 120px));
-  }
+    .sm-card-img-uneven {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 120px));
+    }
 
-  .card-img {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
+    .card-img {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
 
-  .card-img-uneven {
-    @apply card-img right-0;
-  }
+    .card-img-uneven {
+        @apply card-img right-0;
+    }
 
-  .sm-card-description {
-    @apply w-full bg-dark-secondary rounded mt-[-120px] pt-[98px] pb-2 px-2;
-  }
+    .sm-card-description {
+        @apply w-full bg-light-primary shadow-2xl dark:bg-dark-secondary rounded mt-[-120px] pt-[98px] pb-2 px-2;
+    }
 
-  .sm-card-description-even {
-    @apply sm-card-description;
-    clip-path: polygon(0 120px, 100% 0, 100% 100%, 0 100%);
-  }
+    .sm-card-description-even {
+        @apply sm-card-description;
+        clip-path: polygon(0 120px, 100% 0, 100% 100%, 0 100%);
+    }
 
-  .sm-card-description-uneven {
-    @apply sm-card-description;
-    clip-path: polygon(0 0, 100% 120px, 100% 100%, 0 100%);
-  }
+    .sm-card-description-uneven {
+        @apply sm-card-description;
+        clip-path: polygon(0 0, 100% 120px, 100% 100%, 0 100%);
+    }
 
-  .card-description {
-    @apply absolute w-[50%] xl:w-[45%] rounded bg-light-secondary dark:bg-dark-secondary;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
+    .card-description {
+        @apply absolute w-[50%] xl:w-[45%] rounded bg-light-primary shadow-2xl dark:bg-dark-secondary;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
 
-  .card-description-even {
-    @apply card-description right-0;
-  }
+    .card-description-even {
+        @apply card-description right-0;
+    }
 
-  .card-description-uneven {
-    @apply card-description left-0;
-  }
+    .card-description-uneven {
+        @apply card-description left-0;
+    }
 }
 
 #body {
-  scroll-behavior: smooth;
-  font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+    font-family: "Montserrat", sans-serif;
 }
 
 * {
-  @apply dark:text-[#eeeeee];
+    @apply dark:text-[#eeeeee];
 }
 
 h1,
@@ -270,21 +262,21 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-bold;
+    @apply font-bold;
 }
 
 h1 {
-  @apply text-3xl sm:text-5xl lg:text-6xl;
+    @apply text-3xl sm:text-5xl lg:text-6xl;
 }
 
 h2 {
-  @apply text-2xl sm:text-4xl lg:text-5xl;
+    @apply text-2xl sm:text-4xl lg:text-5xl;
 }
 
 h3 {
-  @apply text-xl sm:text-3xl lg:text-4xl;
+    @apply text-xl sm:text-3xl lg:text-4xl;
 }
 
 h4 {
-  @apply text-lg md:text-2xl lg:text-3xl;
+    @apply text-lg md:text-2xl lg:text-3xl;
 }

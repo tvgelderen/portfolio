@@ -62,100 +62,85 @@ const Contact = ({ content }: Props) => {
     }, [watchForm]);
 
     return (
-        <div className="sectionLastUneven">
+        <div className="section-last-uneven">
             <div id="contact" className="contact">
-                <p className="sectionHead">{content.head}</p>
-                <div className="grid grid-cols-1 lg:grid-cols-5 pt-12">
-                    <div className="col-span-3">
-                        <form
-                            onSubmit={handleSubmit(sendMail)}
-                            className="w-full max-w-[900px] m-auto"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
-                                <div className="mt-4 input-container">
-                                    <input
-                                        type="text"
-                                        {...register("name", { required: true })}
-                                        className={`${errors.name ? "input-error" : "input"}`}
-                                    />
-                                    <label
-                                        className={
-                                            values.name ? "input-label-float" : "input-label"
-                                        }
-                                    >
-                                        {content.name}
-                                    </label>
-                                </div>
-                                <div className="mt-4 input-container">
-                                    <input
-                                        type="text"
-                                        {...register("email", {
-                                            required: true,
-                                            pattern: {
-                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                message: "Invalid email address",
-                                            },
-                                        })}
-                                        className={`${errors.email ? "input-error" : "input"}`}
-                                    />
-                                    <label
-                                        className={
-                                            values.email ? "input-label-float" : "input-label"
-                                        }
-                                    >
-                                        {content.email}
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="mt-8 input-container">
+                <p className="section-head">{content.head}</p>
+                <div className="flex justify-center pt-12">
+                    <form
+                        onSubmit={handleSubmit(sendMail)}
+                        className="w-full max-w-[700px] m-auto"
+                    >
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+                            <div className="mt-4 input-container">
                                 <input
                                     type="text"
-                                    {...register("subject", { required: true })}
-                                    className={`${errors.subject ? "input-error" : "input"}`}
+                                    {...register("name", { required: true })}
+                                    className={`${errors.name ? "input-error" : "input"}`}
                                 />
                                 <label
                                     className={
-                                        values.subject ? "input-label-float" : "input-label"
+                                        values.name ? "input-label-float" : "input-label"
                                     }
                                 >
-                                    {content.subject}
+                                    {content.name}
                                 </label>
                             </div>
-                            <div className="mt-8 input-container">
-                                <textarea
-                                    {...register("message", { required: true })}
-                                    className={`${errors.message ? "input-error" : "input"}`}
-                                    rows={6}
+                            <div className="mt-4 input-container">
+                                <input
+                                    type="text"
+                                    {...register("email", {
+                                        required: true,
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "Invalid email address",
+                                        },
+                                    })}
+                                    className={`${errors.email ? "input-error" : "input"}`}
                                 />
                                 <label
                                     className={
-                                        values.message ? "input-label-float" : "input-label"
+                                        values.email ? "input-label-float" : "input-label"
                                     }
                                 >
-                                    {content.message}
+                                    {content.email}
                                 </label>
                             </div>
-                            <button
-                                type="submit"
-                                className="button-primary w-full mt-4 px-4 py-2 rounded-lg"
+                        </div>
+                        <div className="mt-8 input-container">
+                            <input
+                                type="text"
+                                {...register("subject", { required: true })}
+                                className={`${errors.subject ? "input-error" : "input"}`}
+                            />
+                            <label
+                                className={
+                                    values.subject ? "input-label-float" : "input-label"
+                                }
                             >
-                                {content.send}
-                            </button>
-                        </form>
-                    </div>
-                    <div className="col-span-1 lg:col-span-2 px-2 lg:px-4 pt-6 lg:pt-2">
-                        <h4 className="font-semibold">{content.contact_info}</h4>
-                        <div className="flex items-center">
-                            <HiOutlinePhone size={24} />
-                            <p className="dark:text-[#b9b9b9] py-4">&nbsp; +31 6 3808 4195</p>
+                                {content.subject}
+                            </label>
                         </div>
-                        <div className="flex items-center">
-                            <AiOutlineMail size={24} />
-                            <p className="dark:text-[#b9b9b9] py-4">
-                                &nbsp; thvangelderen@gmail.com
-                            </p>
+                        <div className="mt-8 input-container">
+                            <textarea
+                                {...register("message", { required: true })}
+                                className={`${errors.message ? "input-error" : "input"}`}
+                                rows={6}
+                            />
+                            <label
+                                className={
+                                    values.message ? "input-label-float" : "input-label"
+                                }
+                            >
+                                {content.message}
+                            </label>
                         </div>
-                    </div>
+                        <button
+                            type="submit"
+                            className="button-primary w-full mt-4 px-4 py-2 rounded-lg"
+                        >
+                            {content.send}
+                        </button>
+                    </form>
                 </div>
             </div>
 

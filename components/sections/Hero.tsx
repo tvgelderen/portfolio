@@ -70,29 +70,23 @@ const Hero = ({ content }: Props) => {
                         <a
                             target="_blank"
                             href="https://www.linkedin.com/in/timen-van-gelderen/"
-                            className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110"
+                            className="rounded-full p-3 m-4 hover:bg-light-theme/20 hover:dark:bg-dark-theme/30 hover:scale-110"
                         >
                             <BsLinkedin size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
                         </a>
                         <a
                             target="_blank"
                             href="https://github.com/TvGelderen"
-                            className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110"
+                            className="rounded-full p-3 m-4 hover:bg-light-theme/20 hover:dark:bg-dark-theme/30 hover:scale-110"
                         >
                             <BsGithub size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
                         </a>
                         <a
-                            onClick={() =>
-                                document
-                                    .getElementById("contact")
-                                    ?.scrollIntoView({ behavior: "smooth" })
-                            }
-                            className="rounded-full p-3 m-4 hover:bg-black/20 hover:dark:bg-black/80 hover:scale-110 cursor-pointer"
+                            target="_blank"
+                            href="mailto:thvangelderen@gmail.com"
+                            className="rounded-full p-3 m-4 hover:bg-light-theme/20 hover:dark:bg-dark-theme/30 hover:scale-110"
                         >
-                            <AiOutlineMail
-                                size={20}
-                                className="sm:w-6 sm:h-6 md:w-7 md:h-7"
-                            />
+                            <AiOutlineMail size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
                         </a>
                     </motion.div>
                 </div>
