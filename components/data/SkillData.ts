@@ -36,6 +36,10 @@ export const SkillData = [
         image: "/img/skills/dotnet.png"
     },
     {
+        name: "SvelteKit",
+        image: "/img/skills/svelte.png"
+    },
+    {
         name: "Nuxt",
         image: "/img/skills/nuxt.png"
     },
