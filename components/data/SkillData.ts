@@ -52,10 +52,6 @@ export const SkillData = [
         image: "/img/skills/tailwind.png"
     },
     {
-        name: "Firebase",
-        image: "/img/skills/firebase.png"
-    },
-    {
         name: "Elasticsearch",
         image: "/img/skills/elasticsearch.png"
     },

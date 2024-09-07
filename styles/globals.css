@@ -220,7 +220,7 @@
     }
 
     .sm-card-description {
-        @apply w-full bg-light-primary shadow-2xl dark:bg-dark-secondary rounded mt-[-120px] pt-[98px] pb-2 px-2;
+        @apply w-full bg-light-secondary shadow-2xl dark:bg-dark-secondary rounded mt-[-120px] pt-[98px] pb-2 px-2;
     }
 
     .sm-card-description-even {

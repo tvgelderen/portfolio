@@ -4,9 +4,6 @@ export const ProjectData = [
         name: "Netflix Clone",
         images: [
             "/img/projects/netflix_home.webp",
-            "/img/projects/netflix_profile.png",
-            "/img/projects/netflix_stripe.png",
-            "/img/projects/netflix_logged-out.png",
         ],
         githubURL: "https://github.com/TvGelderen/netflix-clone",
         liveURL: "https://netflix-clone-tvgelderen.vercel.app/",
@@ -35,11 +32,6 @@ export const ProjectData = [
         name: "National Parks",
         images: [
             "/img/projects/us-national-parks.webp",
-            "/img/projects/us-national-parks2.png",
-            "/img/projects/us-national-parks3.png",
-            "/img/projects/us-national-parks_yosemite.png",
-            "/img/projects/us-national-parks_yosemite2.png",
-            "/img/projects/us-national-parks_yosemite3.png",
         ],
         githubURL: "https://github.com/TvGelderen/us-national-parks",
         liveURL: "https://https://us-national-parks.vercel.app/",
@@ -68,9 +60,6 @@ export const ProjectData = [
         name: "Crypto Watch",
         images: [
             "/img/projects/crypto-watch_home.webp",
-            "/img/projects/crypto-watch_list.png",
-            "/img/projects/crypto-watch_chartsearch.png",
-            "/img/projects/crypto-watch_coinpage.png",
         ],
         githubURL: "https://github.com/TvGelderen/crypto-watch",
         liveURL: "https://crypto-watch-tvgelderen.vercel.app/",
