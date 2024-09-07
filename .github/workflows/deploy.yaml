@@ -1,4 +1,4 @@
-name: Hetnzer Deploy on Push
+name: Hetnzer Deploy
 
 on: 
   push:
@@ -15,7 +15,7 @@ jobs:
       with:
         key: ${{ secrets.HETZNER }}
         known_hosts: ${{ secrets.HETZNER_KNOWN_HOSTS }}
-    - name: Checkout the Repo
+    - name: Checkout the repo
       uses: actions/checkout@v2
       with:
         ssh-key: ${{ secrets.HETZNER }}
@@ -25,5 +25,5 @@ jobs:
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git remote add prod ssh://root@188.245.75.177:/git/portfolio
+        git remote add deployment ssh://root@188.245.75.177:/git/portfolio
         git push deployment
