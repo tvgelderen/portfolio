@@ -7,23 +7,19 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
     - name: Prepare ssh keys
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.HETZNER }}
+        key: ${{ secrets.HETZNER_KEY }}
         known_hosts: ${{ secrets.HETZNER_KNOWN_HOSTS }}
-    - name: Checkout the repo
-      uses: actions/checkout@v2
+    - name: Deploy to Hetzner
+      uses: appleboy/ssh-action@master
       with:
-        ssh-key: ${{ secrets.HETZNER }}
-        fetch-depth: 0
-        ref: master
-    - name: Push to Hetzner
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git remote add deployment ssh://root@188.245.75.177:/git/portfolio
-        git push deployment
+        username: ${{ secrets.SSH_USERNAME }}
+        host: ${{ secrets.SSH_HOST }}
+        port: 22
+        key: ${{ secrets.HETZNER_KEY }}
+        script: cd portfolio && git pull && source update.sh
