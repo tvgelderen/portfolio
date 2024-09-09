@@ -19,11 +19,6 @@
             rgba(241, 7, 163, 0.9));
 }
 
-#body {
-    height: 100dvh;
-    overflow-y: auto;
-}
-
 .scrollbar::-webkit-scrollbar {
     width: 8px;
 }
@@ -76,25 +71,6 @@
         @apply relative w-full overflow-hidden;
     }
 
-    .section-even {
-        @apply section bg-light-primary dark:bg-dark-primary;
-        clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 calc(100% - 5vw));
-    }
-
-    .section-uneven {
-        @apply section bg-light-background dark:bg-dark-background;
-    }
-
-    .section-last-even {
-        @apply section-even;
-        clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
-    }
-
-    .section-last-uneven {
-        @apply section-uneven;
-        clip-path: polygon(0 0, 100% calc(5vw), 100% 100%, 0 100%);
-    }
-
     .content-style {
         @apply relative w-full m-auto lg:py-[104px] md:py-[88px] py-[70px] px-4 lg:px-8;
     }
@@ -138,7 +114,7 @@
     }
 
     .button-secondary {
-        @apply flex justify-center items-center rounded-sm bg-light-secondary dark:bg-dark-secondary px-2 py-1 md:px-[12px] md:py-[6px];
+        @apply flex justify-center items-center rounded-sm bg-light-primary dark:bg-dark-primary px-2 py-1 md:px-[12px] md:py-[6px];
     }
 
     .button-secondary:hover {
@@ -146,7 +122,7 @@
     }
 
     .input {
-        @apply border-b-2 pt-2 pb-1 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
+        @apply border-b-2 pt-2 pb-1 px-1 focus:outline-none bg-transparent;
         border-image-source: var(--bg-grad-30);
         border-image-slice: 1;
     }
@@ -158,7 +134,7 @@
     }
 
     .input-error {
-        @apply border-b-2 border-[red]/75 pt-2 pb-1 px-1 focus:outline-none bg-transparent dark:bg-dark-background;
+        @apply border-b-2 border-[red]/75 pt-2 pb-1 px-1 focus:outline-none bg-transparent;
     }
 
     .input-container {
@@ -220,7 +196,7 @@
     }
 
     .sm-card-description {
-        @apply w-full bg-light-secondary shadow-2xl dark:bg-dark-secondary rounded mt-[-120px] pt-[98px] pb-2 px-2;
+        @apply w-full rounded shadow-2xl mt-[-120px] pt-[98px] pb-2 px-2 bg-light-primary/50 dark:bg-light-primary/5 backdrop-blur-md;
     }
 
     .sm-card-description-even {
@@ -234,8 +210,7 @@
     }
 
     .card-description {
-        @apply absolute w-[50%] xl:w-[45%] rounded bg-light-primary shadow-2xl dark:bg-dark-secondary;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        @apply absolute w-[50%] xl:w-[45%] rounded shadow-2xl bg-light-primary/50 dark:bg-light-primary/5 backdrop-blur-md;
     }
 
     .card-description-even {
@@ -247,7 +222,7 @@
     }
 }
 
-#body {
+body {
     scroll-behavior: smooth;
     font-family: "Montserrat", sans-serif;
 }

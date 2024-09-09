@@ -52,7 +52,7 @@ const ProjectCard = ({ project, index }: Props) => {
                 alt={project.name}
                 width={640}
                 height={360}
-                className={`lg:hidden rounded object-cover object-left-top ${isEven ? "sm-card-img-even lg:card-img" : "sm-card-img-uneven lg:card-img lg:card-img-uneven"}`}
+                className={`lg:hidden rounded-t object-cover object-left-top ${isEven ? "sm-card-img-even lg:card-img" : "sm-card-img-uneven lg:card-img lg:card-img-uneven"}`}
                 custom={{ width, isEven }}
                 initial="hidden"
                 whileInView="visible"

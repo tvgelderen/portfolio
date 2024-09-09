@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { SkillData } from "../data/SkillData";
 
 import { motion } from "framer-motion";
@@ -39,13 +39,13 @@ const Skills = ({ content }: Props) => {
                         key={skill.name}
                         className="m-4 hover:scale-110 duration-300 justify-center shadow-lg"
                     >
-                        <div className="p-6 rounded-t bg-light-primary dark:bg-dark-primary">
+                        <div className="p-6 rounded-t bg-light-primary/25 dark:bg-light-primary/5 backdrop-blur-md">
                             <img
                                 src={skill.image}
                                 className="h-[65px] w-[65px] sm:h-[80px] sm:w-[80px] object-contain"
                             />
                         </div>
-                        <div className="flex justify-center items-center p-2 rounded-b bg-light-secondary dark:bg-dark-secondary">
+                        <div className="flex justify-center items-center p-2 rounded-b bg-light-primary/60 dark:bg-light-primary/15 backdrop-blur-md">
                             <p className="lg:text-lg" style={{ fontWeight: 500 }}>
                                 {skill.name}
                             </p>
@@ -71,7 +71,7 @@ const Skills = ({ content }: Props) => {
     };
 
     return (
-        <div className="section-uneven">
+        <div className="section">
             <div id="skills" className="skills">
                 <p className="section-head">{content.head}</p>
 

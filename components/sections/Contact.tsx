@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
-import { HiOutlinePhone } from "react-icons/hi";
-import { AiOutlineMail } from "react-icons/ai";
 import Notification from "../Notification";
 
 type FormTypes = {
@@ -62,7 +60,7 @@ const Contact = ({ content }: Props) => {
     }, [watchForm]);
 
     return (
-        <div className="section-last-uneven">
+        <div className="section">
             <div id="contact" className="contact">
                 <p className="section-head">{content.head}</p>
                 <div className="flex justify-center pt-12">

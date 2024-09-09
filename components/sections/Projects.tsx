@@ -8,7 +8,7 @@ type Props = {
 
 const Projects = ({ content }: Props) => {
     return (
-        <div className="section-even">
+        <div className="section">
             <div id="projects" className="projects">
                 <p className="section-head">{content.head}</p>
                 <div className="lg:w-full md:w-[65%] sm:w-[75%] w-[95%] m-auto pt-4">

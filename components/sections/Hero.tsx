@@ -12,11 +12,7 @@ const Hero = ({ content }: Props) => {
     return (
         <div
             id="hero"
-            className="flex items-center justify-center h-screen bg-center bg-cover bg-light-background dark:bg-dark-background"
-            style={{
-                backgroundImage: `url("/img/hero.webp")`,
-                backgroundAttachment: "fixed",
-            }}
+            className="flex items-center justify-center h-screen bg-center"
         >
             <div className="relative text-[#202020] z-[2]">
                 <div className="w-full max-w-[440px] md:max-w-[720px] m-auto flex-row justify-center text-center overflow-visible">
