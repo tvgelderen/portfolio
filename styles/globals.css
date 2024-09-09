@@ -17,10 +17,13 @@
     --bg-grad-90: linear-gradient(45deg,
             rgba(123, 47, 247, 0.9),
             rgba(241, 7, 163, 0.9));
+    --bg-red: linear-gradient(45deg,
+            rgba(256, 0, 0, .25),
+            rgba(256, 0, 0, .25));
 }
 
 .scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -95,30 +98,36 @@
         @apply uppercase text-center text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] tracking-[15px] text-light-theme dark:text-dark-theme;
     }
 
-    .button-primary {
-        @apply flex justify-center items-center;
-        background-image: var(--bg-grad-50);
-    }
-
-    .button-primary:hover {
-        background-image: var(--bg-grad-90);
-    }
-
-    .button-secondary-bg {
-        @apply rounded p-[2px];
-        background-image: var(--bg-grad-50);
-    }
-
-    .button-secondary-bg:hover {
-        background-image: var(--bg-grad-75);
+    .button {
+        @apply relative flex justify-center items-center rounded shadow-lg px-3 py-1;
     }
 
     .button-secondary {
-        @apply flex justify-center items-center rounded-sm bg-light-primary dark:bg-dark-primary px-2 py-1 md:px-[12px] md:py-[6px];
+        @apply button bg-light-primary dark:bg-light-primary/10;
     }
 
-    .button-secondary:hover {
+    .background>.content {
+        @apply h-full flex justify-center items-center;
+    }
+
+    .button>.background {
+        @apply opacity-75 dark:opacity-50;
+    }
+
+    .button-secondary>.background {
+        @apply opacity-0 dark:opacity-0;
+    }
+
+    .button>.background,
+    .button-secondary>.background {
+        @apply absolute inset-0 rounded;
         background-image: var(--bg-grad-75);
+        transition: opacity 400ms ease-in;
+    }
+
+    .button:hover>.background,
+    .button-secondary:hover>.background {
+        @apply opacity-100;
     }
 
     .input {
@@ -127,14 +136,14 @@
         border-image-slice: 1;
     }
 
+    .input.error {
+        border-image-source: var(--bg-red);
+    }
+
     .input:focus,
     :hover {
         border-image-source: var(--bg-grad-75);
         transition-duration: 200ms;
-    }
-
-    .input-error {
-        @apply border-b-2 border-[red]/75 pt-2 pb-1 px-1 focus:outline-none bg-transparent;
     }
 
     .input-container {

@@ -132,10 +132,10 @@ const Navbar = () => {
                 </div>
 
                 {open && (
-                    <div className="fixed lg:hidden left-0 top-0 w-full h-screen bg-black/50" />
+                    <div className="fixed lg:hidden left-0 top-0 w-full h-screen bg-light-primary/5 backdrop-blur-sm z-10" />
                 )}
 
-                <div className="flex fixed lg:hidden left-0 top-0">
+                <div className="flex fixed lg:hidden left-0 top-0 z-10">
                     <AnimatePresence>
                         {open && (
                             <motion.div
@@ -145,19 +145,17 @@ const Navbar = () => {
                                 exit={{ x: -320 }}
                                 transition={{ stiffness: 5 }}
                             >
-                                <div className="relative flex w-full items-center justify-between pb-1">
-                                    <div className="w-[140px] sm:w-[170px]">
-                                        <Logo color="#cb24ff" animate="none" />
-                                    </div>
-                                    <div
-                                        className="mb-4 p-1 rounded-full shadow-md shadow-dark-400 dark:shadow-dark-900 dark:bg-dark-tertiary cursor-pointer"
-                                        onClick={() => setOpen(false)}
-                                    >
-                                        <AiOutlineClose
-                                            size={20}
-                                            className="text-dark-900 dark:text-dark-100 w-4 h-4 sm:w-5 sm:h-5"
-                                        />
-                                    </div>
+                                <button
+                                    className="absolute top-2 right-2 p-1 rounded-full cursor-pointer hover:bg-dark-theme/25"
+                                    onClick={() => setOpen(false)}
+                                >
+                                    <AiOutlineClose
+                                        size={20}
+                                        className="text-dark-900 dark:text-dark-100 w-4 h-4 sm:w-5 sm:h-5"
+                                    />
+                                </button>
+                                <div className="w-[140px] sm:w-[170px]">
+                                    <Logo color="#cb24ff" animate="none" />
                                 </div>
                                 <ul className="text-dark-900 uppercase pt-4">
                                     {navItems.map((item, index) => {

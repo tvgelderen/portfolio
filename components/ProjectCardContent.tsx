@@ -39,22 +39,32 @@ const ProjectCardContent = ({ project, projectContent }: Props) => {
                 <a
                     target="_blank"
                     href={project.liveURL}
-                    className="button-primary px-2 py-1 md:px-[12px] md:py-[6px] mr-4 rounded"
+                    className="button px-2 py-1 md:px-[12px] md:py-[6px] mr-4"
                     onClick={(event) => event.stopPropagation()}
                 >
+                    <span className="background">
+                        <span className="content">
+                            <BsEye className="h-5 w-4 mr-1" />
+                            <span>&nbsp;Live Demo</span>
+                        </span>
+                    </span>
                     <BsEye className="h-5 w-4 mr-1" />
                     <span>&nbsp;Live Demo</span>
                 </a>
                 <a
                     target="_blank"
                     href={project.githubURL}
-                    className="button-secondary-bg"
+                    className="button-secondary"
                     onClick={(event) => event.stopPropagation()}
                 >
-                    <div className="button-secondary">
-                        <BsGithub className="h-5 w-4 mr-1" />
-                        <span>&nbsp;Code</span>
-                    </div>
+                    <span className="background">
+                        <span className="content">
+                            <BsGithub className="h-5 w-4 mr-1" />
+                            <span>&nbsp;Code</span>
+                        </span>
+                    </span>
+                    <BsGithub className="h-5 w-4 mr-1" />
+                    <span>&nbsp;Code</span>
                 </a>
             </div>
         </>

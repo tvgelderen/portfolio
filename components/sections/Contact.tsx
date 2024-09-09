@@ -73,13 +73,9 @@ const Contact = ({ content }: Props) => {
                                 <input
                                     type="text"
                                     {...register("name", { required: true })}
-                                    className={`${errors.name ? "input-error" : "input"}`}
+                                    className={`input ${errors.name && "error"}`}
                                 />
-                                <label
-                                    className={
-                                        values.name ? "input-label-float" : "input-label"
-                                    }
-                                >
+                                <label className={values.name ? "input-label-float" : "input-label"}>
                                     {content.name}
                                 </label>
                             </div>
@@ -93,13 +89,9 @@ const Contact = ({ content }: Props) => {
                                             message: "Invalid email address",
                                         },
                                     })}
-                                    className={`${errors.email ? "input-error" : "input"}`}
+                                    className={`input ${errors.email && "error"}`}
                                 />
-                                <label
-                                    className={
-                                        values.email ? "input-label-float" : "input-label"
-                                    }
-                                >
+                                <label className={values.email ? "input-label-float" : "input-label"}>
                                     {content.email}
                                 </label>
                             </div>
@@ -108,34 +100,28 @@ const Contact = ({ content }: Props) => {
                             <input
                                 type="text"
                                 {...register("subject", { required: true })}
-                                className={`${errors.subject ? "input-error" : "input"}`}
+                                className={`input ${errors.subject && "error"}`}
                             />
-                            <label
-                                className={
-                                    values.subject ? "input-label-float" : "input-label"
-                                }
-                            >
+                            <label className={values.subject ? "input-label-float" : "input-label"}>
                                 {content.subject}
                             </label>
                         </div>
                         <div className="mt-8 input-container">
                             <textarea
                                 {...register("message", { required: true })}
-                                className={`${errors.message ? "input-error" : "input"}`}
+                                className={`input ${errors.message && "error"}`}
                                 rows={6}
                             />
-                            <label
-                                className={
-                                    values.message ? "input-label-float" : "input-label"
-                                }
-                            >
+                            <label className={values.message ? "input-label-float" : "input-label"}>
                                 {content.message}
                             </label>
                         </div>
-                        <button
-                            type="submit"
-                            className="button-primary w-full mt-4 px-4 py-2 rounded-lg"
-                        >
+                        <button type="submit" className="button w-full mt-4 px-4 py-2 rounded-lg">
+                            <span className="background">
+                                <span className="content">
+                                    {content.send}
+                                </span>
+                            </span>
                             {content.send}
                         </button>
                     </form>
