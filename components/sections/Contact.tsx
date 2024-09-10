@@ -63,7 +63,7 @@ const Contact = ({ content }: Props) => {
         <div className="section">
             <div id="contact" className="contact">
                 <p className="section-head">{content.head}</p>
-                <div className="flex justify-center pt-12">
+                <div className="flex justify-center md:pt-8">
                     <form
                         onSubmit={handleSubmit(sendMail)}
                         className="w-full max-w-[700px] m-auto"
