@@ -11,7 +11,7 @@ export default function Document() {
                     rel="stylesheet"
                 />
             </Head>
-            <body className="relative scrollbar overflow-x-hidden min-h-screen bg-gradient-to-b from-[#cb24ff]/5 via-[#cb24ff]/20 to-[#cb24ff]/5 before:pointer-events-none before:absolute before:inset-0 before:block before:bg-center before:bg-[url('/img/bg.svg')] before:opacity-5 dark:before:opacity-15">
+            <body className="relative scrollbar overflow-x-hidden min-h-screen bg-gradient-to-b from-[#cb24ff]/5 via-[#cb24ff]/20 dark:via-[#cb24ff]/15 to-[#cb24ff]/5 before:pointer-events-none before:absolute before:inset-0 before:block before:bg-center before:bg-[url('/img/bg.svg')] before:opacity-5 dark:before:opacity-15">
                 <Main />
                 <NextScript />
             </body>

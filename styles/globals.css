@@ -46,7 +46,7 @@
 
 @layer components {
     .section {
-        @apply relative w-full min-h-dvh md:min-h-fit md:mb-32;
+        @apply relative w-full min-h-dvh md:min-h-fit md:pb-32;
     }
 
     .content-style {
@@ -64,7 +64,7 @@
     }
 
     .section-head {
-        @apply uppercase text-center text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] tracking-[15px] text-light-theme dark:text-dark-theme;
+        @apply uppercase text-center text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] tracking-[15px] text-light-theme dark:text-dark-theme relative;
     }
 
     .button {

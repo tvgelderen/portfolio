@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
@@ -25,9 +24,7 @@ const Navbar = () => {
         <div className="absolute top-0 w-full">
             <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                 <div className="lg:mx-4 mx-2">
-                    <Link href="/">
-                        <Logo color="#cb24ff" animate="once" />
-                    </Link>
+                    <Logo color="#cb24ff" animate="once" />
                 </div>
                 <ul className="hidden lg:flex h-full uppercase border-light-theme">
                     {navItems.map((item, index) => {

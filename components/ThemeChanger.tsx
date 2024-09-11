@@ -17,7 +17,7 @@ const ThemeChanger = () => {
         setLoaded(true);
 
         const savedTheme = localStorage.getItem("theme");
-        if (savedTheme) {
+        if (savedTheme && savedTheme != "system") {
             setTheme(savedTheme);
         } else {
             setTheme("dark");
