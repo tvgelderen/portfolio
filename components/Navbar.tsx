@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { AiOutlineMenu, AiOutlineClose, AiOutlineMail } from "react-icons/ai";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { GetInTouch, NavbarData } from "./data/NavbarData";
 import { useRouter } from "next/router";
-import { motion, AnimatePresence } from "framer-motion";
-import ThemeChanger from "./ThemeChanger";
+import { useEffect, useState } from "react";
+import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { NavbarData } from "./data/NavbarData";
 import Logo from "./Logo";
+import ThemeChanger from "./ThemeChanger";
 
 const Navbar = () => {
     const [currentIdx, setCurrentIdx] = useState<number>(-1);
@@ -15,15 +15,14 @@ const Navbar = () => {
 
     const router = useRouter();
 
-    const navItems = NavbarData("en");
-    const getInTouch = GetInTouch("en");
+    const navItems = NavbarData();
 
     useEffect(() => {
         setLoaded(true);
     }, []);
 
     return (
-        <div className="relative w-full">
+        <div className="absolute top-0 w-full">
             <div className="max-w-[1300px] m-auto h-full flex justify-between px-1 items-center">
                 <div className="lg:mx-4 mx-2">
                     <Link href="/">
@@ -225,7 +224,7 @@ const Navbar = () => {
                                 </ul>
                                 <div className=" w-[280px] sm:w-[320px] text-slate-900 absolute bottom-0 left-0">
                                     <p className="uppercase sm:text-xl pl-4 text-light-theme dark:text-dark-theme">
-                                        {getInTouch}
+                                        Get in touch
                                     </p>
                                     <div className="flex items-center justify-between w-full mb-2 px-2 sm:px-0">
                                         <a

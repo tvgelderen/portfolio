@@ -45,31 +45,6 @@
 }
 
 @layer components {
-    .hero {
-        @apply absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center;
-    }
-
-    .cursor-circle {
-        @apply absolute top-0 left-0 right-0 bottom-0 z-[2];
-        filter: invert(100%);
-        transition: 0.1s;
-        clip-path: circle(60px at var(--x) var(--y));
-    }
-
-    .dot {
-        @apply absolute rounded-full p-[2px] bg-black dark:bg-white;
-        left: var(--x);
-        top: var(--y);
-    }
-
-    .hero-heading {
-        @apply text-[8vw] sm:text-[7vw] md:text-[6vw] 2xl:text-[4vw];
-    }
-
-    .hero-subheading {
-        @apply text-[5vw] lg:text-[2vw] font-[400] lg:py-4;
-    }
-
     .section {
         @apply relative w-full min-h-dvh md:min-h-fit md:mb-32;
     }
@@ -78,20 +53,14 @@
         @apply relative w-full m-auto p-4 lg:p-8;
     }
 
-    .about {
-        @apply content-style max-w-[1000px];
-    }
-
-    .skills {
+    .about,
+    .skills,
+    .contact {
         @apply content-style max-w-[1000px];
     }
 
     .projects {
         @apply content-style max-w-[1300px];
-    }
-
-    .contact {
-        @apply content-style max-w-[1200px];
     }
 
     .section-head {

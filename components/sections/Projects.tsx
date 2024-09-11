@@ -2,15 +2,11 @@ import { motion } from "framer-motion";
 import { ProjectData } from "../data/ProjectData";
 import ProjectCard from "../ProjectCard";
 
-type Props = {
-    content: any;
-};
-
-const Projects = ({ content }: Props) => {
+const Projects = () => {
     return (
         <div className="section">
             <div id="projects" className="projects">
-                <p className="section-head">{content.head}</p>
+                <p className="section-head">Projects</p>
                 <div className="lg:w-full md:w-[65%] sm:w-[75%] w-[95%] m-auto pt-4">
                     {ProjectData?.map((project, index) => (
                         <motion.div key={index} layoutId={project.id}>

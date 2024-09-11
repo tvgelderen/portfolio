@@ -34,7 +34,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        courier: ["Courier Prime", "Montserrat", "sans-serif"],
+        courier: ["Montserrat", "sans-serif"],
       },
     },
   },

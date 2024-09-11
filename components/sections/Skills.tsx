@@ -1,13 +1,8 @@
-import React from "react";
 import { SkillData } from "../data/SkillData";
 
 import { motion } from "framer-motion";
 
-type Props = {
-    content: any;
-};
-
-const Skills = ({ content }: Props) => {
+const Skills = () => {
     const GetRow = (rowLen: number, i: number) => {
         let step = SkillData.length - i;
         step = step < rowLen ? step : rowLen;
@@ -58,8 +53,9 @@ const Skills = ({ content }: Props) => {
 
     const ShowRows = (rowLen: number) => {
         let steps = [];
-
-        for (let i = 0; i < SkillData.length; i += rowLen) steps.push(i);
+        for (let i = 0; i < SkillData.length; i += rowLen) {
+            steps.push(i);
+        }
 
         return (
             <div className="grid grid-cols-1 mt-4 mb-2 md:my-12">
@@ -73,8 +69,7 @@ const Skills = ({ content }: Props) => {
     return (
         <div className="section">
             <div id="skills" className="skills">
-                <p className="section-head">{content.head}</p>
-
+                <p className="section-head">Skills</p>
                 <div className="xs:hidden">{ShowRows(2)}</div>
                 <div className="hidden xs:block md:hidden">{ShowRows(3)}</div>
                 <div className="hidden md:block">{ShowRows(4)}</div>

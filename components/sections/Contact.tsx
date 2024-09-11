@@ -11,11 +11,7 @@ type FormTypes = {
     message: string;
 };
 
-type Props = {
-    content: any;
-};
-
-const Contact = ({ content }: Props) => {
+const Contact = () => {
     const [sent, setSent] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const {
@@ -62,7 +58,7 @@ const Contact = ({ content }: Props) => {
     return (
         <div className="section">
             <div id="contact" className="contact">
-                <p className="section-head">{content.head}</p>
+                <p className="section-head">Contact</p>
                 <div className="flex justify-center md:pt-8">
                     <form
                         onSubmit={handleSubmit(sendMail)}
@@ -76,7 +72,7 @@ const Contact = ({ content }: Props) => {
                                     className={`input ${errors.name && "error"}`}
                                 />
                                 <label className={values.name ? "input-label-float" : "input-label"}>
-                                    {content.name}
+                                    Name
                                 </label>
                             </div>
                             <div className="mt-4 input-container">
@@ -92,7 +88,7 @@ const Contact = ({ content }: Props) => {
                                     className={`input ${errors.email && "error"}`}
                                 />
                                 <label className={values.email ? "input-label-float" : "input-label"}>
-                                    {content.email}
+                                    Email
                                 </label>
                             </div>
                         </div>
@@ -103,7 +99,7 @@ const Contact = ({ content }: Props) => {
                                 className={`input ${errors.subject && "error"}`}
                             />
                             <label className={values.subject ? "input-label-float" : "input-label"}>
-                                {content.subject}
+                                Subject
                             </label>
                         </div>
                         <div className="mt-8 input-container">
@@ -113,16 +109,16 @@ const Contact = ({ content }: Props) => {
                                 rows={6}
                             />
                             <label className={values.message ? "input-label-float" : "input-label"}>
-                                {content.message}
+                                Message
                             </label>
                         </div>
                         <button type="submit" className="button w-full mt-4 px-4 py-2 rounded-lg">
                             <span className="background">
                                 <span className="content">
-                                    {content.send}
+                                    Send
                                 </span>
                             </span>
-                            {content.send}
+                            Send
                         </button>
                     </form>
                 </div>
