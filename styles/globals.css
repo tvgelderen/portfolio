@@ -46,7 +46,7 @@
 
 @layer components {
     .section {
-        @apply relative w-full min-h-dvh md:min-h-fit md:pb-32;
+        @apply relative w-full pb-32;
     }
 
     .content-style {
@@ -68,7 +68,7 @@
     }
 
     .button {
-        @apply relative flex justify-center items-center rounded shadow-lg px-3 py-1;
+        @apply relative flex justify-center items-center rounded shadow-md px-3 py-1;
     }
 
     .button-secondary {
@@ -173,8 +173,12 @@
         @apply card-img right-0;
     }
 
+    .card-description-bg {
+        @apply bg-light-primary dark:bg-dark-primary;
+    }
+
     .sm-card-description {
-        @apply w-full rounded shadow-2xl mt-[-120px] pt-[98px] pb-2 px-2 bg-light-primary/50 dark:bg-light-primary/5 backdrop-blur-md;
+        @apply lg:hidden w-full rounded mt-[-120px] pt-[98px] pb-2 px-2 card-description-bg;
     }
 
     .sm-card-description-even {
@@ -188,7 +192,7 @@
     }
 
     .card-description {
-        @apply absolute w-[50%] xl:w-[45%] rounded shadow-2xl bg-light-primary/50 dark:bg-light-primary/5 backdrop-blur-md;
+        @apply absolute w-[50%] xl:w-[45%] rounded card-description-bg shadow-2xl;
     }
 
     .card-description-even {

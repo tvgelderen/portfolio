@@ -11,7 +11,9 @@ export default function Document() {
                     rel="stylesheet"
                 />
             </Head>
-            <body className="relative scrollbar overflow-x-hidden min-h-screen bg-gradient-to-b from-[#cb24ff]/5 via-[#cb24ff]/20 dark:via-[#cb24ff]/15 to-[#cb24ff]/5 before:pointer-events-none before:absolute before:inset-0 before:block before:bg-center before:bg-[url('/img/bg.svg')] before:opacity-5 dark:before:opacity-15">
+            <body className="relative scrollbar overflow-x-hidden h-dvh">
+                <div className="fixed inset-0 bg-light-primary dark:bg-dark-background"></div>
+                <div className="fixed inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_48px] sm:bg-[size:32px_64px] lg:bg-[size:48px_96px] [mask-image:radial-gradient(ellipse_60%_55%_at_50%_0%,#181825_70%,transparent_100%)]"></div>
                 <Main />
                 <NextScript />
             </body>

@@ -23,7 +23,7 @@ const Skills = () => {
 
         return (
             <motion.div
-                className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-[300px] xs:max-w-[450px] md:max-w-[600px]"
+                className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 max-w-[300px] xs:max-w-[450px] md:max-w-[600px] gap-2 mb-2 sm:gap-4 sm:mb-4"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -32,19 +32,17 @@ const Skills = () => {
                 {SkillData.slice(i, i + step).map((skill) => (
                     <div
                         key={skill.name}
-                        className="hover:scale-110 duration-300 justify-center shadow-lg m-1 xs:m-2 text-xs sm:text-sm md:text-base aspect-square"
+                        className="hover:scale-110 duration-300 flex flex-col items-center justify-center rounded shadow-lg pb-2 text-xs sm:text-sm md:text-base aspect-square bg-light-primary dark:bg-dark-primary"
                     >
-                        <div className="flex justify-center items-center w-full h-full rounded-t bg-light-primary/25 dark:bg-light-primary/5 backdrop-blur-md">
+                        <div className="flex justify-center items-center w-full h-full">
                             <img
                                 src={skill.image}
                                 className="h-[60%] w-[60%] object-contain"
                             />
                         </div>
-                        <div className="flex justify-center items-center p-2 rounded-b bg-light-primary/60 dark:bg-light-primary/15 backdrop-blur-md">
-                            <span style={{ fontWeight: 500 }}>
-                                {skill.name}
-                            </span>
-                        </div>
+                        <span style={{ fontWeight: 500 }}>
+                            {skill.name}
+                        </span>
                     </div>
                 ))}
             </motion.div>

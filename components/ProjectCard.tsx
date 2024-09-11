@@ -45,7 +45,7 @@ const ProjectCard = ({ project, index }: Props) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div className={`${isEven ? "card-even" : "card-uneven"}`}>
+        <div className={`${isEven ? "card-even" : "card-uneven"} shadow-xl lg:shadow-none`}>
             {/* Card for screens md and smaller */}
             <motion.img
                 src={project.images[0]}
@@ -60,16 +60,9 @@ const ProjectCard = ({ project, index }: Props) => {
                 variants={imgVariants}
                 loading="lazy"
             />
-            <motion.div
-                className={`lg:hidden ${isEven ? "sm-card-description-even" : "sm-card-description-uneven"}`}
-                custom={{ width, isEven }}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={descriptionVariants}
-            >
+            <div className={`${isEven ? "sm-card-description-even" : "sm-card-description-uneven"}`}>
                 <ProjectCardContent project={project} projectContent={projectContent} />
-            </motion.div>
+            </div>
 
             {/* Card for larger screens */}
             <motion.img
