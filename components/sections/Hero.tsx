@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="flex items-center justify-center h-dvh">
             <div className="relative text-[#202020] z-[2]">
                 <div className="w-full max-w-[440px] md:max-w-[1200px] m-auto flex flex-col items-center justify-center text-center overflow-visible">
-                    <div className="absolute inset-0 bg-light-theme/50 dark:bg-light-theme/20 blur-[200px]"></div>
+                    <div className="absolute inset-0 bg-light-theme/80 dark:bg-light-theme/40 blur-[200px]"></div>
                     <motion.h3
                         initial={{
                             y: -250,
