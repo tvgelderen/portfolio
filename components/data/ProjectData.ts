@@ -1,5 +1,16 @@
 export const ProjectData = [
     {
+        id: "fiscora",
+        name: "Fiscora",
+        images: [
+            "/img/projects/fiscora.webp",
+        ],
+        githubURL: "https://github.com/TvGelderen/fiscora",
+        liveURL: "https://fiscora.tvgelderen.nl",
+        skills: ["SvelteKit", "Tailwind CSS", "Go", "Docker"],
+        description: "A website to help users keep track of their finances by enabling them to add single and recurring transactions to their account. The transaction view gives users the ability to view transactions per month with the total income, expense, and net-income. The dashboard view gives an overview of the entire year, also tracking transactions by type.",
+    },
+    {
         id: "netflix-clone",
         name: "Netflix Clone",
         images: [
@@ -7,25 +18,8 @@ export const ProjectData = [
         ],
         githubURL: "https://github.com/TvGelderen/netflix-clone",
         liveURL: "https://netflix-clone-tvgelderen.vercel.app/",
-        skills: ["TypeScript", "Tailwind CSS", "Next.js", "Firebase"],
-        content: new Map([
-            [
-                "en",
-                {
-                    brief_description:
-                        "A Netflix look-alike web application, which allows users to log in and save movies to their own watch list. It shows movies in different categories such as trending, top rated, and different genres. By clicking on a movie more information about it is shown along with the trailer.",
-                    description: "",
-                },
-            ],
-            [
-                "nl",
-                {
-                    brief_description:
-                        "Een namaak versie van Netflix met beperkte functionaliteit. Gebruikers kunnen een account aanmaken en onder hun account films toevoegen aan hun persoonlijke lijst. Er zijn verschillende categoriën zoals de trending, top rated, en verschillende genres. Wanneer een gebruiker op een film klikt komt meer informatie over de film tevoorschijn samen met de trailer.",
-                    description: "",
-                },
-            ],
-        ]),
+        skills: ["TypeScript", "Tailwind CSS", "Next.js"],
+        description: "A Netflix look-alike web application, which allows users to log in and save movies to their own watch list. It shows movies in different categories such as trending, top rated, and different genres. By clicking on a movie more information about it is shown along with the trailer. All data is stored in Firebase",
     },
     {
         id: "us-national-parks",
@@ -34,26 +28,9 @@ export const ProjectData = [
             "/img/projects/us-national-parks.webp",
         ],
         githubURL: "https://github.com/TvGelderen/us-national-parks",
-        liveURL: "https://https://us-national-parks.vercel.app/",
+        liveURL: "https://us-national-parks.vercel.app/",
         skills: ["JavaScript", "Tailwind CSS", "Next.js"],
-        content: new Map([
-            [
-                "en",
-                {
-                    brief_description:
-                        "A web application which provides images and information about some of the United States' national parks. On the homepage a carousel is found along with a map which shows the location of each park with a marker. Each park's specific page contains more images along with information about the park fetched using the National Park's officail API.",
-                    description: "",
-                },
-            ],
-            [
-                "nl",
-                {
-                    brief_description:
-                        "Een website met informatie over een aantal van Amerika's nationale parken. Op de thuispagina is een carousel met afbeeldingen te zien samen met een kaart met daarop de locatie van ieder park met een marker aangegeven. Op de pagina van ieder park zijn meer foto's te vinden samen met informatie verkregen via de officiële National Parks API.",
-                    description: "",
-                },
-            ],
-        ]),
+        description: "A web application which provides images and information about some of the United States' national parks. On the homepage a carousel is found along with a map which shows the location of each park with a marker. Each park's specific page contains more images along with information about the park fetched using the National Park's officail API.",
     },
     {
         id: "crypto-watch",
@@ -64,23 +41,6 @@ export const ProjectData = [
         githubURL: "https://github.com/TvGelderen/crypto-watch",
         liveURL: "https://crypto-watch-tvgelderen.vercel.app/",
         skills: ["JavaScript", "Bootstrap", "React"],
-        content: new Map([
-            [
-                "en",
-                {
-                    brief_description:
-                        "A website showing the current crypto courses using Coingecko's API. Each coin has its own page which shows two graphs, one for the historic price data and the other for showing the marketcap change over time, the time shown can be set ranging from 1 day up to change over all time since the coin's creation.",
-                    description: "",
-                },
-            ],
-            [
-                "nl",
-                {
-                    brief_description:
-                        "Een website die de huidige crypto koersen weergeeft door gebruik te maken van Coingecko's API. Iedere munt heeft een eigen pagina waarop grafieken van de prijs data en marktkapitalisatie data te zien zijn over verloop van tijd, deze tijd is in te stellen van 1 dag terug tot aan de creatie van de munt.",
-                    description: "",
-                },
-            ],
-        ]),
+        description: "A website showing the current crypto courses using Coingecko's API. Each coin has its own page which shows two graphs, one for the historic price data and the other for showing the marketcap change over time, the time shown can be set ranging from 1 day up to change over all time since the coin's creation.",
     },
 ];

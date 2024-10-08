@@ -4,10 +4,9 @@ import { SkillData } from "./data/SkillData";
 
 type Props = {
     project: any;
-    projectContent: any;
 };
 
-const ProjectCardContent = ({ project, projectContent }: Props) => {
+const ProjectCardContent = ({ project }: Props) => {
     return (
         <>
             <div className="w-[75%] m-auto flex justify-evenly items-center lg:pt-4 pb-4">
@@ -32,8 +31,8 @@ const ProjectCardContent = ({ project, projectContent }: Props) => {
                     }
                 })}
             </div>
-            <div className="px-6 py-4 text-[0.9rem] dark:text-dark-text">
-                {projectContent.brief_description}
+            <div className="p-4 text-[0.9rem] dark:text-dark-text">
+                {project.description}
             </div>
             <div className="px-4 pb-4 flex">
                 <a

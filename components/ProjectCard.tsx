@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useAppContext } from "../context/AppContext";
 import useWindowDimensions from "./hooks/useWindowWidth";
 import ProjectCardContent from "./ProjectCardContent";
 
@@ -22,12 +21,6 @@ const imgVariants = {
 
 const ProjectCard = ({ project, index }: Props) => {
     let { width } = useWindowDimensions();
-    let { language } = useAppContext();
-
-    const projectContent =
-        project?.content.get(language) === undefined
-            ? project?.content.get("en")
-            : project.content.get(language);
 
     const isEven = index % 2 === 0;
 
@@ -43,7 +36,7 @@ const ProjectCard = ({ project, index }: Props) => {
                 loading="lazy"
             />
             <div className={`${isEven ? "sm-card-description-even" : "sm-card-description-uneven"}`}>
-                <ProjectCardContent project={project} projectContent={projectContent} />
+                <ProjectCardContent project={project} />
             </div>
 
             {/* Card for larger screens */}
@@ -61,7 +54,7 @@ const ProjectCard = ({ project, index }: Props) => {
                 loading="lazy"
             />
             <div className={`hidden lg:block ${isEven ? "lg:card-description-even" : "lg:card-description-uneven"}`}>
-                <ProjectCardContent project={project} projectContent={projectContent} />
+                <ProjectCardContent project={project} />
             </div>
         </div>
     );
