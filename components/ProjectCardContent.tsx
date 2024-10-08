@@ -24,7 +24,7 @@ const ProjectCardContent = ({ project }: Props) => {
                                     alt={skill.name}
                                     width={40}
                                     height={40}
-                                    className={`${skill.name === "Firebase" ? "w-6" : "w-7"}`}
+                                    className="w-7"
                                 />
                             </div>
                         );
