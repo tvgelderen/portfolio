@@ -31,7 +31,10 @@ const ThemeChanger = () => {
 	};
 
 	return (
-		<div className="cursor-pointer mr-4" onClick={toggleTheme}>
+		<div
+			className="cursor-pointer mr-4 relative h-6 w-6 flex items-center justify-center"
+			onClick={toggleTheme}
+		>
 			<AnimatePresence>
 				{mounted && theme === "dark" && (
 					<motion.div

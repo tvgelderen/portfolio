@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import useWindowDimensions from "./hooks/useWindowWidth";
 import ProjectCardContent from "./ProjectCardContent";
+import Image from "next/image";
 
 type Props = {
 	project: any;
@@ -10,20 +10,23 @@ type Props = {
 };
 
 const imgVariants = {
-	hidden: ({ width, isEven }: { width: number; isEven: boolean }) => {
-		return {
-			x: isEven ? -width / 2 : width / 2,
-		};
-	},
+	hidden: (custom: { isEven: boolean }) => ({
+		x: custom.isEven ? -240 : 240,
+		opacity: 0,
+	}),
 	visible: {
 		x: 0,
-		transition: { duration: 2 },
+		opacity: 1,
+		transition: {
+			type: "spring",
+			stiffness: 100,
+			damping: 20,
+			duration: 0.8,
+		},
 	},
 };
 
 const ProjectCard = ({ project, index }: Props) => {
-	let { width } = useWindowDimensions();
-
 	const isEven = index % 2 === 0;
 
 	return (
@@ -33,7 +36,7 @@ const ProjectCard = ({ project, index }: Props) => {
 			} shadow-xl lg:shadow-none rounded-md`}
 		>
 			{/* Card for screens md and smaller */}
-			<img
+			<Image
 				src={project.images[0]}
 				alt={project.name}
 				width={640}
@@ -56,28 +59,28 @@ const ProjectCard = ({ project, index }: Props) => {
 			</div>
 
 			{/* Card for larger screens */}
-			<motion.img
-				src={project.images[0]}
-				alt={project.name}
-				width={854}
-				height={480}
+			<motion.div
 				className={`hidden lg:block rounded object-cover object-left-top lg:w-[60%] ${
-					isEven
-						? "sm-card-img-even lg:card-img"
-						: "sm-card-img-uneven lg:card-img lg:card-img-uneven"
+					isEven ? "lg:card-img" : "lg:card-img lg:card-img-uneven"
 				}`}
-				custom={{ width, isEven }}
+				custom={{ isEven }}
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true }}
 				variants={imgVariants}
-				loading="lazy"
-			/>
+			>
+				<Image
+					className="rounded"
+					src={project.images[0]}
+					alt={project.name}
+					width={854}
+					height={480}
+					loading="lazy"
+				/>
+			</motion.div>
 			<div
 				className={`hidden lg:block ${
-					isEven
-						? "lg:card-description-even"
-						: "lg:card-description-uneven"
+					isEven ? "card-description-even" : "card-description-uneven"
 				}`}
 			>
 				<ProjectCardContent project={project} />

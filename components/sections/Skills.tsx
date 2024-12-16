@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SkillData } from "../../lib/SkillData";
 
 import { motion } from "framer-motion";
@@ -35,8 +36,11 @@ const Skills = () => {
 						className="hover:scale-110 duration-300 flex flex-col items-center justify-center rounded shadow-lg pb-2 text-xs sm:text-sm md:text-base aspect-square bg-light-primary dark:bg-dark-primary"
 					>
 						<div className="flex justify-center items-center w-full h-full">
-							<img
+							<Image
 								src={skill.image}
+								alt={skill.name}
+								width={150}
+								height={150}
 								className="h-[60%] w-[60%] object-contain"
 							/>
 						</div>

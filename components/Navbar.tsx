@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavbarData } from "../lib/NavbarData";
 import ThemeChanger from "./ThemeChanger";
@@ -9,15 +9,18 @@ import Logo from "./Logo";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const Navbar = () => {
-	const [currentIdx, setCurrentIdx] = useState<number>(-1);
-	const [loaded, setLoaded] = useState<boolean>(false);
 	const [open, setOpen] = useState<boolean>(false);
 
 	const navItems = NavbarData();
 
-	useEffect(() => {
-		setLoaded(true);
-	}, []);
+	const scrollToSection = (id: string) => {
+		if (document.getElementById(id)) {
+			document.getElementById(id)?.scrollIntoView({
+				behavior: "smooth",
+			});
+		}
+		setOpen(false);
+	};
 
 	return (
 		<div className="absolute top-0 w-full">
@@ -25,117 +28,47 @@ const Navbar = () => {
 				<div className="lg:mx-4 mx-2">
 					<Logo color="#cb24ff" animate="once" />
 				</div>
-				<ul className="hidden lg:flex h-full uppercase border-light-theme">
+				<ul className="hidden lg:flex h-full uppercase gap-4 items-center">
 					{navItems.map((item, index) => {
-						if (loaded) {
-							const width = document?.getElementById(
-								item.id + "navbar"
-							)?.offsetWidth;
-
-							return (
-								<motion.li
-									key={item.id}
-									className="p-4 group cursor-pointer"
-									onHoverStart={() => setCurrentIdx(index)}
-									onHoverEnd={() => setCurrentIdx(-1)}
-									onClick={() => {
-										if (document.getElementById(item.id)) {
-											document
-												.getElementById(item.id)
-												?.scrollIntoView({
-													behavior: "smooth",
-												});
-										}
-									}}
+						return (
+							<li
+								className="h-full flex items-center"
+								key={item.id}
+							>
+								<a
+									className="hover:text-light-theme/75 hover:dark:text-dark-theme/75 hover-underline cursor-pointer"
+									onClick={() => scrollToSection(item.id)}
 								>
-									<div
-										id={item.id + "navbar"}
-										className="group-hover:text-light-theme/75 group-hover:dark:text-dark-theme/75"
-									>
-										{item.name}
-										<AnimatePresence>
-											{index === currentIdx && (
-												<svg
-													height="3px"
-													viewBox={`0 0 ${
-														width !== undefined
-															? width / 3
-															: 0
-													} 1`}
-													xmlns="http://www.w3.org/2000/svg"
-													className="absolute"
-												>
-													<motion.line
-														x1="0"
-														y1="0"
-														x2="100%"
-														y2="0"
-														stroke="rgba(203, 36, 255, 0.75)"
-														strokeWidth={3}
-														initial="hidden"
-														animate="visible"
-														exit="hidden"
-														variants={{
-															hidden: {
-																pathLength: 0,
-																transition: {
-																	duration: 0.5,
-																},
-															},
-															visible: {
-																pathLength: 1,
-																transition: {
-																	duration: 0.5,
-																},
-															},
-														}}
-													/>
-												</svg>
-											)}
-										</AnimatePresence>
-									</div>
-								</motion.li>
-							);
-						}
+									{item.name}
+								</a>
+							</li>
+						);
 					})}
-					<li className="md:mx-3 lg:mx-2 mt-[18px]">
+					<li className="md:mx-3 lg:mx-2">
 						<ThemeChanger />
 					</li>
 				</ul>
 
-				<div className="flex justify-between lg:hidden mt-[-4px]">
-					<motion.div
-						className={`mt-[3px] mr-2 z-10`}
-						initial="hidden"
-						animate="visible"
-						variants={{
-							hidden: { y: -100 },
-							visible: { y: 0 },
-						}}
-					>
-						{!open && <ThemeChanger />}
-					</motion.div>
-					<motion.div
-						className={`mx-2 z-10 cursor-pointer`}
+				<div className="flex items-center justify-between lg:hidden">
+					<div className="z-10">
+						<ThemeChanger />
+					</div>
+					<div
+						className="cursor-pointer ml-2 mr-4 z-10 flex items-center"
 						onClick={() => setOpen(true)}
-						initial="hidden"
-						animate="visible"
-						variants={{
-							hidden: { y: -100 },
-							visible: { y: 0 },
-						}}
 					>
-						{!open && (
-							<AiOutlineMenu
-								size={22}
-								className="w-5 sm:w-6 md:h-6 md:ml-1"
-							/>
-						)}
-					</motion.div>
+						<AiOutlineMenu
+							size={22}
+							className="w-5 sm:w-6 md:h-6 md:ml-1"
+						/>
+					</div>
 				</div>
 
 				{open && (
-					<div className="fixed lg:hidden left-0 top-0 w-full h-screen bg-light-primary/5 backdrop-blur-sm z-10" />
+					<div
+						className="fixed lg:hidden left-0 top-0 w-full h-screen bg-light-primary/5 backdrop-blur-sm z-10"
+						onClick={() => setOpen(false)}
+					/>
 				)}
 
 				<div className="flex fixed lg:hidden left-0 top-0 z-10">
@@ -161,101 +94,23 @@ const Navbar = () => {
 									<Logo color="#cb24ff" animate="none" />
 								</div>
 								<ul className="text-dark-900 uppercase pt-4">
-									{navItems.map((item, index) => {
-										if (loaded) {
-											const width =
-												document.getElementById(
-													item.id + "nav"
-												)?.offsetWidth;
-
-											return (
-												<motion.li
-													key={item.id}
-													className="py-2 sm:py-4"
-													onHoverStart={() =>
-														setCurrentIdx(index)
-													}
-													onHoverEnd={() =>
-														setCurrentIdx(-1)
+									{navItems.map((item) => {
+										return (
+											<li
+												key={item.id}
+												className="py-2 sm:py-4"
+											>
+												<a
+													id={item.id + "nav"}
+													className="sm:text-xl cursor-pointer hover:text-dark-100 hover-underline"
+													onClick={() =>
+														scrollToSection(item.id)
 													}
 												>
-													<a
-														id={item.id + "nav"}
-														className="sm:text-xl cursor-pointer hover:text-dark-100"
-														onClick={() => {
-															if (
-																document.getElementById(
-																	item.id
-																)
-															) {
-																document
-																	.getElementById(
-																		item.id
-																	)
-																	?.scrollIntoView(
-																		{
-																			behavior:
-																				"smooth",
-																		}
-																	);
-															}
-
-															setOpen(false);
-														}}
-													>
-														{item.name}
-														<AnimatePresence>
-															{index ===
-																currentIdx && (
-																<svg
-																	height="3px"
-																	viewBox={`0 0 ${
-																		width !==
-																		undefined
-																			? width /
-																			  3
-																			: 0
-																	} 1`}
-																	xmlns="http://www.w3.org/2000/svg"
-																	className="absolute"
-																>
-																	<motion.line
-																		x1="0"
-																		y1="0"
-																		x2="100%"
-																		y2="0"
-																		stroke="rgba(203, 36, 255, 0.75)"
-																		strokeWidth={
-																			3
-																		}
-																		initial="hidden"
-																		animate="visible"
-																		exit="hidden"
-																		variants={{
-																			hidden: {
-																				pathLength: 0,
-																				transition:
-																					{
-																						duration: 0.5,
-																					},
-																			},
-																			visible:
-																				{
-																					pathLength: 1,
-																					transition:
-																						{
-																							duration: 0.5,
-																						},
-																				},
-																		}}
-																	/>
-																</svg>
-															)}
-														</AnimatePresence>
-													</a>
-												</motion.li>
-											);
-										}
+													{item.name}
+												</a>
+											</li>
+										);
 									})}
 								</ul>
 								<div className=" w-[280px] sm:w-[320px] text-slate-900 absolute bottom-0 left-0">

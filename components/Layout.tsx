@@ -1,4 +1,5 @@
 "use client";
+
 import Hero from "./sections/Hero";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";

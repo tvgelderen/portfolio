@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const useWindowDimensions = () => {
-	const hasWindow = typeof window !== "undefined";
+	const [hasWindow, setHasWindow] = useState<boolean>(false);
 
 	const getWindowDimensions = () => {
 		const width = hasWindow ? window.innerWidth : null;
@@ -17,6 +17,8 @@ const useWindowDimensions = () => {
 	);
 
 	useEffect(() => {
+		setHasWindow(typeof window !== "undefined");
+
 		if (hasWindow) {
 			const handleResize = () =>
 				setWindowDimensions(getWindowDimensions());
@@ -24,7 +26,7 @@ const useWindowDimensions = () => {
 			window.addEventListener("resize", handleResize);
 			return () => window.removeEventListener("resize", handleResize);
 		}
-	}, [hasWindow]);
+	});
 
 	return windowDimensions;
 };

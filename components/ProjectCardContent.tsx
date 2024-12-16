@@ -1,7 +1,9 @@
 "use client";
+
 import React from "react";
 import { BsEye, BsGithub } from "react-icons/bs";
 import { SkillData } from "../lib/SkillData";
+import Image from "next/image";
 
 type Props = {
 	project: any;
@@ -20,7 +22,7 @@ const ProjectCardContent = ({ project }: Props) => {
 								key={skill.name}
 								className="flex flex-col justify-center items-center"
 							>
-								<img
+								<Image
 									src={skill.image}
 									alt={skill.name}
 									width={40}
