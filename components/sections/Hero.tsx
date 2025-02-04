@@ -39,13 +39,14 @@ const Hero = () => {
                     <div className="mt-4 font-[500] text-lg sm:text-xl md:text-2xl lg:text-3xl">
                         <Typewriter
                             words={[
-                                "Welcome to my portfolio website!",
                                 "I'm a software engineer.",
+                                "Welcome to my portfolio website!",
                             ]}
                             loop={true}
                             typeSpeed={100}
                             deleteSpeed={50}
-                            delaySpeed={1000}
+                            cursor={true}
+                            cursorColor="rgba(0,0,0,0)"
                         />
                     </div>
                 </div>
@@ -83,7 +84,7 @@ const Hero = () => {
                         </a>
                         <a
                             target="_blank"
-                            href="https://github.com/TvGelderen"
+                            href="https://github.com/tvgelderen"
                             className="rounded-full p-3 m-4 hover:bg-light-theme/20 hover:dark:bg-dark-theme/30 hover:scale-110"
                         >
                             <BsGithub

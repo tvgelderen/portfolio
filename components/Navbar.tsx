@@ -131,7 +131,7 @@ const Navbar = () => {
                                         </a>
                                         <a
                                             target="_blank"
-                                            href="https://github.com/TvGelderen"
+                                            href="https://github.com/tvgelderen"
                                             onClick={() => setOpen(false)}
                                             className="rounded-full p-2 m-2 sm:p-3 sm:m-4 shadow-md shadow-dark-500 dark:shadow-dark-900 dark:bg-dark-tertiary hover:scale-110"
                                         >
